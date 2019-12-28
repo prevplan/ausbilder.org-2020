@@ -23,6 +23,7 @@ Route::get('/admin/', function () {
     if (Auth::check()) {
         return view('admin');
     }
+
     return redirect('/login');
 });
 Route::get('/users', 'UsersController@index');
