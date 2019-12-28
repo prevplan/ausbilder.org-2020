@@ -6,7 +6,18 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import VueRouter from "vue-router";
+
+window.Vue = Vue;
+Vue.use(VueRouter);
+
+import Form from "./utilities/Form";
+window.Form = Form;
+
+import router from './routes';
+
+// window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,4 +40,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    router
 });
