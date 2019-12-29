@@ -23,7 +23,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
+                <a href="{{ route('home') }}" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -140,10 +140,10 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-            <img src="/bower_components/admin-lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <a href="{{ route('login') }}" class="brand-link">
+            <img src="/img/logo_128.png" alt="ausbilder.org Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light"><b>ausbilder.org</b></span>
         </a>
 
         <!-- Sidebar -->
@@ -154,7 +154,7 @@
                     <img src="/bower_components/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Alexander Smith</a>
                 </div>
             </div>
 
@@ -246,10 +246,10 @@
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="/img/licences/cc_by_sa_88x31.png" /></a> <a rel="license" href="https://www.gnu.org/licenses/agpl-3.0.en.html"><img alt="GNU AGPLv3 Lizenzvertrag" style="border-width:0" src="/img/licences/agplv3-88x31.png" /></a>
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>&copy; 2019 - 2020 <a href="https://ausbilder.org">ausbilder.org</a></strong> - Content is by-sa 4.0 - Source is AGPLv3
     </footer>
 </div>
 <!-- ./wrapper -->

@@ -5,6 +5,7 @@
 /vendor
 /public/fonts
 /public/css
+/public/img
 /public/js
 /public/bower_components
 .env
