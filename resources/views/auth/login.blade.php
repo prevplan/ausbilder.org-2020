@@ -7,16 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/bower_components/admin-lte/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="/bower_components/admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/bower_components/admin-lte/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -69,7 +60,7 @@
                     <!-- /.col -->
                 </div>
             </form>
-            <!--
+            <!-- saved for maybe later
             <div class="social-auth-links text-center mb-3">
                 <p>- OR -</p>
                 <a href="#" class="btn btn-block btn-primary">
@@ -94,12 +85,6 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="/bower_components/admin-lte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/bower_components/admin-lte/dist/js/adminlte.min.js"></script>
 
 </body>
 </html>

@@ -1,14 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'home')
+@section('title', 'Home')
 @section('site_title', 'Home')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="#">ausbilder.org</a></li>
-    <li class="breadcrumb-item active">Starter Page</li>
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">ausbilder.org</a></li>
+    <li class="breadcrumb-item active">Home</li>
 @endsection
 
 @section('content')
+    @if (session('status'))
+        <div class="alert alert-success" role="alert" align="center">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
