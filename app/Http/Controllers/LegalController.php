@@ -27,8 +27,8 @@ class LegalController extends Controller
         return view('legal.imprint');
     }
 
-    public function privacy()
+    public function data_protection()
     {
-        return view('legal.privacy');
+        return view('legal.data-protection');
     }
 }

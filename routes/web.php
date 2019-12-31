@@ -42,4 +42,4 @@ Route::get('admin', function () {
 });
 
 Route::get('impressum', 'LegalController@imprint')->name('imprint');
-Route::get('datenschutz', 'LegalController@privacy')->name('privacy');
+Route::get('datenschutz', 'LegalController@data_protection')->name('data-protection');

@@ -17,10 +17,6 @@
 --}}
 
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -77,8 +73,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Rechtliches</a>
                         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                            <li><a href="{{ route('imprint') }}" class="dropdown-item">Impressum</a></li>
-                            <li><a href="{{ route('privacy') }}" class="dropdown-item">Datenschutz</a></li>
+                            <li><a href="{{ route('imprint') }}" class="dropdown-item">{{ __('Imprint') }}</a></li>
+                            <li><a href="{{ route('data-protection') }}" class="dropdown-item">Datenschutz</a></li>
 
                             <li class="dropdown-divider"></li>
 
