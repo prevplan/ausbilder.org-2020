@@ -13,7 +13,8 @@
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.1",
-        "mcamara/laravel-localization": "^1.4"
+        "mcamara/laravel-localization": "^1.4",
+        "vemcogroup/laravel-translation": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
