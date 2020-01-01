@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ausbilder.org | Registration Page</title>
+    <title>ausbilder.org | {{ __('Registration') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/favicons/apple-icon-57x57.png') }}">
@@ -52,7 +52,7 @@
 
     <div class="card">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <p class="login-box-msg">{{ __('Register a new membership') }}</p>
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -134,7 +134,7 @@
             </div>
             -->
 
-            <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+            <a href="{{ route('login') }}" class="text-center">{{ __('I already have a membership') }}</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ausbilder.org | Forgot Password</title>
+    <title>ausbilder.org | {{ __('Forgot Password') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/favicons/apple-icon-57x57.png') }}">
@@ -58,7 +58,7 @@
                 </div>
             @endif
 
-            <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+            <p class="login-box-msg">{{ __('Did you forget your password? Here you can easily retrieve a new password.') }}</p>
 
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
@@ -87,7 +87,7 @@
                 <a href="{{ route('login') }}">Login</a>
             </p>
             <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                <a href="{{ route('register') }}" class="text-center">{{ __('Register a new membership') }}</a>
             </p>
         </div>
         <!-- /.login-card-body -->
