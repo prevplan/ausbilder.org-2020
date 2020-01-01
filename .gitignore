@@ -6,6 +6,7 @@
 /public/fonts
 /public/css
 /public/img
+/public/images
 /public/js
 /public/bower_components
 .env
