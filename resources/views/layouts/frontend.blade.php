@@ -71,10 +71,10 @@
                         <a href="#" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Rechtliches</a>
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ __('Legal') }}</a>
                         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                             <li><a href="{{ route('imprint') }}" class="dropdown-item">{{ __('Imprint') }}</a></li>
-                            <li><a href="{{ route('data-protection') }}" class="dropdown-item">Datenschutz</a></li>
+                            <li><a href="{{ route('data-protection') }}" class="dropdown-item">{{ __('Data protection') }}</a></li>
 
                             <li class="dropdown-divider"></li>
 
