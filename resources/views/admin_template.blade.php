@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="#">ausbilder.org</a></li>

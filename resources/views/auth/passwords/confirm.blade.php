@@ -16,7 +16,7 @@
     * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 --}}
 
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('content')
 <div class="container">

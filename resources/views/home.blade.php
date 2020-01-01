@@ -16,7 +16,7 @@
     * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 --}}
 
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('title', 'Home')
 @section('site_title', 'Home')
