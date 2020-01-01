@@ -154,6 +154,19 @@
                     @csrf
                 </form>
             </li>
+            <!-- Language Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="flag-icon flag-icon-{{ LaravelLocalization::getSupportedLocales()[LaravelLocalization::getCurrentLocale()]['flag'] }}"></i> {{-- TODO: maybe cleaner soultion?! --}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-0">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="dropdown-item {{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'active':'' }}">
+                            <i class="flag-icon flag-icon-{{ $properties['flag'] }} mr-2"></i> {{ $properties['native'] }}
+                        </a>
+                    @endforeach
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
                         class="fas fa-th-large"></i></a>
