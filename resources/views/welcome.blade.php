@@ -1,6 +1,6 @@
 {{--
-    * ausbilder.org - the free course management and planning program.
-    * Copyright (C) 2019 Holger Schmermbeck & others (see the AUTHORS file)
+    * ausbilder.org - the free course management and planning software.
+    * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
     *
     * This program is free software: you can redistribute it and/or modify
     * it under the terms of the GNU Affero General Public License as published
@@ -29,61 +29,38 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title m-0"><strong>{{ __('the free course management and planning software') }}</strong></h5>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's
-                            content.
-                        </p>
-
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">{{ __("Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!") }}</p>
+                        <p class="card-text">{!! html_entity_decode( __('Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).', ['name' => '<strong>ausbilder.org</strong>']) ) !!}</p>
                     </div>
                 </div>
 
                 <div class="card card-primary card-outline">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title"><strong>{{ __('100% open source / 100% free') }}</strong></h5>
 
                         <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's
-                            content.
+                            {{ __('ausbilder.org is proud to be 100% open source and 100% free, in the meaning of free as in freedom, licensed under the GNU AGPLv3. Our texts, documentation and other content are published under the creative commons by-sa 4.0 license.') }}
                         </p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            {{ __('Everyone can help and is encouraged to make ausbilder.org better, easier and more extensive. No matter whether this is done through coding, suggestions, error messages, translations, donations or in another way.') }}
+                        </p>
+                        <p class="card-text" align="middle">
+                            <strong>{!! __('Together we can make the free course management and planning software :name the best course management and planning software in the world!', ['name' => '<a href="https://ausbilder.org">ausbilder.org</a>']) !!}</strong>
+                        </p>
+                        <p align="center">
+                            <a href="https://github.com/prevplan/ausbilder.org" class="card-link">GitHub</a>
+                            <a href="https://ausbilder-forum.org/c/ausbilder-org/" class="card-link">{{ __('Forum') }}</a>
+                            <a href="https://poeditor.com/join/project/kXQkobGIoI" class="card-link">{{ __('Translations') }}</a>
+                        </p>
                     </div>
                 </div><!-- /.card -->
             </div>
-            <!-- /.col-md-6 -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="card-title m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
     </div><!-- /.container-fluid -->

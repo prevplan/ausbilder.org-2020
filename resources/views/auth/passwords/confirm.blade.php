@@ -1,6 +1,6 @@
 {{--
-    * ausbilder.org - the free course management and planning program.
-    * Copyright (C) 2019 Holger Schmermbeck & others (see the AUTHORS file)
+    * ausbilder.org - the free course management and planning software.
+    * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
     *
     * This program is free software: you can redistribute it and/or modify
     * it under the terms of the GNU Affero General Public License as published

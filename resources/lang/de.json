@@ -1,12 +1,15 @@
 {
+    "100% open source \/ 100% free": "100% open source \/ 100% frei",
     "A fresh verification link has been sent to your email address.": "Ein neuer Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet.",
     "Before proceeding, please check your email for a verification link.": "Bevor Sie fortfahren, überprüfen Sie bitte Ihre E-Mail-Adresse auf einen Bestätigungslink.",
     "Confirm Password": "Passwort bestätigen",
     "Data protection": "Datenschutz",
     "Did you forget your password? Here you can easily retrieve a new password.": "Haben Sie Ihr Passwort vergessen? Hier können Sie einfach ein neues Passwort abrufen.",
     "E-Mail Address": "E-Mail Adresse",
+    "Everyone can help and is encouraged to make ausbilder.org better, easier and more extensive. No matter whether this is done through coding, suggestions, error messages, translations, donations or in another way.": "Jeder kann helfen und wird dazu ermutigt ausbilder.org besser, einfacher und umfangreicher zu machen. Egal ob durch Programmierung, Vorschläge, Fehlermeldungen, Übersetzungen, Spenden oder auf eine andere Weise.",
     "Forgot Password": "Passwort vergessen",
     "Forgot Your Password?": "Haben Sie Ihr Passwort vergessen?",
+    "Forum": "Forum",
     "I already have a membership": "Ich habe bereits eine Mitgliedschaft",
     "If you did not receive the email": "Wenn Sie die E-Mail nicht erhalten haben",
     "Imprint": "Impressum",
@@ -23,8 +26,14 @@
     "Reset Password": "Passwort zurücksetzen",
     "Send Password Reset Link": "Link zum Zurücksetzen des Passworts senden",
     "Sign in to start your session": "Melden Sie sich an, um Ihre Sitzung zu starten",
+    "Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).": "Deshalb sind wir :name. Die erste und einzige freie Kursverwaltungs- und Planungssoftware weltweit (soweit wir wissen).",
+    "Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!": "Keine Lust mehr mit Excel, Word und Papier zu arbeiten? Verärgert über teure Software, die nicht wirklich passt? Wir auch!",
+    "Together we can make the free course management and planning software :name the best course management and planning software in the world!": "Gemeinsam können wir die freie Kursverwaltungs- und Planungssoftware :name zur besten Kursverwaltungs- und Planungssoftware der Welt machen!",
+    "Translations": "Übersetzungen",
     "Verify Your Email Address": "Bestätigen Sie Ihre E-Mail Adresse.",
+    "ausbilder.org is proud to be 100% open source and 100% free, in the meaning of free as in freedom, licensed under the GNU AGPLv3. Our texts, documentation and other content are published under the creative commons by-sa 4.0 license.": "ausbilder.org ist stolz darauf, 100% Open Source und 100% frei, im Sinne von frei wie in Freiheit zu sein, lizenziert unter der GNU AGPLv3. Unsere Texte, Dokumentationen und sonstigen Inhalte werden unter der Creative-Commons-by-sa-4.0-Lizenz veröffentlicht.",
     "click here to request another": "klicken Sie hier, um ein anderes anzufordern",
     "no Company": "keine Firma",
-    "no Company selected": "keine Firma ausgewählt"
+    "no Company selected": "keine Firma ausgewählt",
+    "the free course management and planning software": "die freie Kursverwaltungs- und Planungssoftware"
 }

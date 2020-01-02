@@ -1,12 +1,15 @@
 {
+    "100% open source \/ 100% free": "100% open source \/ 100% free",
     "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
     "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
     "Confirm Password": "Confirm Password",
     "Data protection": "Data protection",
     "Did you forget your password? Here you can easily retrieve a new password.": "Did you forget your password? Here you can easily retrieve a new password.",
     "E-Mail Address": "E-Mail Address",
+    "Everyone can help and is encouraged to make ausbilder.org better, easier and more extensive. No matter whether this is done through coding, suggestions, error messages, translations, donations or in another way.": "Everyone can help and is encouraged to make ausbilder.org better, easier and more extensive. No matter whether this is done through coding, suggestions, error messages, translations, donations or in another way.",
     "Forgot Password": "Forgot Password",
     "Forgot Your Password?": "Forgot Your Password?",
+    "Forum": "Forum",
     "I already have a membership": "I already have a membership",
     "If you did not receive the email": "If you did not receive the email",
     "Imprint": "Imprint",
@@ -23,8 +26,14 @@
     "Reset Password": "Reset Password",
     "Send Password Reset Link": "Send Password Reset Link",
     "Sign in to start your session": "Sign in to start your session",
+    "Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).": "Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).",
+    "Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!": "Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!",
+    "Together we can make the free course management and planning software :name the best course management and planning software in the world!": "Together we can make the free course management and planning software :name the best course management and planning software in the world!",
+    "Translations": "Translations",
     "Verify Your Email Address": "Verify Your Email Address",
+    "ausbilder.org is proud to be 100% open source and 100% free, in the meaning of free as in freedom, licensed under the GNU AGPLv3. Our texts, documentation and other content are published under the creative commons by-sa 4.0 license.": "ausbilder.org is proud to be 100% open source and 100% free, in the meaning of free as in freedom, licensed under the GNU AGPLv3. Our texts, documentation and other content are published under the creative commons by-sa 4.0 license.",
     "click here to request another": "click here to request another",
     "no Company": "no Company",
-    "no Company selected": "no Company selected"
+    "no Company selected": "no Company selected",
+    "the free course management and planning software": "the free course management and planning software"
 }
