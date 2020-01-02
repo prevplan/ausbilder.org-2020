@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ausbilder.org | {{ t('Registration') }}</title>
+    <title>ausbilder.org | {{ __('Registration') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/favicons/apple-icon-57x57.png') }}">
@@ -52,12 +52,12 @@
 
     <div class="card">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">{{ t('Register a new membership') }}</p>
+            <p class="login-box-msg">{{ __('Register a new membership') }}</p>
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ t('Name') }}" required autocomplete="name" autofocus>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ __('Name') }}" required autocomplete="name" autofocus>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -70,7 +70,7 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ t('E-Mail Address') }}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" required autocomplete="email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -83,7 +83,7 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{ t('Password') }}" required autocomplete="new-password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{ __('Password') }}" required autocomplete="new-password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -96,7 +96,7 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ t('Confirm Password') }}" required autocomplete="new-password">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -114,7 +114,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">{{ t('Register') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -134,7 +134,7 @@
             </div>
             -->
 
-            <a href="{{ route('login') }}" class="text-center">{{ t('I already have a membership') }}</a>
+            <a href="{{ route('login') }}" class="text-center">{{ __('I already have a membership') }}</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

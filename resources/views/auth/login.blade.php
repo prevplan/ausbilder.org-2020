@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ausbilder.org | {{ t('Log in') }}</title>
+    <title>ausbilder.org | {{ __('Log in') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/favicons/apple-icon-57x57.png') }}">
@@ -52,12 +52,12 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">{{ t('Sign in to start your session') }}</p>
+            <p class="login-box-msg">{{ __('Sign in to start your session') }}</p>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ t('E-Mail Address') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" required autocomplete="email" autofocus>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -70,7 +70,7 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{ t('Password') }}" required autocomplete="current-password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="{{ __('Password') }}" required autocomplete="current-password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -89,7 +89,7 @@
                     <!-- /.col -->
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">
-                            {{ t('Login') }}
+                            {{ __('Login') }}
                         </button>
                     </div>
                     <!-- /.col -->
@@ -109,10 +109,10 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="{{ route('password.request') }}">{{ t('Forgot Your Password?') }}</a>
+                <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
             </p>
             <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">{{ t('Register a new membership') }}</a>
+                <a href="{{ route('register') }}" class="text-center">{{ __('Register a new membership') }}</a>
             </p>
         </div>
         <!-- /.login-card-body -->

@@ -1,6 +1,6 @@
 {{--
     * ausbilder.org - the free course management and planning program.
-    * Copyright (C) 2019 Holger Schmermbeck & others (see the AUTHORS file)
+    * Copyright (C) 2019 - 2020 Holger Schmermbeck & others (see the AUTHORS file)
     *
     * This program is free software: you can redistribute it and/or modify
     * it under the terms of the GNU Affero General Public License as published
@@ -17,7 +17,7 @@
 --}}
 
 <!DOCTYPE html>
-<html lang="{{ session('locale') }}">
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,10 +71,10 @@
                         <a href="#" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a id="drodpwnLegalMenu" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ t('Legal') }}</a>
-                        <ul aria-labelledby="drodpwnLegalMenu" class="dropdown-menu border-0 shadow">
-                            <li><a href="{{ route('imprint') }}" class="dropdown-item">{{ t('Imprint') }}</a></li>
-                            <li><a href="{{ route('data-protection') }}" class="dropdown-item">{{ t('Data protection') }}</a></li>
+                        <a id="dropdownLegalMenu" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ __('Legal') }}</a>
+                        <ul aria-labelledby="dropdownLegalMenu" class="dropdown-menu border-0 shadow">
+                            <li><a href="{{ route('imprint') }}" class="dropdown-item">{{ __('Imprint') }}</a></li>
+                            <li><a href="{{ route('data-protection') }}" class="dropdown-item">{{ __('Data protection') }}</a></li>
                         </ul>
                     </li>
                 </ul>

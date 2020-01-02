@@ -1,6 +1,6 @@
 {{--
     * ausbilder.org - the free course management and planning program.
-    * Copyright (C) 2019 Holger Schmermbeck & others (see the AUTHORS file)
+    * Copyright (C) 2019 - 2020 Holger Schmermbeck & others (see the AUTHORS file)
     *
     * This program is free software: you can redistribute it and/or modify
     * it under the terms of the GNU Affero General Public License as published
@@ -17,7 +17,7 @@
 --}}
 
 <!DOCTYPE html>
-<html lang="{{ session('locale') }}">
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,8 +42,6 @@
 
     <title>@yield('title', 'ausbilder.org')</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -175,7 +173,7 @@
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                     <img src="{{ asset('img/logo_128.png') }}" class="user-image img-circle elevation-2" alt="User Image">
-                    <span class="d-none d-md-inline">{{ t('no Company') }}</span>
+                    <span class="d-none d-md-inline">{{ __('no Company') }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
@@ -183,15 +181,15 @@
                         <img src="{{ asset('img/logo_128.png') }}" class="img-circle elevation-2" alt="User Image">
 
                         <p>
-                            {{ t('no Company selected') }}
-                            <small>{{ t('Register a Company') }}</small>
+                            {{ __('no Company selected') }}
+                            <small>{{ __('Register a Company') }}</small>
                         </p>
                     </li>
                     <!-- Menu Body -->
                     <li class="user-body">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <a href="#">{{ t('Register a Company') }}</a>
+                                <a href="#">{{ __('Register a Company') }}</a>
                             </div>
                         </div>
                         <!-- /.row -->
@@ -256,7 +254,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-balance-scale-left"></i>
                             <p>
-                                {{ t('Legal') }}
+                                {{ __('Legal') }}
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -264,13 +262,13 @@
                             <li class="nav-item">
                                 <a href="{{ route('imprint') }}" class="nav-link">
                                     <i class="fas fa-balance-scale"></i>
-                                    <p>{{ t('Imprint') }}</p>
+                                    <p>{{ __('Imprint') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('data-protection') }}" class="nav-link">
                                     <i class="fas fa-user-secret"></i>
-                                    <p>{{ t('Data protection') }}</p>
+                                    <p>{{ __('Data protection') }}</p>
                                 </a>
                             </li>
                         </ul>
