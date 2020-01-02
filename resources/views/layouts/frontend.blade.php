@@ -1,6 +1,6 @@
 {{--
-    * ausbilder.org - the free course management and planning program.
-    * Copyright (C) 2019 - 2020 Holger Schmermbeck & others (see the AUTHORS file)
+    * ausbilder.org - the free course management and planning software.
+    * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
     *
     * This program is free software: you can redistribute it and/or modify
     * it under the terms of the GNU Affero General Public License as published
@@ -145,15 +145,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="{{ asset('img/licences/cc_by_sa_88x31.png') }}" /></a> <a rel="license" href="https://www.gnu.org/licenses/agpl-3.0.en.html"><img alt="GNU AGPLv3 Lizenzvertrag" style="border-width:0" src="{{ asset('img/licences/agplv3-88x31.png') }}" /></a>
-        </div>
-        <!-- Default to the left -->
-        <strong>&copy; 2019 - 2020 <a href="https://ausbilder.org">ausbilder.org</a></strong> - Content is cc-by-sa 4.0 - Source is AGPLv3
-    </footer>
+    @include('layouts.footer')
 </div>
 <!-- ./wrapper -->
 
