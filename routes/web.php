@@ -29,20 +29,13 @@
 |
 */
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
-    ], function () {
-        /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-        Route::get('/', function () {
-            return view('welcome');
-        });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-        Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
-        Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-        Route::get('impressum', 'LegalController@imprint')->name('imprint');
-        Route::get('datenschutz', 'LegalController@data_protection')->name('data-protection');
-    });
+Route::get('impressum', 'LegalController@imprint')->name('imprint');
+Route::get('datenschutz', 'LegalController@data_protection')->name('data-protection');
