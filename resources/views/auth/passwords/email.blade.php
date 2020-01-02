@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ausbilder.org | {{ __('Forgot Password') }}</title>
+    <title>ausbilder.org | {{ t('Forgot Password') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/favicons/apple-icon-57x57.png') }}">
@@ -58,12 +58,12 @@
                 </div>
             @endif
 
-            <p class="login-box-msg">{{ __('Did you forget your password? Here you can easily retrieve a new password.') }}</p>
+            <p class="login-box-msg">{{ t('Did you forget your password? Here you can easily retrieve a new password.') }}</p>
 
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ t('E-Mail Address') }}" required autocomplete="email" autofocus>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">{{ __('Send Password Reset Link') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block">{{ t('Send Password Reset Link') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -87,7 +87,7 @@
                 <a href="{{ route('login') }}">Login</a>
             </p>
             <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">{{ __('Register a new membership') }}</a>
+                <a href="{{ route('register') }}" class="text-center">{{ t('Register a new membership') }}</a>
             </p>
         </div>
         <!-- /.login-card-body -->
