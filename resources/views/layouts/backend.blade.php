@@ -39,7 +39,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('img/favicons/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="@yield('metadescription', __('metadescription.general'))"/>
+    <meta name="description" content="@yield('metadescription', __('metadescription.general', ['name' => 'ausbilder.org']))"/>
 
     <title>@yield('title', 'ausbilder.org')</title>
 
@@ -174,7 +174,7 @@
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                     <img src="{{ asset('img/logo_128.png') }}" class="user-image img-circle elevation-2" alt="User Image">
-                    <span class="d-none d-md-inline">{{ __('no Company') }}</span>
+                    <span class="d-none d-md-inline">{{ session('company') ?? __('no Company') }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
@@ -182,19 +182,24 @@
                         <img src="{{ asset('img/logo_128.png') }}" class="img-circle elevation-2" alt="User Image">
 
                         <p>
-                            {{ __('no Company selected') }}
-                            <small>{{ __('Register a Company') }}</small>
+                            {{ session('company') ?? __('no Company selected') }}
+                            <small>
+                                {{ session('company') ?
+                                __('Member since :date', ['date' => Carbon\Carbon::createFromDate(session('company_since'))->locale(LaravelLocalization::getCurrentLocale())->isoFormat("MMMM Y")]) :
+                                __('Register a Company') }}
+                            </small>
                         </p>
                     </li>
-                    <!-- Menu Body -->
-                    <li class="user-body">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <a href="#">{{ __('Register a Company') }}</a>
+                    @if(!session('company'))
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="{{ route('company-register') }}">{{ __('Register a Company') }}</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.row -->
-                    </li>
+                            <!-- /.row -->
+                        </li>
+                    @endif
                 </ul>
             </li>
             @include('layouts.language-dropdown')
