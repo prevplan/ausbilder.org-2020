@@ -16,7 +16,12 @@
     * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 --}}
 
-@extends('layouts.backend')
+@extends('layouts.frontend')
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">ausbilder.org</a></li>
+    <li class="breadcrumb-item active">{{ __('Verify Email Adress') }}</li>
+@endsection
 
 @section('content')
 <div class="container">

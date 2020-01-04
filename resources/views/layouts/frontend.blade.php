@@ -39,7 +39,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('img/favicons/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="@yield('metadescription', __('metadescription.general'))"/>
+    <meta name="description" content="@yield('metadescription', __('metadescription.general', ['name' => 'ausbilder.org']))"/>
 
     <title>@yield('title', 'ausbilder.org')</title>
 
