@@ -48,4 +48,6 @@ Route::group(
 
         Route::get('company/create', 'CompanyController@create')->name('company-register');
         Route::post('company/store', 'CompanyController@store')->name('company-store');
+
+        Route::get('company/change', 'CompanyChangeController@index');
     });

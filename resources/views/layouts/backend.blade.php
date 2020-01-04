@@ -183,11 +183,11 @@
 
                         <p>
                             {{ session('company') ?? __('no Company selected') }}
-                            <small>
-                                {{ session('company') ?
-                                __('Member since :date', ['date' => Carbon\Carbon::createFromDate(session('company_since'))->locale(LaravelLocalization::getCurrentLocale())->isoFormat("MMMM Y")]) :
-                                __('Register a Company') }}
-                            </small>
+                            @if(session('company'))
+                                <small>
+                                    {{ __('Member since :date', ['date' => Carbon\Carbon::createFromDate(session('company_since'))->locale(LaravelLocalization::getCurrentLocale())->isoFormat("MMMM Y")]) }}
+                                </small>
+                            @endif
                         </p>
                     </li>
                     @if(!session('company'))
