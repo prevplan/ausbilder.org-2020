@@ -49,5 +49,6 @@ Route::group(
         Route::get('company/create', 'CompanyController@create')->name('company-register');
         Route::post('company/store', 'CompanyController@store')->name('company-store');
 
-        Route::get('company/change', 'CompanyChangeController@index');
+        Route::get('company/change', 'CompanyChangeController@index')->name('company-change');
+        Route::get('company/change/{id}', 'CompanyChangeController@change')->name('company-change-id');
     });

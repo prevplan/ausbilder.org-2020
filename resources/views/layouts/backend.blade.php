@@ -185,7 +185,7 @@
                             {{ session('company') ?? __('no Company selected') }}
                             @if(session('company'))
                                 <small>
-                                    {{ __('Member since :date', ['date' => Carbon\Carbon::createFromDate(session('company_since'))->locale(LaravelLocalization::getCurrentLocale())->isoFormat("MMMM Y")]) }}
+                                    <a href="{{ route('company-change') }}" style="color: rgb(255,255,255)">{{ __('change Company') }}</a>
                                 </small>
                             @endif
                         </p>
@@ -255,6 +255,23 @@
                                 <span class="right badge badge-danger">New</span>
                             </p>
                         </a>
+                    </li>
+                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '*/company/*') ? 'menu-open' : '') }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-building"></i>
+                            <p>
+                                {{ __('Company') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('company-change') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company/change') ? 'active' : '') }}">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <p>{{ __('change Company') }}</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">

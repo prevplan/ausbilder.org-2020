@@ -1,14 +1,37 @@
 <?php
 
+/*
+ * ausbilder.org - the free course management and planning software.
+ * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Company;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyChangeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('verified');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +40,7 @@ class CompanyChangeController extends Controller
     public function index()
     {
         $companies = Auth::user()->companies;
-
-        dd(Arr::has($companies->pluck('id'), Auth::user()->last_company));
-
-        return $companies;
+        return view('company.change', compact('companies'));
     }
 
     /**
@@ -61,9 +81,41 @@ class CompanyChangeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function change($id)
     {
-        //
+        $user = Auth::user();
+        if ($id == 'last') {
+            $id = $user->last_company;
+            if (!$id) // If there was no 'last company'
+            {
+                return redirect(route('home'));
+            }
+        }
+
+        $company = Company::findorfail($id);
+
+        if (in_array(Auth::user()->id, $company->users->pluck('id')->toArray())) // is member of this company
+        {
+            if ($id != $user->last_company)
+            {
+                $user->last_company = $id;
+                $user->save();
+            }
+
+            session([
+                'company_id' => $company->id,
+                'company' => $company->name,
+            ]);
+        } else { // NO MEMBER!
+            // TODO writing a log entry
+            $user->last_company = false;
+            $user->save();
+            session()->forget('company_id');
+            session()->forget('company');
+            session()->flash('warning', true);
+            session()->flash('status', __('no access to company'));
+        }
+        return redirect(route('home'));
     }
 
     /**
