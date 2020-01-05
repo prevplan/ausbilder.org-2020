@@ -40,6 +40,7 @@ class CompanyChangeController extends Controller
     public function index()
     {
         $companies = Auth::user()->companies;
+
         return view('company.change', compact('companies'));
     }
 
@@ -86,18 +87,15 @@ class CompanyChangeController extends Controller
         $user = Auth::user();
         if ($id == 'last') {
             $id = $user->last_company;
-            if (!$id) // If there was no 'last company'
-            {
+            if (! $id) { // If there was no 'last company'
                 return redirect(route('home'));
             }
         }
 
         $company = Company::findorfail($id);
 
-        if (in_array(Auth::user()->id, $company->users->pluck('id')->toArray())) // is member of this company
-        {
-            if ($id != $user->last_company)
-            {
+        if (in_array(Auth::user()->id, $company->users->pluck('id')->toArray())) { // is member of this company
+            if ($id != $user->last_company) {
                 $user->last_company = $id;
                 $user->save();
             }
@@ -115,6 +113,7 @@ class CompanyChangeController extends Controller
             session()->flash('warning', true);
             session()->flash('status', __('no access to company'));
         }
+
         return redirect(route('home'));
     }
 

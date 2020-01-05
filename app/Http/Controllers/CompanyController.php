@@ -27,7 +27,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -62,13 +61,12 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-
         $company = Company::create(request()->validate([
             'name' => 'required|min:3',
             'name_suffix' => 'nullable|min:3',
             'street' => 'required|min:3',
             'zipcode' => 'required',
-            'location' => 'required|min:3'
+            'location' => 'required|min:3',
         ]));
 
         // Assign the user to the company
@@ -77,7 +75,7 @@ class CompanyController extends Controller
         session([
             'company_id' => $company->id,
             'company' => $request['name'],
-            'company_since' => Carbon::now()->toDateTimeString()
+            'company_since' => Carbon::now()->toDateTimeString(),
         ]);
 
         $request->session()->flash('status', __('Company created'));
