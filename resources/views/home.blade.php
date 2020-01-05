@@ -27,11 +27,7 @@
 @endsection
 
 @section('content')
-    @if (session('status'))
-        <div class="alert alert-success" role="alert" align="center">
-            {{ session('status') }}
-        </div>
-    @endif
+    @include('layouts.status')
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
