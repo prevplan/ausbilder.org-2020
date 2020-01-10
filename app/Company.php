@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Laratrust\Models\LaratrustTeam;
 
-class Company extends Model
+class Company extends LaratrustTeam
 {
     protected $fillable = ['name', 'name_suffix', 'street', 'zipcode', 'location'];
 
