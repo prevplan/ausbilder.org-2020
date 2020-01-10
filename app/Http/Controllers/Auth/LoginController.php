@@ -44,8 +44,7 @@ class LoginController extends Controller
     {
         $company = Company::find($user->last_company);
 
-        if (in_array($user->id, $company->users->pluck('id')->toArray())) // is still member of last company
-        {
+        if (in_array($user->id, $company->users->pluck('id')->toArray())) { // is still member of last company
             session([
                 'company_id' => $company->id,
                 'company' => $company->name,
