@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Company;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -26,8 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/company/change/last';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -37,5 +38,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $company = Company::find($user->last_company);
+
+        if (in_array($user->id, $company->users->pluck('id')->toArray())) { // is still member of last company
+            session([
+                'company_id' => $company->id,
+                'company' => $company->name,
+            ]);
+        } else { // no member anymore
+            $user->last_company = false;
+            $user->save();
+        }
     }
 }
