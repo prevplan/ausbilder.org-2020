@@ -85,16 +85,9 @@ class CompanyChangeController extends Controller
     public function change($id)
     {
         $user = Auth::user();
-        if ($id == 'last') {
-            $id = $user->last_company;
-            if (! $id) { // If there was no 'last company'
-                return redirect(route('home'));
-            }
-        }
-
         $company = Company::findorfail($id);
 
-        if (in_array(Auth::user()->id, $company->users->pluck('id')->toArray())) { // is member of this company
+        if (in_array($user->id, $company->users->pluck('id')->toArray())) { // is member of this company
             if ($id != $user->last_company) {
                 $user->last_company = $id;
                 $user->save();
@@ -104,6 +97,8 @@ class CompanyChangeController extends Controller
                 'company_id' => $company->id,
                 'company' => $company->name,
             ]);
+
+            session()->flash('status', __('company changed'));
         } else { // NO MEMBER!
             // TODO writing a log entry
             $user->last_company = false;
