@@ -256,7 +256,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '*/company*') ? 'menu-open' : '') }}">
+                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company*') || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*') ? 'menu-open' : '') }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-building"></i>
                             <p>
@@ -282,6 +282,16 @@
                                 </li>
                             </ul>
                         @endif
+                        @permission('course-types.edit', session('company_id'))
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('course-types.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/course-types') ? 'active' : '') }}">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <p>{{ __('course types') }}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endpermission
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">

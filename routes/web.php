@@ -56,4 +56,7 @@ Route::group(
 
         Route::get('company/edit', 'CompanyController@edit')->name('company.edit');
         Route::put('company/{company}', 'CompanyController@update')->name('company.put');
+
+        Route::get('course-types', 'CourseTypesController@index')->name('course-types.show');
+        Route::patch('course-types/{company}', 'CourseTypesController@update')->name('course-types.update');
     });

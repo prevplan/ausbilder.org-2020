@@ -12,4 +12,9 @@ class Company extends LaratrustTeam
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    public function course_types()
+    {
+        return $this->belongsToMany(CourseType::class)->withTimestamps();
+    }
 }
