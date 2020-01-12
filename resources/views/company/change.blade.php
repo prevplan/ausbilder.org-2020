@@ -87,7 +87,9 @@
                                 </small> --}}
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">{{ __('active') }}</span>
+                                @if( $company-> id == session('company_id'))
+                                    <span class="badge badge-success">{{ __('selected') }}</span>
+                                @endif
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="{{ route('company-change-id', ['id' => $company->id]) }}">

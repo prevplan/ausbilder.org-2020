@@ -256,7 +256,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '*/company/*') ? 'menu-open' : '') }}">
+                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '*/company*') ? 'menu-open' : '') }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-building"></i>
                             <p>
@@ -272,6 +272,16 @@
                                 </a>
                             </li>
                         </ul>
+                        @if(session('company'))
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('company.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company') ? 'active' : '') }}">
+                                        <i class="fas fa-pen"></i>
+                                        <p>{{ __('company details') }}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">

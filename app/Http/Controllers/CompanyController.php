@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * ausbilder.org - the free course management and planning software.
  * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
  *
@@ -21,6 +21,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Permission;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $company = Company::findOrFail(session('company_id'));
+
+        return view('company.index', compact('company'));
     }
 
     /**
@@ -61,16 +64,13 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $company = Company::create(request()->validate([
-            'name' => 'required|min:3',
-            'name_suffix' => 'nullable|min:3',
-            'street' => 'required|min:3',
-            'zipcode' => 'required',
-            'location' => 'required|min:3',
-        ]));
+        abort_unless($request->name != session('company'), 403 );
 
-        // Assign the user to the company
-        $company->users()->attach(Auth::user());
+        $company = Company::create($this->validateCompany());
+
+        $user = Auth::user();
+        $user->companies()->attach($company); // Assign the user to the company
+        $user->attachPermissions(Permission::all(), $company); // and attach all permissions
 
         session([
             'company_id' => $company->id,
@@ -102,7 +102,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        abort_unless( Auth::user()->can('company.edit', session('company_id')), 403);
+
+        $company = Company::findOrFail(session('company_id'));
+        return view('company.edit', compact('company'));
     }
 
     /**
@@ -114,7 +117,18 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        abort_unless( Auth::user()->can('company.edit', $company), 403);
+
+        $company->update($this->validateCompany());
+
+        session([
+            'company_id' => $company->id,
+            'company' => $request['name'],
+        ]);
+
+        $request->session()->flash('status', __('company updated'));
+
+        return redirect()->route('home');
     }
 
     /**
@@ -126,5 +140,19 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         //
+    }
+
+    /**
+     * @return array
+     */
+    private function validateCompany(): array
+    {
+        return request()->validate([
+            'name' => 'required|min:3|unique:companies,name,' . session('company_id') . ',id',
+            'name_suffix' => 'nullable|min:3',
+            'street' => 'required|min:3',
+            'zipcode' => 'required',
+            'location' => 'required|min:3',
+        ]);
     }
 }

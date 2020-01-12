@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * ausbilder.org - the free course management and planning software.
  * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
  *
@@ -51,4 +51,9 @@ Route::group(
 
         Route::get('company/change', 'CompanyChangeController@index')->name('company-change');
         Route::get('company/change/{id}', 'CompanyChangeController@change')->name('company-change-id');
+
+        Route::get('company', 'CompanyController@index')->name('company.show');
+
+        Route::get('company/edit', 'CompanyController@edit')->name('company.edit');
+        Route::put('company/{company}', 'CompanyController@update')->name('company.put');
     });
