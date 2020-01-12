@@ -2,7 +2,7 @@
 
 /**
  * ausbilder.org - the free course management and planning software.
- * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
+ * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file).
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -64,7 +64,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        abort_unless($request->name != session('company'), 403 );
+        abort_unless($request->name != session('company'), 403);
 
         $company = Company::create($this->validateCompany());
 
@@ -102,9 +102,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        abort_unless( Auth::user()->can('company.edit', session('company_id')), 403);
+        abort_unless(Auth::user()->can('company.edit', session('company_id')), 403);
 
         $company = Company::findOrFail(session('company_id'));
+
         return view('company.edit', compact('company'));
     }
 
@@ -117,7 +118,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        abort_unless( Auth::user()->can('company.edit', $company), 403);
+        abort_unless(Auth::user()->can('company.edit', $company), 403);
 
         $company->update($this->validateCompany());
 
@@ -148,7 +149,7 @@ class CompanyController extends Controller
     private function validateCompany(): array
     {
         return request()->validate([
-            'name' => 'required|min:3|unique:companies,name,' . session('company_id') . ',id',
+            'name' => 'required|min:3|unique:companies,name,'.session('company_id').',id',
             'name_suffix' => 'nullable|min:3',
             'street' => 'required|min:3',
             'zipcode' => 'required',

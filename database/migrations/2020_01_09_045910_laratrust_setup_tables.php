@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -29,14 +30,14 @@ class LaratrustSetupTables extends Migration
             $table->timestamps();
         });
 
-     /*   // Create table for storing teams
-        Schema::create('companies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });  */
+        /*   // Create table for storing teams
+           Schema::create('companies', function (Blueprint $table) {
+               $table->increments('id');
+               $table->string('name')->unique();
+               $table->string('display_name')->nullable();
+               $table->string('description')->nullable();
+               $table->timestamps();
+           });  */
 
         // Create table for associating roles to users and teams (Many To Many Polymorphic)
         Schema::create('role_user', function (Blueprint $table) {
