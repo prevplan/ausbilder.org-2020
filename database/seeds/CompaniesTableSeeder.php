@@ -19,7 +19,7 @@ class CompaniesTableSeeder extends Seeder
             'zipcode' => '12345',
             'location' => 'Beispielstadt',
             'reference' => '8.0000',
-            'doctor' => 'Dr. Dolittle'
+            'doctor' => 'Dr. Dolittle',
         ]);
     }
 }
