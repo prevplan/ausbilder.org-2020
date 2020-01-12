@@ -39,6 +39,7 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ __('Register Company') }}</h3>
                         </div>
+                        @include('layouts.error')
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form role="form" action="{{ route('company-store') }}" method="post">
