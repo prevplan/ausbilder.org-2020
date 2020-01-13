@@ -3509,16 +3509,16 @@
         },
         {
             "name": "vemcogroup/laravel-translation",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vemcogroup/laravel-translation.git",
-                "reference": "1c949fe57db0f52a4e3a7eee5844e1dd67c874ed"
+                "reference": "b9f894a52ee2fcc6fcc8bd125b48ec4bbd89faf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/1c949fe57db0f52a4e3a7eee5844e1dd67c874ed",
-                "reference": "1c949fe57db0f52a4e3a7eee5844e1dd67c874ed",
+                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/b9f894a52ee2fcc6fcc8bd125b48ec4bbd89faf9",
+                "reference": "b9f894a52ee2fcc6fcc8bd125b48ec4bbd89faf9",
                 "shasum": ""
             },
             "require": {
@@ -3561,7 +3561,7 @@
                 "laravel",
                 "translations"
             ],
-            "time": "2020-01-07T07:02:08+00:00"
+            "time": "2020-01-13T09:22:16+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
