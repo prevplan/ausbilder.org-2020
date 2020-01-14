@@ -48,7 +48,7 @@ class CourseTypesController extends Controller
             ->orWhere(
                 'company_id', session('company_id')
             )
-            ->with(['companies' => function($query) {
+            ->with(['companies' => function ($query) {
                 $query->where('company_id', session('company_id'));
             }])
       /*      ->with(['templates' => function($query) {
@@ -57,7 +57,7 @@ class CourseTypesController extends Controller
             ->get()
             ->groupBy('group');
 
-      //  return $types;
+        //  return $types;
         return view('coursetype.index', compact('types'));
     }
 
