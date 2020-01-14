@@ -28,7 +28,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name' => 'course-types.edit',
             'display_name' => 'edit course types',
-            'description' => 'can edit course types'
+            'description' => 'can edit course types',
         ]);
 
         // attach all permissions to user one
