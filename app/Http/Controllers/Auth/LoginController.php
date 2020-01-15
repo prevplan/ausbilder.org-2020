@@ -44,7 +44,12 @@ class LoginController extends Controller
     {
         $company = Company::find($user->last_company);
 
-        if (in_array($user->id, $company->users->pluck('id')->toArray())) { // is still member of last company
+        $active = $company->users()
+            ->wherePivot('company_active', 1)
+            ->wherePivot('user_active', 1)
+            ->first();
+
+        if ($active) { // is still active member of last company
             session([
                 'company_id' => $company->id,
                 'company' => $company->name,

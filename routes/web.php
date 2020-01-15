@@ -50,7 +50,19 @@ Route::group(
         Route::post('company/store', 'CompanyController@store')->name('company-store');
 
         Route::get('company/change', 'CompanyChangeController@index')->name('company-change');
-        Route::get('company/change/{id}', 'CompanyChangeController@change')->name('company-change-id');
+        Route::get('company/change/{company}', 'CompanyChangeController@change')->name('company-change-id');
+
+        Route::get('company/activate/{company}', 'CompanyController@activate')->name('company.activate');
+        Route::get('company/deactivate/{company}', 'CompanyController@deactivate')->name('company.deactivate');
+
+        Route::get('company/{company}/invite/{code}', 'InvitationController@index');
+        Route::get('company/{company}/invite/{code}/accept', 'InvitationController@accept')
+            ->middleware('auth', 'verified')
+            ->name('invitation.accept');
+        Route::get('company/{company}/invite/{code}/register', 'InvitationController@index')
+            ->middleware('guest')
+            ->name('invitation.register');
+        Route::get('company/{company}/invite/{code}/decline', 'InvitationController@destroy')->name('invitation.decline');
 
         Route::get('company', 'CompanyController@index')->name('company.show');
 
@@ -59,4 +71,8 @@ Route::group(
 
         Route::get('course-types', 'CourseTypesController@index')->name('course-types.show');
         Route::patch('course-types/{company}', 'CourseTypesController@update')->name('course-types.update');
+
+        Route::get('trainer', 'TrainerController@index')->name('trainer.show');
+        Route::get('trainer/create', 'TrainerController@create')->name('trainer.create');
+        Route::post('trainer', 'TrainerController@store')->name('trainer.store');
     });

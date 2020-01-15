@@ -49,7 +49,7 @@
                         <th style="width: 30%">
                             {{ __('company logo') }}
                         </th>
-                        <th>
+                        <th style="width: 8%" class="text-center">
 
                         </th>
                         <th style="width: 8%" class="text-center">
@@ -77,25 +77,45 @@
                                     </li>
                                 </ul>
                             </td>
-                            <td class="project_progress">
-                          {{--      <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                                    </div>
-                                </div>
-                                <small>
-                                    57% Complete
-                                </small> --}}
+                            <td class="project-state">
+                                @if(!$company->pivot['company_active'])
+                                    <span class="badge badge-danger">{{ __('blocked') }}</span>
+                                @elseif(!$company->pivot['user_active'])
+                                    <a href="{{ route('company.activate', ['company' => $company->id]) }}">
+                                        <span class="badge badge-warning">{{ __('not active') }}&nbsp;
+                                            <i class="fas fa-unlock"></i>
+                                        </span>
+                                    </a>
+                                @else
+                                    <a href="{{ route('company.deactivate', ['company' => $company->id]) }}">
+                                        <span class="badge badge-success">{{ __('active') }}&nbsp;
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </a>
+                                @endif
                             </td>
                             <td class="project-state">
                                 @if( $company-> id == session('company_id'))
-                                    <span class="badge badge-success">{{ __('selected') }}</span>
+                                    <span class="badge badge-primary">{{ __('selected') }}</span>
                                 @endif
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="{{ route('company-change-id', ['id' => $company->id]) }}">
-                                    <i class="fas fa-exchange-alt"></i>
-                                    {{ __('change') }}
-                                </a>
+                                @if(!$company->pivot['company_active'])
+                                    <div class="btn btn-danger btn-sm">
+                                        <i class="fas fa-ban"></i>
+                                        {{ __('blocked') }}
+                                    </div>
+                                @elseif(!$company->pivot['user_active'])
+                                    <a class="btn btn-warning btn-sm" href="{{ route('company.activate', ['company' => $company->id]) }}">
+                                        <i class="fas fa-unlock"></i>
+                                        {{ __('activate') }}
+                                    </a>
+                                @else
+                                    <a class="btn btn-primary btn-sm" href="{{ route('company-change-id', ['company' => $company->id]) }}">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        {{ __('change') }}
+                                    </a>
+                                @endif
                             {{--     <a class="btn btn-info btn-sm" href="#">
                                     <i class="fas fa-pencil-alt">
                                     </i>

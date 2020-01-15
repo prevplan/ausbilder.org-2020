@@ -4,6 +4,8 @@
 /storage/*.key
 /vendor
 /public/fonts
+/public/vendors
+/public/webfonts
 /public/css
 /public/img
 /public/js
@@ -15,3 +17,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+public/mix-manifest.json

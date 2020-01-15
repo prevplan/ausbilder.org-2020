@@ -65,6 +65,8 @@ class LaratrustSetupTables extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
 
             $table->unique(['user_id', 'permission_id', 'user_type', 'company_id'], 'permission_user_user_id_perm_id_user_type_company_id_unique');
         });

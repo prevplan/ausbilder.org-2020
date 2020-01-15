@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyUserTable extends Migration
+class CreateInvitationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateCompanyUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_user', function (Blueprint $table) {
+        Schema::create('invitations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('user_id');
-            $table->boolean('company_active')->default(false);
-            $table->boolean('user_active')->default(false);
+            $table->string('email');
+            $table->unsignedBigInteger('invited_by');
+            $table->string('code', 20);
             $table->timestamps();
 
-            $table->unique(['company_id', 'user_id']);
-
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -35,6 +32,6 @@ class CreateCompanyUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_user');
+        Schema::dropIfExists('invitations');
     }
 }

@@ -18,6 +18,12 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => date('Y-m-d H:i:s'),
             'password' => bcrypt('123456'),
             'last_company' => 1,
-        ])->companies()->attach(1);
+        ])->companies()->attach(
+            1,
+            [
+                'company_active' => 1,
+                'user_active' => 1
+            ]
+        );
     }
 }

@@ -10,7 +10,7 @@ class Company extends LaratrustTeam
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class)->withPivot('company_active', 'user_active')->withTimestamps();
     }
 
     public function course_types()

@@ -45,6 +45,7 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -256,6 +257,43 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer*') ? 'menu-open' : '') }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                            <p>
+                                {{ __('trainer') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('trainer.create') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer/create') ? 'active' : '') }}">
+                                    <i class="fas fa-user-plus"></i>
+                                    <p>{{ __('add trainer') }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                        @if(session('company'))
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('trainer.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer') ? 'active' : '') }}">
+                                        <i class="fas fa-users"></i>
+                                        <p>{{ __('trainer') }}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
+                        @permission('course-types.edit', session('company_id'))
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('course-types.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/course-types') ? 'active' : '') }}">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <p>{{ __('course types') }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                        @endpermission
+                    </li>
                     <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company*') || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*') ? 'menu-open' : '') }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-building"></i>
@@ -358,6 +396,9 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+<script src="{{ asset('js/app.js') }}"></script>
+
+@yield('js')
 
 </body>
 </html>

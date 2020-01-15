@@ -69,7 +69,7 @@ class CompanyController extends Controller
         $company = Company::create($this->validateCompany());
 
         $user = Auth::user();
-        $user->companies()->attach($company); // Assign the user to the company
+        $user->companies()->attach($company, ['company_active' => 1, 'user_active' => 1]); // Assign the user to the company
         $user->attachPermissions(Permission::all(), $company); // and attach all permissions
 
         session([
@@ -141,6 +141,26 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         //
+    }
+
+    /**
+     * @param  Company  $company
+     * @return \Illuminate\Http\Response
+     */
+    public function activate(Company $company)
+    {
+        // TODO make me working!
+        return 'TODO make me working!';
+    }
+
+    /**
+     * @param  Company  $company
+     * @return \Illuminate\Http\Response
+     */
+    public function deactivate(Company $company)
+    {
+        // TODO make me working!
+        return 'TODO make me working!';
     }
 
     /**

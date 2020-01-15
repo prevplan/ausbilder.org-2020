@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * ausbilder.org - the free course management and planning software.
  * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
  *
@@ -82,14 +82,18 @@ class CompanyChangeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function change($id)
+    public function change(Company $company)
     {
         $user = Auth::user();
-        $company = Company::findorfail($id);
 
-        if (in_array($user->id, $company->users->pluck('id')->toArray())) { // is member of this company
-            if ($id != $user->last_company) {
-                $user->last_company = $id;
+        $active = $company->users()
+            ->wherePivot('company_active', 1)
+            ->wherePivot('user_active', 1)
+            ->first();
+
+        if ($active) { // is active member of this company
+            if ($company->id != $user->last_company) {
+                $user->last_company = $company->id;
                 $user->save();
             }
 
@@ -100,7 +104,7 @@ class CompanyChangeController extends Controller
 
             session()->flash('status', __('company changed'));
         } else { // NO MEMBER!
-            // TODO writing a log entry
+            // TODO write a log entry
             $user->last_company = false;
             $user->save();
             session()->forget('company_id');
