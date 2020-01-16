@@ -3,7 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/vendors
 /public/fonts
+/public/webfonts
 /public/css
 /public/img
 /public/js

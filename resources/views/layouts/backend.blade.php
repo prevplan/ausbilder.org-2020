@@ -43,8 +43,8 @@
 
     <title>@yield('title', 'ausbilder.org')</title>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('header')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -358,6 +358,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+<script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
 </html>

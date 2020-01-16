@@ -27,6 +27,10 @@
     <li class="breadcrumb-item active">{{ __('course types') }}</li>
 @endsection
 
+@section('header')
+    <link href="{{ asset('vendors/icheckbootstrap/css/icheck-bootstrap.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">

@@ -43,7 +43,6 @@
 
     <title>@yield('title', 'ausbilder.org')</title>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition layout-top-nav">
@@ -149,6 +148,8 @@
     @include('layouts.footer')
 </div>
 <!-- ./wrapper -->
+
+<script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
 </html>
