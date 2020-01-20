@@ -1,5 +1,12 @@
 const mix = require('laravel-mix');
 
+//enable sourcemaps only in dev environment
+if (!mix.inProduction()) {
+    mix.webpackConfig({
+        devtool: 'inline-source-map',
+    });
+}
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
