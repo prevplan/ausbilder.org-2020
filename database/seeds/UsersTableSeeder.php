@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             1,
             [
                 'company_active' => 1,
-                'user_active' => 1
+                'user_active' => 1,
             ]
         );
     }
