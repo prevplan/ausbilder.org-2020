@@ -44,6 +44,8 @@ class LoginController extends Controller
     {
         $company = Company::find($user->last_company);
 
+        if (!$company) return false; // continue, if last company is false
+
         $active = $company->users()
             ->wherePivot('company_active', 1)
             ->wherePivot('user_active', 1)
