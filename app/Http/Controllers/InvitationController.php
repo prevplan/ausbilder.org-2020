@@ -89,7 +89,11 @@ class InvitationController extends Controller
 
         abort_unless($invitation, 403); // invitation code not found
 
-        Auth::user()->companies()->syncWithoutDetaching($company, ['company_active' => 1, 'user_active' => 1]);
+        Auth::user()->companies()->syncWithoutDetaching(
+            [
+                $company->id => ['company_active' => 1, 'user_active' => 1],
+            ]
+        );
 
         $invitation->delete(); // delete the invitation
 
