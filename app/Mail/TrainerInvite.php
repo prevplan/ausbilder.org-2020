@@ -29,7 +29,8 @@ class TrainerInvite extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $code, $company;
+    public $code;
+    public $company;
 
     /**
      * Create a new message instance.

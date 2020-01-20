@@ -38,7 +38,7 @@ class InvitationController extends Controller
     {
         $invitation = $this->check($company, $code);
 
-        if (!$invitation) { // invitation code not found
+        if (! $invitation) { // invitation code not found
             return view('invitation.not-found');
         } else {
             return view('invitation.index', compact(['company', 'code']));
@@ -78,7 +78,7 @@ class InvitationController extends Controller
     }
 
     /**
-     * Accept the invitation as logged in user
+     * Accept the invitation as logged in user.
      *
      * @param  \App\Invitation  $invitation
      * @return \Illuminate\Http\Response
@@ -136,6 +136,7 @@ class InvitationController extends Controller
             ['company_id', $company->id],
             ['code', $code],
         ])->first();
+
         return $invitation;
     }
 }

@@ -38,11 +38,11 @@ class TrainerController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
      */
     public function index()
     {
         $users = Company::find(session('company_id'))->users;
+
         return view('trainer.index', compact('users'));
     }
 
@@ -64,7 +64,6 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-
         request()->validate([
             'email' => 'required|email',
         ]);
@@ -78,7 +77,7 @@ class TrainerController extends Controller
 
         $invited = Invitation::where([
             ['company_id', $company->id],
-            ['email', $request->email]
+            ['email', $request->email],
         ])->first();
 
         if ($invited) { // already invited
@@ -94,7 +93,7 @@ class TrainerController extends Controller
                 'company_id' => session('company_id'),
                 'email' => $request->email,
                 'invited_by' => auth()->user()->id,
-                'code' => $code
+                'code' => $code,
             ]
         );
 
@@ -102,7 +101,6 @@ class TrainerController extends Controller
             ->send(new TrainerInvite($company, $code));
 
         return redirect()->route('trainer.show')->with('message', __('trainer invited'));
-
     }
 
     /**
