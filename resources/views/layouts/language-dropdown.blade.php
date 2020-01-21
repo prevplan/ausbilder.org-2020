@@ -17,15 +17,17 @@
 --}}
 
 <li class="nav-item dropdown">
-    <a id="dropdownLanguageMenu" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i
-                class="fas fa-language"></i></a>
-    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="fas fa-language"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-            <li>
-                <a rel="alternate" hreflang="{{ $localeCode }}" class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                    {{ $properties['native'] }}
-                </a>
-            </li>
+            <a
+                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                    class="dropdown-item dropdown-footer">
+                {{ $properties['native'] }}
+            </a>
+            {!! ($loop->last ? '' : '<div class="dropdown-divider"></div>') !!}
         @endforeach
-    </ul>
+    </div>
 </li>
