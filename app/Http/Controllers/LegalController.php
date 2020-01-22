@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * ausbilder.org - the free course management and planning software.
  * Copyright (C) 2020 Holger Schmermbeck & others (see the AUTHORS file)
  *

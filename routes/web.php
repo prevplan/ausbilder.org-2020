@@ -75,4 +75,7 @@ Route::group(
         Route::get('trainer', 'TrainerController@index')->name('trainer.show');
         Route::get('trainer/create', 'TrainerController@create')->name('trainer.create');
         Route::post('trainer', 'TrainerController@store')->name('trainer.store');
+
+        Route::get('permission/{user}/edit', 'PermissionController@edit')->name('permission.edit');
+        Route::patch('permission/{user}', 'PermissionController@update')->name('permission.update');
     });

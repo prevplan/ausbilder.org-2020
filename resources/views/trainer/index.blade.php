@@ -82,6 +82,13 @@
                                                 &nbsp;<i class="fas fa-ban text-danger"></i>
                                             </a>
                                         @endif
+                                        @permission('permissions.edit', session('company_id'))
+                                            <a
+                                                    href="{{ route('permission.edit', ['user' => $user->id]) }}"
+                                                    class="fas fa-key"
+                                                    style="text-decoration: none; color: inherit;"
+                                            ></a>
+                                        @endpermission
                                     </td>
                                 </tr>
                             @endforeach
