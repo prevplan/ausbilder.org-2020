@@ -51,6 +51,20 @@
                                     <h5 class="checkbox_header_bottom">{{ __('trainer') }}</h5>
                                     <div class="form-group clearfix">
                                         <div class="icheck-danger d-inline">
+                                            <input
+                                                    type="checkbox"
+                                                    name="permissions[]"
+                                                    id="checkbox-trainer.add"
+                                                    value="trainer.add"
+                                                    @if ($user->can('trainer.add', session('company_id')))
+                                                        checked
+                                                    @endif
+                                            >
+                                            <label for="checkbox-trainer.add">
+                                                {{ __('add trainer') }}
+                                            </label>
+                                        </div><br />
+                                        <div class="icheck-danger d-inline">
                                             @if (Auth::user()->id == $user->id)
                                                 <input type="checkbox" checked disabled>
                                                 <input type="hidden" name="permissions[]" value="permissions.edit">

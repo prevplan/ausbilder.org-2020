@@ -25,6 +25,7 @@ use App\Invitation;
 use App\Mail\TrainerInvite;
 use App\Trainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -53,6 +54,8 @@ class TrainerController extends Controller
      */
     public function create()
     {
+        abort_unless(Auth::user()->can('trainer.add', session('company_id')), 403);
+
         return view('trainer.create');
     }
 
@@ -64,6 +67,8 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
+        abort_unless(Auth::user()->can('trainer.add', session('company_id')), 403);
+
         request()->validate([
             'email' => 'required|email',
         ]);

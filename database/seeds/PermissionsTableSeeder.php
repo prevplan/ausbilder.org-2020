@@ -31,6 +31,12 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'can edit course types',
         ]);
 
+        Permission::create([
+            'name' => 'trainer.add',
+            'display_name' => 'add new trainer',
+            'description' => 'can add new trainer',
+        ]);
+
         // attach all permissions to user one
         User::find(1)->attachPermissions(Permission::all(), 1);
     }

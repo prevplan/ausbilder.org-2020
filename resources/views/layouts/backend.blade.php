@@ -146,14 +146,16 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('trainer.create') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer/create') ? 'active' : '') }}">
-                                        <i class="fas fa-user-plus"></i>
-                                        <p>{{ __('add trainer') }}</p>
-                                    </a>
-                                </li>
-                            </ul>
+                            @permission('trainer.add', session('company_id'))
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('trainer.create') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer/create') ? 'active' : '') }}">
+                                            <i class="fas fa-user-plus"></i>
+                                            <p>{{ __('add trainer') }}</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endpermission
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('trainer.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer') ? 'active' : '') }}">
