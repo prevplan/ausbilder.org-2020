@@ -24,7 +24,7 @@
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('home') }}">ausbilder.org</a></li>
     <li class="breadcrumb-item">{{ __('permission management') }}</li>
-    <li class="breadcrumb-item active">{{ __('overview') }}</li>
+    <li class="breadcrumb-item active">{{ __('edit') }}</li>
 @endsection
 
 @section('css')
