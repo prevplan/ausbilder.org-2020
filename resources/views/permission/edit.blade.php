@@ -75,7 +75,7 @@
                                                         id="checkbox-permissions.edit"
                                                         value="permissions.edit"
                                                         @if ($user->can('permissions.edit', session('company_id')))
-                                                        checked
+                                                            checked
                                                         @endif
                                                 >
                                             @endif
@@ -114,6 +114,25 @@
                                             >
                                             <label for="checkbox-company.edit">
                                                 {{ __('edit company') }}
+                                            </label>
+                                        </div><br />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 m-t-35">
+                                    <h5 class="checkbox_header_bottom">{{ __('courses') }}</h5>
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-success d-inline">
+                                            <input
+                                                    type="checkbox"
+                                                    name="permissions[]"
+                                                    id="checkbox-course.add"
+                                                    value="course.add"
+                                                    @if ($user->can('course.add', session('company_id')))
+                                                        checked
+                                                    @endif
+                                            >
+                                            <label for="checkbox-course.add">
+                                                {{ __('add course') }}
                                             </label>
                                         </div><br />
                                     </div>

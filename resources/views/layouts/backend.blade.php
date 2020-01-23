@@ -138,6 +138,25 @@
                         </a>
                     </li>
                     @if(session('company'))
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>
+                                    {{ __('courses') }}
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            @permission('course.add', session('company_id'))
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <p>{{ __('add course') }}</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endpermission
+                        </li>
                         <li class="nav-item has-treeview
                             {{
                                 (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer*')
@@ -236,6 +255,8 @@
                                     <p>{{ __('Imprint') }}</p>
                                 </a>
                             </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('data-protection') }}" class="nav-link">
                                     <i class="fas fa-user-secret"></i>
