@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             PermissionsTableSeeder::class,
             CourseTypesSeeder::class,
+            PositionsSeeder::class,
         ]);
     }
 }
