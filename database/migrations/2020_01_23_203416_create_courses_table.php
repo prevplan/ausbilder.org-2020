@@ -16,11 +16,17 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('type');
+            $table->text('seminar_location');
+            $table->text('street');
+            $table->text('zipcode');
+            $table->text('location');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('type')->references('id')->on('course_types')->onDelete('cascade');
         });
     }
 

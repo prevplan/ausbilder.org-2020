@@ -138,8 +138,18 @@
                         </a>
                     </li>
                     @if(session('company'))
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item has-treeview
+                            {{
+                                (Request::is(LaravelLocalization::getCurrentLocale() . '/course/*')
+                                ? 'menu-open' : '')
+                            }}
+                                ">
+                            <a href="#" class="nav-link
+                                {{
+                                    (Request::is(LaravelLocalization::getCurrentLocale() . '/course/*')
+                                    ? 'active' : '')
+                                }}
+                            ">
                                 <i class="nav-icon fas fa-graduation-cap"></i>
                                 <p>
                                     {{ __('courses') }}
@@ -149,7 +159,7 @@
                             @permission('course.add', session('company_id'))
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="{{ route('course.create') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/course/create') ? 'active' : '') }}">
                                             <i class="fas fa-plus-circle"></i>
                                             <p>{{ __('add course') }}</p>
                                         </a>
@@ -165,12 +175,12 @@
                             }}
                             ">
                             <a href="#" class="nav-link
-                                        {{
-                                            (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer*')
-                                            || Request::is(LaravelLocalization::getCurrentLocale() . '/permission*')
-                                            ? 'active' : '')
-                                        }}
-                                    ">
+                                {{
+                                    (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer*')
+                                    || Request::is(LaravelLocalization::getCurrentLocale() . '/permission*')
+                                    ? 'active' : '')
+                                }}
+                            ">
                                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                                 <p>
                                     {{ __('trainer') }}
@@ -190,12 +200,12 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('trainer.show') }}" class="nav-link
-                                        {{
-                                            (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer')
-                                            || Request::is(LaravelLocalization::getCurrentLocale() . '/permission*')
-                                            ? 'active' : '')
-                                        }}
-                                        ">
+                                    {{
+                                        (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer')
+                                        || Request::is(LaravelLocalization::getCurrentLocale() . '/permission*')
+                                        ? 'active' : '')
+                                    }}
+                                    ">
                                         <i class="fas fa-users"></i>
                                         <p>{{ __('trainer') }}</p>
                                     </a>
