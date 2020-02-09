@@ -135,6 +135,20 @@
                                                 {{ __('add course') }}
                                             </label>
                                         </div><br />
+                                        <div class="icheck-success d-inline">
+                                            <input
+                                                    type="checkbox"
+                                                    name="permissions[]"
+                                                    id="checkbox-course.view"
+                                                    value="course.view"
+                                                    @if ($user->can('course.view', session('company_id')))
+                                                        checked
+                                                    @endif
+                                            >
+                                            <label for="checkbox-course.view">
+                                                {{ __('view course') }}
+                                            </label>
+                                        </div><br />
                                     </div>
                                 </div>
                             </div>
