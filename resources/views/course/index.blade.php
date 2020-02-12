@@ -45,11 +45,11 @@
                         <table id="courses" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Lehrgangsort</th>
-                                <th>Straße</th>
-                                <th>Ort</th>
-                                <th>Kursart</th>
-                                <th>Ausbilder</th>
+                                <th>{{ __('seminar location') }}</th>
+                                <th>{{ __('street') }}</th>
+                                <th>{{ __('location') }}</th>
+                                <th>{{ __('course type') }}</th>
+                                <th>{{ __('trainer') }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -68,56 +68,14 @@
                                     <td><a href="{{ route('course.show', ['course' => $course->id]) }}" style="text-decoration: none; color: inherit;"><i class="far fa-eye"></i></a></td>
                                 </tr>
                             @endforeach
-                            {{--
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>
-                                        @if($user['pivot']['company_active'] && $user['pivot']['user_active'])
-                                            {{ $user->email }}
-                                        @else
-                                            <i class="far fa-eye-slash"></i> <i class="far fa-paper-plane"></i>
-                                        @endif
-                                    </td>
-                                    <td class="project-state">
-                                        @if(!$user['pivot']['company_active'])
-                                            <span class="badge badge-danger">
-                                                gesperrt&nbsp;
-                                                <i class="fas fa-user-lock"></i>
-                                            </span>
-                                        @elseif(!$user['pivot']['user_active'])
-                                            <span class="badge badge-warning">
-                                                nicht bestätigt&nbsp;
-                                                <i class="fas fa-user-times"></i>
-                                            </span>
-                                            &nbsp;<i class="fas fa-ban text-danger"></i>
-                                        @else
-                                            <a href="#">
-                                                <span class="badge badge-success">
-                                                    aktiv&nbsp;
-                                                    <i class="fas fa-user-check"></i>
-                                                </span>
-                                                &nbsp;<i class="fas fa-ban text-danger"></i>
-                                            </a>
-                                        @endif
-                                        @permission('permissions.edit', session('company_id'))
-                                        <a
-                                                href="{{ route('permission.edit', ['user' => $user->id]) }}"
-                                                class="fas fa-key"
-                                                style="text-decoration: none; color: inherit;"
-                                        ></a>
-                                        @endpermission
-                                    </td>
-                                </tr>
-                            @endforeach --}}
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>E-Mail</th>
-                                <th>Status</th>
-                                <th>Kursart</th>
-                                <th>Ausbilder</th>
+                                <th>{{ __('seminar location') }}</th>
+                                <th>{{ __('street') }}</th>
+                                <th>{{ __('location') }}</th>
+                                <th>{{ __('course type') }}</th>
+                                <th>{{ __('trainer') }}</th>
                                 <th></th>
                             </tr>
                             </tfoot>

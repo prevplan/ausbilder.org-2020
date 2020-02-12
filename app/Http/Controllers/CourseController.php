@@ -25,9 +25,13 @@ use App\Course;
 use App\CourseType;
 use App\Position;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class CourseController extends Controller
 {
@@ -40,7 +44,7 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -71,7 +75,7 @@ class CourseController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -95,8 +99,9 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  Request  $request
+     * @return string
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
@@ -139,8 +144,8 @@ class CourseController extends Controller
         $end = $request->end_date . ' ' . $request->end_time . ':00';
 
         $course = Course::create([
-           'company_id' => session('company_id'),
-           'type' => $request->type,
+            'company_id' => session('company_id'),
+            'type' => $request->type,
             'seminar_location' => $request->seminar_location,
             'street' => $request->street,
             'zipcode' => $request->zipcode,
@@ -156,14 +161,14 @@ class CourseController extends Controller
             $i++;
         }
 
-        dd('course added'); // TODO redirect / meaningful message
+        return redirect()->route('course.show', ['course' => $course]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param  Course  $course
+     * @return Factory|View
      */
     public function show(Course $course)
     {
@@ -186,15 +191,15 @@ class CourseController extends Controller
                 'company_id', session('company_id')
             )
             ->get();
-        
+
         return view('course.show', compact('course', 'positions'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
+     * @param  Course  $course
+     * @return Response
      */
     public function edit(Course $course)
     {
@@ -204,9 +209,9 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  Course  $course
+     * @return Response
      */
     public function update(Request $request, Course $course)
     {
@@ -216,8 +221,8 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
+     * @param  Course  $course
+     * @return Response
      */
     public function destroy(Course $course)
     {
