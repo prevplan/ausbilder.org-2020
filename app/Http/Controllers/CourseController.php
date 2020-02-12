@@ -57,7 +57,7 @@ class CourseController extends Controller
                 ->where('user_id', Auth::user()->id)
                 ->get();
 
-            $courses = Course::whereIn('id',  $course->pluck('course_id'))
+            $courses = Course::whereIn('id', $course->pluck('course_id'))
                 ->where('company_id', session('company_id'))
                 ->with('course_types')
                 ->orderBy('start', 'asc')
@@ -65,6 +65,7 @@ class CourseController extends Controller
         }
 
         return view('course.index', compact('courses'));
+
         return $courses;
     }
 
@@ -78,7 +79,7 @@ class CourseController extends Controller
         abort_unless(Auth::user()->can('course.add', session('company_id')), 403);
 
         $company = Company::where([
-            ['id', session('company_id')]
+            ['id', session('company_id')],
         ])
             ->with('course_types')
             ->first();
@@ -104,7 +105,7 @@ class CourseController extends Controller
 
         $this->validate($request, [
             'type' => 'required|integer',
-            'start_date' => 'required|date|after_or_equal:' . Carbon::now()->StartOfDay(),
+            'start_date' => 'required|date|after_or_equal:'.Carbon::now()->StartOfDay(),
             'start_time' => 'required|date_format:"H:i"',
             'end_date' => 'required|date',
             'end_time' => 'required|date_format:"H:i"',
@@ -118,7 +119,7 @@ class CourseController extends Controller
             if (strtotime($request->start_time) > strtotime($request->end_time)) { // check time
                 return back()->withErrors(
                     [
-                        'message' => __('check course duration!')
+                        'message' => __('check course duration!'),
                     ]
                 )
                     ->withInput($request->all);
@@ -126,27 +127,27 @@ class CourseController extends Controller
             $request->end_date = $request->start_date; // correct date
         }
 
-        if(count($request->trainer) != count(array_unique($request->trainer))) {
+        if (count($request->trainer) != count(array_unique($request->trainer))) {
             return back()->withErrors(
                 [
-                    'message' => __('a trainer can have only one position per course')
+                    'message' => __('a trainer can have only one position per course'),
                 ]
             )
                 ->withInput($request->all);
         }
 
-        $start = $request->start_date . ' ' . $request->start_time . ':00';
-        $end = $request->end_date . ' ' . $request->end_time . ':00';
+        $start = $request->start_date.' '.$request->start_time.':00';
+        $end = $request->end_date.' '.$request->end_time.':00';
 
         $course = Course::create([
-           'company_id' => session('company_id'),
-           'type' => $request->type,
+            'company_id' => session('company_id'),
+            'type' => $request->type,
             'seminar_location' => $request->seminar_location,
             'street' => $request->street,
             'zipcode' => $request->zipcode,
             'location' => $request->location,
             'start' => $start,
-            'end' => $end
+            'end' => $end,
         ]);
 
         $i = 0;
@@ -167,10 +168,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-
-        if (!Auth::user()->can('course.view', session('company_id'))) { //  is not allowed to view courses
+        if (! Auth::user()->can('course.view', session('company_id'))) { //  is not allowed to view courses
             $user_in = false;
-            foreach($course->user as $user) {
+            foreach ($course->user as $user) {
                 if ($user->id == Auth::user()->id) {
                     $user_in = true;
                 }
@@ -186,7 +186,7 @@ class CourseController extends Controller
                 'company_id', session('company_id')
             )
             ->get();
-        
+
         return view('course.show', compact('course', 'positions'));
     }
 
