@@ -14,17 +14,17 @@ class PositionsSeeder extends Seeder
     {
         Position::create([
             'company_id' => false,
-            'name' => 'course leader'
+            'name' => 'course leader',
         ]);
 
         Position::create([
             'company_id' => false,
-            'name' => 'course helper'
+            'name' => 'course helper',
         ]);
 
         Position::create([
             'company_id' => false,
-            'name' => 'trainer'
+            'name' => 'trainer',
         ]);
     }
 }
