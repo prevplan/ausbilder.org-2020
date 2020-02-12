@@ -22,10 +22,12 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Course;
+use App\CourseType;
 use App\Position;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -38,11 +40,32 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        if (Auth::user()->can('course.view', session('company_id'))) {
+            $courses = Course::where(
+                'company_id', session('company_id')
+            )
+                ->with('course_types')
+                ->with('user')
+                ->orderBy('start', 'asc')
+                ->get();
+        } else { // show only own courses
+            $course = DB::table('course_user')
+                ->where('user_id', Auth::user()->id)
+                ->get();
+
+            $courses = Course::whereIn('id',  $course->pluck('course_id'))
+                ->where('company_id', session('company_id'))
+                ->with('course_types')
+                ->orderBy('start', 'asc')
+                ->get();
+        }
+
+        return view('course.index', compact('courses'));
+        return $courses;
     }
 
     /**
@@ -62,7 +85,9 @@ class CourseController extends Controller
 
         $types = $company->course_types->groupBy('group');
 
-        $positions = Position::all();
+        $positions = Position::where('company_id', 0)
+            ->orWhere('company_id', session('company_id'))
+            ->get();
 
         return view('course.create', compact(['company', 'types', 'positions']));
     }
@@ -138,11 +163,31 @@ class CourseController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Course  $course
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Course $course)
     {
-        //
+
+        if (!Auth::user()->can('course.view', session('company_id'))) { //  is not allowed to view courses
+            $user_in = false;
+            foreach($course->user as $user) {
+                if ($user->id == Auth::user()->id) {
+                    $user_in = true;
+                }
+
+                abort_unless($user_in, 403); // abort if actual user is no trainer in course
+            }
+        }
+
+        $positions = Position::where(
+                'company_id', 0
+            )
+            ->orWhere(
+                'company_id', session('company_id')
+            )
+            ->get();
+        
+        return view('course.show', compact('course', 'positions'));
     }
 
     /**

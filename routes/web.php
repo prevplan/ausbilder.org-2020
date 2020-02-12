@@ -81,4 +81,6 @@ Route::group(
 
         Route::get('course/create', 'CourseController@create')->name('course.create');
         Route::post('course', 'CourseController@store')->name('course.store');
+        Route::get('course', 'CourseController@index')->name('course.overview');
+        Route::get('course/{course}/show', 'CourseController@show')->name('course.show');
     });

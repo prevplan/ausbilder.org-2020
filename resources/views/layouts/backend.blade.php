@@ -140,13 +140,15 @@
                     @if(session('company'))
                         <li class="nav-item has-treeview
                             {{
-                                (Request::is(LaravelLocalization::getCurrentLocale() . '/course/*')
+                                (Request::is(LaravelLocalization::getCurrentLocale() . '/course')
+                                    || Request::is(LaravelLocalization::getCurrentLocale() . '/course/*')
                                 ? 'menu-open' : '')
                             }}
                                 ">
                             <a href="#" class="nav-link
                                 {{
-                                    (Request::is(LaravelLocalization::getCurrentLocale() . '/course/*')
+                                    (Request::is(LaravelLocalization::getCurrentLocale() . '/course')
+                                        || Request::is(LaravelLocalization::getCurrentLocale() . '/course/*')
                                     ? 'active' : '')
                                 }}
                             ">
@@ -159,13 +161,32 @@
                             @permission('course.add', session('company_id'))
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('course.create') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/course/create') ? 'active' : '') }}">
+                                        <a href="{{ route('course.create') }}" class="nav-link
+                                            {{
+                                                (Request::is(LaravelLocalization::getCurrentLocale() . '/course/create')
+                                                ? 'active' : '')
+                                            }}
+                                        ">
                                             <i class="fas fa-plus-circle"></i>
                                             <p>{{ __('add course') }}</p>
                                         </a>
                                     </li>
                                 </ul>
                             @endpermission
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('course.overview') }}" class="nav-link
+                                        {{
+                                            (Request::is(LaravelLocalization::getCurrentLocale() . '/course')
+                                                || Request::is(LaravelLocalization::getCurrentLocale() . '/course/*/show')
+                                            ? 'active' : '')
+                                        }}
+                                    ">
+                                        <i class="fas fa-table"></i>
+                                        <p>{{ __('courses') }}</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item has-treeview
                             {{
