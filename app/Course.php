@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $fillable = [
-        'company_id', 'type', 'seminar_location', 'street', 'zipcode', 'location', 'start', 'end'
+        'company_id', 'type', 'seminar_location', 'street', 'zipcode', 'location', 'start', 'end',
     ];
 
     public function users()
@@ -20,7 +20,8 @@ class Course extends Model
         return $this->belongsToMany(User::class)->withPivot('position_id')->withTimestamps();
     }
 
-    public function course_types() {
+    public function course_types()
+    {
         return $this->hasMany(CourseType::class, 'id', 'type');
     }
 }
