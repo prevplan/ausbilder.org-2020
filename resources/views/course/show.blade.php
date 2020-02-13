@@ -57,7 +57,7 @@
                                             <div class="form-group" id="item_table">
                                                 <label>{{ __('position') }}</label>
                                                 @foreach($course->user as $user)
-                                                    <div>{{ __($positions[$user->pivot->position_id]->name) }}</div>
+                                                    <div>{{ __($position[$user->pivot->position_id]) }}</div>
                                                 @endforeach
                                             </div>
                                         </div>

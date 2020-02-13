@@ -192,7 +192,13 @@ class CourseController extends Controller
             )
             ->get();
 
-        return view('course.show', compact('course', 'positions'));
+        $position = [];
+
+        foreach ($positions as $p) { // make a new array for correct position order
+            $position[$p['id']] = $p['name'];
+        }
+
+        return view('course.show', compact('course', 'position'));
     }
 
     /**
