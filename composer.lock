@@ -1901,16 +1901,16 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "5.2.6",
+            "version": "5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "8efac1ee9cc7750c9207e521776a9adbc35ce307"
+                "reference": "f9ff044424e9520ccc93f4435acc4985ccf68bdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/8efac1ee9cc7750c9207e521776a9adbc35ce307",
-                "reference": "8efac1ee9cc7750c9207e521776a9adbc35ce307",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/f9ff044424e9520ccc93f4435acc4985ccf68bdd",
+                "reference": "f9ff044424e9520ccc93f4435acc4985ccf68bdd",
                 "shasum": ""
             },
             "require": {
@@ -1962,7 +1962,7 @@
                 "rbac",
                 "roles"
             ],
-            "time": "2019-11-08T13:53:13+00:00"
+            "time": "2020-02-19T13:24:04+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
