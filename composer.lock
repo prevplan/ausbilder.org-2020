@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "612954b7c24e7884476c52ac62d4f539",
+    "content-hash": "8d728170afa8b40815e656c14178e8ed",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3445,24 +3445,24 @@
         },
         {
             "name": "vemcogroup/laravel-translation",
-            "version": "1.0.7",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vemcogroup/laravel-translation.git",
-                "reference": "b9f894a52ee2fcc6fcc8bd125b48ec4bbd89faf9"
+                "reference": "ba823f64e2374782278fa8b22b5a08bbdfde6876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/b9f894a52ee2fcc6fcc8bd125b48ec4bbd89faf9",
-                "reference": "b9f894a52ee2fcc6fcc8bd125b48ec4bbd89faf9",
+                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/ba823f64e2374782278fa8b22b5a08bbdfde6876",
+                "reference": "ba823f64e2374782278fa8b22b5a08bbdfde6876",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.3",
-                "laravel/framework": "~5.8.0|^6.0",
+                "laravel/framework": "~5.8.0|^6.0|^7.0",
                 "php": "^7.2",
-                "symfony/finder": "^4.3"
+                "symfony/finder": "^4.3|^5.0"
             },
             "type": "library",
             "extra": {
@@ -3497,7 +3497,7 @@
                 "laravel",
                 "translations"
             ],
-            "time": "2020-01-13T09:22:16+00:00"
+            "time": "2020-03-03T14:21:18+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

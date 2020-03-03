@@ -15,7 +15,7 @@
         "laravel/ui": "^1.1",
         "mcamara/laravel-localization": "^1.4",
         "santigarcor/laratrust": "5.2.*",
-        "vemcogroup/laravel-translation": "^1.0"
+        "vemcogroup/laravel-translation": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
