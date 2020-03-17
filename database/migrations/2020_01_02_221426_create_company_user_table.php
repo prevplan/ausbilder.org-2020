@@ -14,7 +14,7 @@ class CreateCompanyUserTable extends Migration
     public function up()
     {
         Schema::create('company_user', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('user_id');
             $table->boolean('company_active')->default(false);

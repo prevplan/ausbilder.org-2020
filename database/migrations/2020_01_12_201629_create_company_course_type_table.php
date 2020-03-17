@@ -14,6 +14,7 @@ class CreateCompanyCourseTypeTable extends Migration
     public function up()
     {
         Schema::create('company_course_type', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('course_type_id');
             $table->timestamps();
