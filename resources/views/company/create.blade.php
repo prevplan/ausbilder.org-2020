@@ -67,6 +67,24 @@
                                         <input type="text" class="form-control" id="inputLocation" name="location" value="{{ old('location') }}" placeholder="{{ __('location') }}" required>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="inputDoctor">{{ __('responsible doctor') }}</label>
+                                        <input type="text" class="form-control" id="inputDoctor" name="doctor" value="{{ old('doctor') }}" placeholder="{{ __('responsible doctor') }}">
+                                    </div>
+                                    <div class="form-group col-6">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="inputReference">{{ __('qseh reference (optional)') }}</label>
+                                        <input type="text" class="form-control" id="inputReference" name="reference" value="{{ old('reference') }}" placeholder="{{ __('qseh reference (optional)') }}">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="inputQsehPassword">{{ __('qseh password (optional)') }}</label>
+                                        <input type="password" class="form-control" id="inputQsehPassword" name="qseh_password" value="{{ old('qseh_password') }}" placeholder="{{ __('qseh password (optional)') }}">
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

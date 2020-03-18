@@ -109,6 +109,8 @@ class CompanyController extends Controller
         return view('company.edit', compact('company'));
     }
 
+    // TODO encrypt the QSEH password
+
     /**
      * Update the specified resource in storage.
      *
@@ -119,6 +121,10 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         abort_unless(Auth::user()->can('company.edit', $company), 403);
+
+        if ($request->qseh_password == 'password-saved')  { // if the password is saved in the DB
+            $request->request->add(['qseh_password' => $company->qseh_password]); // set it to the request
+        }
 
         $company->update($this->validateCompany());
 
@@ -174,6 +180,9 @@ class CompanyController extends Controller
             'street' => 'required|min:3',
             'zipcode' => 'required',
             'location' => 'required|min:3',
+            'doctor' => 'nullable|min:3',
+            'reference' => 'nullable|min:6|max:6|required_with:qseh_password|unique:companies,reference,'.session('company_id'),
+            'qseh_password' => 'nullable'
         ]);
     }
 }

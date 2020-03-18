@@ -44,7 +44,9 @@
                 <strong>{{ __('Company name') }}</strong> {{ $company->name }}<br />
                 <strong>{{ __('Company name suffix') }}</strong> {{ $company->name_suffix }}<br />
                 <strong>{{ __('street') }}</strong> {{ $company->street }}<br />
-                <strong>{{ __('zipcode') }} {{ __('location') }}</strong> {{ $company->zipcode }} {{ $company->location }}
+                <strong>{{ __('zipcode') }} {{ __('location') }}</strong> {{ $company->zipcode }} {{ $company->location }}<br />
+                <strong>{{ __('responsible doctor') }}</strong> {{ $company->doctor }}<br />
+                <strong>{{ __('qseh reference') }}</strong> {{ $company->reference }} &nbsp; <i class="{{ ($company->qseh_password ? 'fas fa-lock' : 'fas fa-lock-open') }}"></i><br />
             </div>
         </div>
     </section>

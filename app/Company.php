@@ -24,7 +24,7 @@ use Laratrust\Models\LaratrustTeam;
 
 class Company extends LaratrustTeam
 {
-    protected $fillable = ['name', 'name_suffix', 'street', 'zipcode', 'location'];
+    protected $fillable = ['name', 'name_suffix', 'street', 'zipcode', 'location', 'doctor', 'reference', 'qseh_password'];
 
     public function users()
     {
