@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Vyuldashev\XmlToArray\XmlToArray;
 
 class CourseController extends Controller
 {
@@ -118,6 +119,8 @@ class CourseController extends Controller
             'street' => 'required|min:3',
             'zipcode' => 'required',
             'location' => 'required|min:3',
+            'internal_number' => 'required_without_all:registration_number|nullable|min:3|alpha_dash',
+            'registration_number' => 'required_without_all:internal_number|nullable|min:6'
         ]);
 
         if (strtotime($request->start_date) >= strtotime($request->end_date)) { // if end is equal or before end
@@ -144,9 +147,15 @@ class CourseController extends Controller
         $start = $request->start_date.' '.$request->start_time.':00';
         $end = $request->end_date.' '.$request->end_time.':00';
 
+        if (!$request->internal_number) {
+            $request->request->add(['internal_number' => $request->registration_number]);
+        }
+
         $course = Course::create([
             'company_id' => session('company_id'),
             'type' => $request->type,
+            'internal_number' => $request->internal_number,
+            'registration_number' => $request->registration_number,
             'seminar_location' => $request->seminar_location,
             'street' => $request->street,
             'zipcode' => $request->zipcode,

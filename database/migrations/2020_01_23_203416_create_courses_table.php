@@ -17,6 +17,9 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('type');
+            $table->string('internal_number');
+            $table->string('registration_number')->nullable();
+            $table->boolean('registered')->default(false);
             $table->text('seminar_location');
             $table->text('street');
             $table->text('zipcode');

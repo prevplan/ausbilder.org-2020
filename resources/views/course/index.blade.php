@@ -49,6 +49,7 @@
                                 <th>{{ __('street') }}</th>
                                 <th>{{ __('location') }}</th>
                                 <th>{{ __('course type') }}</th>
+                                <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
                                 <th></th>
                             </tr>
@@ -60,6 +61,7 @@
                                     <td>{{ $course->street }}</td>
                                     <td>{{ $course->zipcode }} {{ $course->location }}</td>
                                     <td>{{ __($course->course_types[0]->name) }}</td>
+                                    <td>{{ $course->internal_number }}</td>
                                     <td>
                                         @foreach($course->user as $trainer)
                                             {{ $trainer->name }}{!! !$loop->last ? ',<br />' : '' !!}
@@ -75,6 +77,7 @@
                                 <th>{{ __('street') }}</th>
                                 <th>{{ __('location') }}</th>
                                 <th>{{ __('course type') }}</th>
+                                <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
                                 <th></th>
                             </tr>

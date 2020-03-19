@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg">
-                                        <label for="inputZipcode">{{ __('street') }}</label>
+                                        <label for="inputStreet">{{ __('street') }}</label>
                                         <input type="text" class="form-control" id="inputStreet" name="street" value="{{ old('street') }}" placeholder="{{ __('street') }}" required>
                                     </div>
                                     <div class="form-group col-md-2">
@@ -149,6 +149,19 @@
                                     <div class="form-group col-lg">
                                         <label for="inputLocation">{{ __('location') }}</label>
                                         <input type="text" class="form-control" id="inputLocation" name="location" value="{{ old('location')  }}" placeholder="{{ __('location') }}" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg">
+                                        <label for="inputIntenNumber">{{ __('internal number') }}</label>
+                                        <input type="text" class="form-control" id="inputInternNumber" name="internal_number" value="{{ old('internal_number') }}" placeholder="{{ __('internal number') }}">
+                                    </div>
+                                    <div class="form-group col-md-1" align="center">
+                                        {{ __('and / or') }}
+                                    </div>
+                                    <div class="form-group col-lg">
+                                        <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label> {{ __('automatically register') }}
+                                        <input type="text" class="form-control" id="inputRegistrationNumber" name="registration_number" value="{{ old('registration_number')  }}" placeholder="123456/{{ \Carbon\Carbon::now()->format('Y') }}">
                                     </div>
                                 </div>
                             </div>

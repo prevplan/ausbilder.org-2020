@@ -111,6 +111,16 @@
                                     <div>{{ $course->location }}</div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="form-group col-lg">
+                                    <label for="inputInternalNumber">{{ __('internal number') }}</label>
+                                    <div>{{ $course->internal_number }}</div>
+                                </div>
+                                <div class="form-group col-lg">
+                                    <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label>
+                                    <div>{{ ($course->registration_number ? $course->registration_number : __('not specified') ) }}</div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-body -->
 
