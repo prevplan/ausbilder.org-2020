@@ -66,6 +66,10 @@ class CompanyController extends Controller
     {
         abort_unless($request->name != session('company'), 403);
 
+        if ($request->qseh_password) { // password entered
+            $request->request->add(['qseh_password' => encrypt($request->qseh_password)]); // encrypt the password
+        }
+
         $company = Company::create($this->validateCompany());
 
         $user = Auth::user();
@@ -109,14 +113,12 @@ class CompanyController extends Controller
         return view('company.edit', compact('company'));
     }
 
-    // TODO encrypt the QSEH password
-
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Company $company)
     {
@@ -124,6 +126,8 @@ class CompanyController extends Controller
 
         if ($request->qseh_password == 'password-saved')  { // if the password is saved in the DB
             $request->request->add(['qseh_password' => $company->qseh_password]); // set it to the request
+        } elseif ($request->qseh_password) { // new password entered
+            $request->request->add(['qseh_password' => encrypt($request->qseh_password)]); // encrypt the password
         }
 
         $company->update($this->validateCompany());
