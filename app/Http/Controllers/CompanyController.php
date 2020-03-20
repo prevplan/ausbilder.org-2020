@@ -124,7 +124,7 @@ class CompanyController extends Controller
     {
         abort_unless(Auth::user()->can('company.edit', $company), 403);
 
-        if ($request->qseh_password == 'password-saved')  { // if the password is saved in the DB
+        if ($request->qseh_password == 'password-saved') { // if the password is saved in the DB
             $request->request->add(['qseh_password' => $company->qseh_password]); // set it to the request
         } elseif ($request->qseh_password) { // new password entered
             $request->request->add(['qseh_password' => encrypt($request->qseh_password)]); // encrypt the password
@@ -186,7 +186,7 @@ class CompanyController extends Controller
             'location' => 'required|min:3',
             'doctor' => 'nullable|min:3',
             'reference' => 'nullable|min:6|max:6|required_with:qseh_password|unique:companies,reference,'.session('company_id'),
-            'qseh_password' => 'nullable'
+            'qseh_password' => 'nullable',
         ]);
     }
 }
