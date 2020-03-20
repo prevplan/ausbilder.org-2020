@@ -41,6 +41,7 @@ const paths = {
     icheck_bootstrap: vendors + 'icheck-bootstrap/',
     datatables: vendors + 'datatables.net/',
     datatablesbs4: vendors + 'datatables.net-bs4/',
+    bootstrap_switch: vendors + 'bootstrap-switch/dist/',
 };
 
 // icheck_bootstrap
@@ -58,13 +59,21 @@ mix.combine(
         paths.datatablesbs4 + 'js/dataTables.bootstrap4.js',
     ],
     destVendors + 'datatables/js/datatables.js'
-    );
+);
 
 mix.styles(
     [
         paths.datatablesbs4 + 'css/dataTables.bootstrap4.css'
     ],
     destVendors + 'datatables/css/dataTables.bootstrap4.css'
+);
+
+//bootstrap-switch
+mix.combine(
+    [
+        paths.bootstrap_switch + 'js/bootstrap-switch.min.js'
+    ],
+    destVendors + 'bootstrap-switch/js/switch.js'
 );
 
 

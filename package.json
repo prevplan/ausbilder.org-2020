@@ -12,7 +12,7 @@
     "devDependencies": {
         "axios": "^0.19.2",
         "cross-env": "^7.0.2",
-        "laravel-mix": "^5.0.1",
+        "laravel-mix": "^5.0.4",
         "lodash": "^4.17.13",
         "resolve-url-loader": "^3.1.1",
         "sass": "^1.26.3",
@@ -22,7 +22,7 @@
     "dependencies": {
         "admin-lte": "^3.0.2",
         "bootstrap-switch": "^3.4.0",
-        "snyk": "^1.299.0",
+        "snyk": "^1.301.0",
         "tempusdominus-core": "^5.0.3"
     }
 }

@@ -242,7 +242,7 @@
     </script>
 
     <!-- Bootstrap Switch -->
-    <script src="/bower_components/admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="{{ asset('vendors/bootstrap-switch/js/switch.js') }}"></script>
 
     <script>
         $(function () {
