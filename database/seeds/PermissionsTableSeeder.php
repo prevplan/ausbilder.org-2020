@@ -44,6 +44,12 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
+            'name' => 'course.register',
+            'display_name' => 'register new course',
+            'description' => 'can register a new course at the QSEH',
+        ]);
+
+        Permission::create([
             'name' => 'course.view',
             'display_name' => 'view courses',
             'description' => 'can see courses',

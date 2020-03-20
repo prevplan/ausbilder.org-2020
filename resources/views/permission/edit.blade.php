@@ -52,13 +52,13 @@
                                     <div class="form-group clearfix">
                                         <div class="icheck-danger d-inline">
                                             <input
-                                                    type="checkbox"
-                                                    name="permissions[]"
-                                                    id="checkbox-trainer.add"
-                                                    value="trainer.add"
-                                                    @if ($user->can('trainer.add', session('company_id')))
-                                                        checked
-                                                    @endif
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-trainer.add"
+                                                value="trainer.add"
+                                                @if ($user->can('trainer.add', session('company_id')))
+                                                    checked
+                                                @endif
                                             >
                                             <label for="checkbox-trainer.add">
                                                 {{ __('add trainer') }}
@@ -70,13 +70,13 @@
                                                 <input type="hidden" name="permissions[]" value="permissions.edit">
                                             @else
                                                 <input
-                                                        type="checkbox"
-                                                        name="permissions[]"
-                                                        id="checkbox-permissions.edit"
-                                                        value="permissions.edit"
-                                                        @if ($user->can('permissions.edit', session('company_id')))
-                                                            checked
-                                                        @endif
+                                                    type="checkbox"
+                                                    name="permissions[]"
+                                                    id="checkbox-permissions.edit"
+                                                    value="permissions.edit"
+                                                    @if ($user->can('permissions.edit', session('company_id')))
+                                                        checked
+                                                    @endif
                                                 >
                                             @endif
                                             <label for="checkbox-permissions.edit">
@@ -90,13 +90,13 @@
                                     <div class="form-group clearfix">
                                         <div class="icheck-warning d-inline">
                                             <input
-                                                    type="checkbox"
-                                                    name="permissions[]"
-                                                    id="checkbox-course-types.edit"
-                                                    value="course-types.edit"
-                                                    @if ($user->can('course-types.edit', session('company_id')))
-                                                        checked
-                                                    @endif
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-course-types.edit"
+                                                value="course-types.edit"
+                                                @if ($user->can('course-types.edit', session('company_id')))
+                                                    checked
+                                                @endif
                                             >
                                             <label for="checkbox-course-types.edit">
                                                 {{ __('edit course types') }}
@@ -123,13 +123,13 @@
                                     <div class="form-group clearfix">
                                         <div class="icheck-success d-inline">
                                             <input
-                                                    type="checkbox"
-                                                    name="permissions[]"
-                                                    id="checkbox-course.add"
-                                                    value="course.add"
-                                                    @if ($user->can('course.add', session('company_id')))
-                                                        checked
-                                                    @endif
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-course.add"
+                                                value="course.add"
+                                                @if ($user->can('course.add', session('company_id')))
+                                                    checked
+                                                @endif
                                             >
                                             <label for="checkbox-course.add">
                                                 {{ __('add course') }}
@@ -137,13 +137,27 @@
                                         </div><br />
                                         <div class="icheck-success d-inline">
                                             <input
-                                                    type="checkbox"
-                                                    name="permissions[]"
-                                                    id="checkbox-course.view"
-                                                    value="course.view"
-                                                    @if ($user->can('course.view', session('company_id')))
-                                                        checked
-                                                    @endif
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-course.register"
+                                                value="course.register"
+                                                @if ($user->can('course.register', session('company_id')))
+                                                    checked
+                                                @endif
+                                            >
+                                            <label for="checkbox-course.register">
+                                                {{ __('register course') }}
+                                            </label>
+                                        </div><br />
+                                        <div class="icheck-success d-inline">
+                                            <input
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-course.view"
+                                                value="course.view"
+                                                @if ($user->can('course.view', session('company_id')))
+                                                    checked
+                                                @endif
                                             >
                                             <label for="checkbox-course.view">
                                                 {{ __('view course') }}
