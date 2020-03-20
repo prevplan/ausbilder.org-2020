@@ -160,8 +160,34 @@
                                         {{ __('and / or') }}
                                     </div>
                                     <div class="form-group col-lg">
-                                        <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label> {{ __('automatically register') }}
-                                        <input type="text" class="form-control" id="inputRegistrationNumber" name="registration_number" value="{{ old('registration_number')  }}" placeholder="123456/{{ \Carbon\Carbon::now()->format('Y') }}">
+                                        <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label>
+                                            @if( Auth::user()->can('course.register', session('company_id')) && $company->qseh_password)
+                                                {{ __('- automatically register at QSEH?') }} &nbsp;
+                                                <input
+                                                    type="checkbox"
+                                                    name="auto_register"
+                                                    id="reg_nr_hide"
+                                                    onchange="hideReg()"
+                                                    data-bootstrap-switch
+                                                    data-on-text="{{ __('Yes') }}"
+                                                    data-off-text="{{ __('No') }}"
+                                                    data-off-color="danger"
+                                                    data-on-color="success"
+                                                >
+                                                <div id="reg_nr_hint" style="display:none">
+                                                    {{ __('The course will be automatically registered at the QSEH.') }}
+                                                </div>
+                                            @endif
+                                        <div id="reg_nr_field" style="display:block">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="inputRegistrationNumber"
+                                                name="registration_number"
+                                                value="{{ old('registration_number')  }}"
+                                                placeholder="123456/{{ \Carbon\Carbon::now()->format('Y') }}"
+                                            >
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -215,5 +241,44 @@
         });
     </script>
 
+    <!-- Bootstrap Switch -->
+    <script src="/bower_components/admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+    <script>
+        $(function () {
+            $("input[data-bootstrap-switch]").each(function(){
+                $(this).bootstrapSwitch('state', $(this).prop('unchecked'));
+            });
+
+        })
+    </script>
+
+    <script>
+        function hideReg() {
+            var checkBox = document.getElementById("reg_nr_hide");
+            var text = document.getElementById("reg_nr_field");
+            if (checkBox.checked == true){
+                text.style.display = "none";
+            } else {
+                text.style.display = "block";
+            }
+            var text = document.getElementById("reg_nr_hint");
+            if (checkBox.checked == true){
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+
+        function hideFunc() {
+            var checkBox = document.getElementById("hide");
+            var text = document.getElementById("default_company");
+            if (checkBox.checked == true){
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+    </script>
 
 @endsection

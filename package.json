@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "admin-lte": "^3.0.2",
+        "bootstrap-switch": "^3.4.0",
         "snyk": "^1.299.0",
         "tempusdominus-core": "^5.0.3"
     }

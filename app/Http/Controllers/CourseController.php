@@ -119,8 +119,8 @@ class CourseController extends Controller
             'street' => 'required|min:3',
             'zipcode' => 'required',
             'location' => 'required|min:3',
-            'internal_number' => 'required_without_all:registration_number|nullable|min:3|alpha_dash',
-            'registration_number' => 'required_without_all:internal_number|nullable|min:6'
+            'internal_number' => 'required_without_all:registration_number,auto_register|nullable|min:3|alpha_dash',
+            'registration_number' => 'required_without_all:internal_number,auto_register|nullable|min:6'
         ]);
 
         if (strtotime($request->start_date) >= strtotime($request->end_date)) { // if end is equal or before end
@@ -147,15 +147,87 @@ class CourseController extends Controller
         $start = $request->start_date.' '.$request->start_time.':00';
         $end = $request->end_date.' '.$request->end_time.':00';
 
+        if ($request->auto_register) { // want to register the course at the QSEH
+            abort_unless(Auth::user()->can('course.register', session('company_id')), 403);
+
+            $company = Company::where([
+                ['id', session('company_id')]
+            ])
+                ->first();
+
+            if ($company->reference && $company->qseh_password) {
+                $password = decrypt($company->qseh_password);
+            } else { // no data saved
+                abort(403);
+            }
+
+            $type = CourseType::where([
+                ['id', $request->type]
+            ])
+                ->first();
+
+            if (!$type->wsdl_id) { // no wsdl_id -> no QSEH Course
+                return back()
+                    ->withErrors(['message' => __('selected Course type is no QSEH Course')])
+                    ->withInput($request->all);
+            }
+
+            if ($request->start_date == $request->end_date) { // only 1 day
+                $time = $request->start_time . ' Uhr - ' . $request->end_time . ' Uhr';
+            } else { // more than 1 day
+                $time = Carbon::parse($request->start_date)->format('d.m.y')
+                    . ' - ' .
+                    Carbon::parse($request->end_date)->format('d.m.y')
+                    . ' / ' .
+                    $request->start_time
+                    . ' Uhr - ' .
+                    $request->end_time . ' Uhr'
+                ;
+            }
+
+            $response = $this->qseh_webservice( // register course at QSEH
+                $company->reference,
+                $password,
+                'Neu',
+                $type->wsdl_id,
+                $start,
+                $time,
+                $request->seminar_location,
+                $request->location,
+                $request->zipcode,
+                $request->street
+            );
+
+            if ($response['ns1:code'] == '1') { //successful
+                $registration_number = $response['ns1:beschreibung'];
+                $registered = true;
+            } elseif ($response['ns1:code'] == '401') { // wrong password
+                $company->qseh_password = null; // delete password
+                $company->save();
+                return back()
+                    ->withErrors(['message' => __('No valid QSEH access data.')])
+                    ->withInput($request->all);
+            } else {
+                return back()
+                    ->withErrors(['message' => __('Error - QSEH reports:') . ' ' . $response['ns1:beschreibung']])
+                    ->withInput($request->all);
+            }
+
+        } else { // don't register course automatically
+            $registration_number = $request->registration_number;
+            $registered = false;
+        }
+
         if (!$request->internal_number) {
-            $request->request->add(['internal_number' => $request->registration_number]);
+            $request->internal_number = $registration_number;
         }
 
         $course = Course::create([
             'company_id' => session('company_id'),
             'type' => $request->type,
             'internal_number' => $request->internal_number,
-            'registration_number' => $request->registration_number,
+            'registration_number' => $registration_number,
+            'registered' => $registered,
             'seminar_location' => $request->seminar_location,
             'street' => $request->street,
             'zipcode' => $request->zipcode,
@@ -256,5 +328,88 @@ class CourseController extends Controller
             'zipcode' => 'required',
             'location' => 'required|min:3',
         ]);
+    }
+
+    /**
+     * @param $reference
+     * @param $password
+     * @param $action
+     * @param $course_type
+     * @param $start
+     * @param $time
+     * @param $seminar_location
+     * @param $location
+     * @param $zipcode
+     * @param $street
+     * @param  string  $notice
+     * @param  string  $course_id
+     * @return mixed
+     */
+    private function qseh_webservice($reference, $password, $action, $course_type, $start, $time, $seminar_location, $location, $zipcode, $street, $notice = '', $course_id = '')
+    {
+        $soap_request = '<?xml version="1.0" encoding="UTF-8"?>
+
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:ehaf="http://www.portsol19.de/Ehaf3LehrgangService/"
+            xmlns:xsd="http://www.vbg.de.uv_services.ehaf3.bibliothek/xsd">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <ehaf:ehaf3RequestHandler>
+                    <LehrgangsUebermittlung>
+                        <xsd:absenderID>system@ausbilder.org</xsd:absenderID>
+                        <xsd:empfaengerID>ehaf</xsd:empfaengerID>
+                        <xsd:sendungsID>1</xsd:sendungsID>
+                        <xsd:serviceID>1</xsd:serviceID>
+                        <xsd:zeitstempel>' . Carbon::now()->format('Y-m-d\TH:i:s')  . '</xsd:zeitstempel>
+                        <lehrgang>
+                            <xsd:lehrgangsArt>' . $course_type . '</xsd:lehrgangsArt>
+                            <xsd:startDatum>' . Carbon::parse($start)->format('Y-m-d\TH:i:s') . '</xsd:startDatum>
+                            <xsd:zeitlicherVerlauf>' . $time . '</xsd:zeitlicherVerlauf>
+                            <xsd:adresseFirma>' . str_replace('&', 'u.', $seminar_location ) . '</xsd:adresseFirma>
+                            <xsd:adresseOrt>' . $location . '</xsd:adresseOrt>
+                            <xsd:adressePlz>' . $zipcode . '</xsd:adressePlz>
+                            <xsd:adresseStrasse>' . $street . '</xsd:adresseStrasse>
+                            <!--Optional:-->
+                            <xsd:vermerk>' . $notice . '</xsd:vermerk>
+                            <!--Optional:-->
+                            <xsd:lehrId>' . $course_id . '</xsd:lehrId>
+                        </lehrgang>
+                        <Benutzer>' . $reference . '</Benutzer>
+                        <Kennwort>' . $password . '</Kennwort>
+                        <Aktion>' . $action . '</Aktion>
+                    </LehrgangsUebermittlung>
+                </ehaf:ehaf3RequestHandler>
+            </soapenv:Body>
+        </soapenv:Envelope>';
+
+        $headers = array
+        (
+            "Content-type: text/xml",
+            "Accept: text/xml",
+            "Cache-Control: no-cache",
+            "Pragma: no-cache",
+            "SOAPAction: Ehaf3LehrgangService.wsdl",
+            "Content-length: ".strlen($soap_request),
+        );
+
+        $url = "https://www.bg-qseh.de/login/perl/service.pl?LehrgangsService";
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $soap_request);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT,10);
+
+        $output = curl_exec($ch);
+
+        curl_close($ch);
+
+        $return = XmlToArray::convert($output);
+
+        return $return['soapenv:Envelope']['soapenv:Body']['ns2:ehaf3RequestHandlerResponse']['return'];
     }
 }
