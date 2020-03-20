@@ -52,7 +52,7 @@ class CourseController extends Controller
         if (Auth::user()->can('course.view', session('company_id'))) {
             $courses = Course::where([
                 ['company_id', session('company_id')],
-                ['end', '>', Carbon::today()]
+                ['end', '>', Carbon::today()],
             ])
                 ->with('course_types')
                 ->with('user')
@@ -84,7 +84,7 @@ class CourseController extends Controller
         if (Auth::user()->can('course.view', session('company_id'))) {
             $courses = Course::where([
                 ['company_id', '=', session('company_id')],
-                ['end', '<', Carbon::today()]
+                ['end', '<', Carbon::today()],
             ])
                 ->with('course_types')
                 ->with('user')
