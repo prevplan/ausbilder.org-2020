@@ -39,7 +39,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">{{ __('course overview') }}</h3>
-                        &nbsp; {{ __('current courses') }} - <a href="{{ route('course.old') }}">{{ __('show old courses') }}</a>
+                        &nbsp; &nbsp; {{ __('old courses') }} - <a href="{{ route('course.overview') }}">{{ __('show current courses') }}</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -116,7 +116,7 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": true,
-                "order":[[3,'asc']]
+                "order":[[3,'desc']]
             });
         });
     </script>

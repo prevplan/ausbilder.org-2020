@@ -178,6 +178,7 @@
                                     <a href="{{ route('course.overview') }}" class="nav-link
                                         {{
                                             (Request::is(LaravelLocalization::getCurrentLocale() . '/course')
+                                                || Request::is(LaravelLocalization::getCurrentLocale() . '/course/old')
                                                 || Request::is(LaravelLocalization::getCurrentLocale() . '/course/*/show')
                                             ? 'active' : '')
                                         }}

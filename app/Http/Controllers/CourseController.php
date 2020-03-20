@@ -50,9 +50,42 @@ class CourseController extends Controller
     public function index()
     {
         if (Auth::user()->can('course.view', session('company_id'))) {
-            $courses = Course::where(
-                'company_id', session('company_id')
-            )
+            $courses = Course::where([
+                ['company_id', session('company_id')],
+                ['end', '>', Carbon::today()]
+            ])
+                ->with('course_types')
+                ->with('user')
+                ->orderBy('start', 'desc')
+                ->get();
+        } else { // show only own courses
+            $course = DB::table('course_user')
+                ->where('user_id', Auth::user()->id)
+                ->get();
+
+            $courses = Course::whereIn('id', $course->pluck('course_id'))
+                ->where('company_id', session('company_id'))
+                ->where('end', '>', Carbon::today())
+                ->with('course_types')
+                ->orderBy('start', 'desc')
+                ->get();
+        }
+
+        return view('course.index', compact('courses'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Factory|View
+     */
+    public function old()
+    {
+        if (Auth::user()->can('course.view', session('company_id'))) {
+            $courses = Course::where([
+                ['company_id', '=', session('company_id')],
+                ['end', '<', Carbon::today()]
+            ])
                 ->with('course_types')
                 ->with('user')
                 ->orderBy('start', 'asc')
@@ -64,14 +97,13 @@ class CourseController extends Controller
 
             $courses = Course::whereIn('id', $course->pluck('course_id'))
                 ->where('company_id', session('company_id'))
+                ->where('end', '<', Carbon::today())
                 ->with('course_types')
                 ->orderBy('start', 'asc')
                 ->get();
         }
 
-        return view('course.index', compact('courses'));
-
-        return $courses;
+        return view('course.old', compact('courses'));
     }
 
     /**
