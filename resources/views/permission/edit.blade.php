@@ -163,6 +163,20 @@
                                                 {{ __('view course') }}
                                             </label>
                                         </div><br />
+                                        <div class="icheck-success d-inline">
+                                            <input
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-course.perform-electronically"
+                                                value="course.perform-electronically"
+                                                @if ($user->can('course.perform-electronically', session('company_id')))
+                                                    checked
+                                                @endif
+                                            >
+                                            <label for="checkbox-course.perform-electronically">
+                                                {{ __('perform course electronically') }}
+                                            </label>
+                                        </div><br />
                                     </div>
                                 </div>
                             </div>

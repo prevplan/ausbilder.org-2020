@@ -55,6 +55,12 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'can see courses',
         ]);
 
+        Permission::create([
+            'name' => 'course.perform-electronically',
+            'display_name' => 'perform electronically',
+            'description' => 'can perform courses electronically',
+        ]);
+
         // attach all permissions to user one
         User::find(1)->attachPermissions(Permission::all(), 1);
     }
