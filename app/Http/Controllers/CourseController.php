@@ -285,16 +285,20 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        if (! Auth::user()->can('course.view', session('company_id'))) { //  is not allowed to view courses
-            $user_in = false;
-            foreach ($course->user as $user) {
-                if ($user->id == Auth::user()->id) {
-                    $user_in = true;
-                }
-
-                abort_unless($user_in, 403); // abort if actual user is no trainer in course
+        $user_in = false;
+        foreach ($course->user as $user) {
+            if ($user->id == Auth::user()->id) {
+                $user_in = true;
             }
         }
+
+        abort_unless(
+            Auth::user()->can('course.view', session('company_id'))
+                && $course->company_id == session('company_id')
+            || $user_in
+                && $course->company_id == session('company_id')
+            , 403
+        );
 
         $positions = Position::where(
                 'company_id', 0
@@ -310,7 +314,7 @@ class CourseController extends Controller
             $position[$p['id']] = $p['name'];
         }
 
-        return view('course.show', compact('course', 'position'));
+        return view('course.show', compact('course', 'position', 'user_in'));
     }
 
     /**
