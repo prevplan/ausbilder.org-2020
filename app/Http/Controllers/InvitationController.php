@@ -81,7 +81,7 @@ class InvitationController extends Controller
      * Accept the invitation as logged in user.
      *
      * @param  \App\Invitation  $invitation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function accept(Company $company, $code)
     {
@@ -97,7 +97,7 @@ class InvitationController extends Controller
 
         $invitation->delete(); // delete the invitation
 
-        return redirect()->route('company-change-id', ['company' => $company->id]);
+        return redirect()->route('company-change-id', ['company' => $company->hashid()]);
     }
 
     /**
@@ -116,7 +116,7 @@ class InvitationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Invitation  $invitation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Company $company, $code)
     {

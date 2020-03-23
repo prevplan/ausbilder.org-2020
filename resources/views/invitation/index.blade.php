@@ -34,12 +34,12 @@
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{ __('you got an invitation from :company', ['company' => $company->name]) }}</strong></h5>
                         <p class="card-text" align="center">
-                            <a href="{{ route('invitation.accept', ['company' => $company->id, 'code' => $code]) }}" class="btn btn-success">
+                            <a href="{{ route('invitation.accept', ['company' => $company->hashid(), 'code' => $code]) }}" class="btn btn-success">
                                 {{ __('accept invitation') }}
                             </a>
                         </p>
                         <p class="card-text" align="center">
-                            <a href="{{ route('invitation.decline', ['company' => $company->id, 'code' => $code]) }}" class="btn btn-danger">
+                            <a href="{{ route('invitation.decline', ['company' => $company->hashid(), 'code' => $code]) }}" class="btn btn-danger">
                                 {{ __('decline invitation') }}
                             </a>
                         </p>
