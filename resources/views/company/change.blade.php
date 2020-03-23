@@ -81,13 +81,13 @@
                                 @if(!$company->pivot['company_active'])
                                     <span class="badge badge-danger">{{ __('blocked') }}</span>
                                 @elseif(!$company->pivot['user_active'])
-                                    <a href="{{ route('company.activate', ['company' => $company->id]) }}">
+                                    <a href="{{ route('company.activate', ['company' => $company->hashid()]) }}">
                                         <span class="badge badge-warning">{{ __('not active') }}&nbsp;
                                             <i class="fas fa-unlock"></i>
                                         </span>
                                     </a>
                                 @else
-                                    <a href="{{ route('company.deactivate', ['company' => $company->id]) }}">
+                                    <a href="{{ route('company.deactivate', ['company' => $company->hashid()]) }}">
                                         <span class="badge badge-success">{{ __('active') }}&nbsp;
                                             <i class="fas fa-lock"></i>
                                         </span>
@@ -106,12 +106,12 @@
                                         {{ __('blocked') }}
                                     </div>
                                 @elseif(!$company->pivot['user_active'])
-                                    <a class="btn btn-warning btn-sm" href="{{ route('company.activate', ['company' => $company->id]) }}">
+                                    <a class="btn btn-warning btn-sm" href="{{ route('company.activate', ['company' => $company->hashid()]) }}">
                                         <i class="fas fa-unlock"></i>
                                         {{ __('activate') }}
                                     </a>
                                 @else
-                                    <a class="btn btn-primary btn-sm" href="{{ route('company-change-id', ['company' => $company->id]) }}">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('company-change-id', ['company' => $company->hashid()]) }}">
                                         <i class="fas fa-exchange-alt"></i>
                                         {{ __('change') }}
                                     </a>

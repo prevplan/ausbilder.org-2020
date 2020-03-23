@@ -84,7 +84,7 @@
                                         @endif
                                         @permission('permissions.edit', session('company_id'))
                                             <a
-                                                    href="{{ route('permission.edit', ['user' => $user->id]) }}"
+                                                    href="{{ route('permission.edit', ['user' => $user->hashid()]) }}"
                                                     class="fas fa-key"
                                                     style="text-decoration: none; color: inherit;"
                                             ></a>

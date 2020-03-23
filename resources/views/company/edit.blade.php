@@ -42,7 +42,7 @@
                     @include('layouts.error')
                     <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ route('company.put', ['company' => session('company_id')]) }}" method="post">
+                        <form role="form" action="{{ route('company.put', ['company' => \Vinkla\Hashids\Facades\Hashids::encode(session('company_id'))]) }}" method="post">
                             @csrf
                             @method('put')
                             <div class="card-body">

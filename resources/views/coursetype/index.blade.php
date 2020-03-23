@@ -44,7 +44,7 @@
                             <h3 class="card-title">{{ __('edit offered course types for :company', ['company' => session('company')]) }}</h3>
                         </div>
                         @include('layouts.status')
-                        <form role="form" action="{{ route('course-types.update', ['company' => session('company_id')]) }}" method="post">
+                        <form role="form" action="{{ route('course-types.update', ['company' => \Vinkla\Hashids\Facades\Hashids::encode(session('company_id'))]) }}" method="post">
                             @csrf
                             @method('patch')
                             <div class="card-body">

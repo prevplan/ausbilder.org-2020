@@ -107,7 +107,7 @@ class PermissionController extends Controller
             $user->detachPermissions(Permission::all(), session('company_id'));
         }
 
-        return redirect()->route('permission.edit', ['user' => $user->id])->with('status', __('permissions updated'));
+        return redirect()->route('permission.edit', ['user' => $user->hashid()])->with('status', __('permissions updated'));
     }
 
     /**

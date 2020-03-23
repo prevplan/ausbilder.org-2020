@@ -21,8 +21,10 @@
 namespace App;
 
 use Laratrust\Models\LaratrustPermission;
+use Mtvs\EloquentHashids\HasHashid;
+use Mtvs\EloquentHashids\HashidRouting;
 
 class Permission extends LaratrustPermission
 {
-    //
+    use HasHashid, HashidRouting;
 }
