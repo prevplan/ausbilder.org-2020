@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "mcamara/laravel-localization": "^1.4",
+        "mtvs/eloquent-hashids": "^2.0",
         "santigarcor/laratrust": "5.2.*",
         "vemcogroup/laravel-translation": "^2.0",
         "vyuldashev/xml-to-array": "^1.0"

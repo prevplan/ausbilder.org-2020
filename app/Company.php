@@ -21,9 +21,13 @@
 namespace App;
 
 use Laratrust\Models\LaratrustTeam;
+use Mtvs\EloquentHashids\HasHashid;
+use Mtvs\EloquentHashids\HashidRouting;
 
 class Company extends LaratrustTeam
 {
+    use HasHashid, HashidRouting;
+
     protected $fillable = ['name', 'name_suffix', 'street', 'zipcode', 'location', 'doctor', 'reference', 'qseh_password'];
 
     public function users()

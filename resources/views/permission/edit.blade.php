@@ -42,7 +42,7 @@
                         <h3 class="card-title">{{ __('permissions for :user', ['user' => $user->name]) }}</h3>
                     </div>
                     @include('layouts.status')
-                    <form role="form" action="{{ route('permission.update', ['user' => $user->id]) }}" method="post">
+                    <form role="form" action="{{ route('permission.update', ['user' => $user->hashid()]) }}" method="post">
                         @csrf
                         @method('patch')
                         <div class="card-body">
