@@ -54,6 +54,7 @@
                                 <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,7 +71,18 @@
                                             {{ $trainer->name }}{!! !$loop->last ? ',<br />' : '' !!}
                                         @endforeach
                                     </td>
-                                    <td><a href="{{ route('course.show', ['course' => $course->hashid()]) }}" style="text-decoration: none; color: inherit;"><i class="far fa-eye"></i></a></td>
+                                    <td align="center">
+                                        @if( $course->running )
+                                            <i class="fas fa-toggle-on"></i>
+                                        @else
+                                            <i class="fas fa-toggle-off"></i>
+                                        @endif
+                                    </td>
+                                    <td align="center">
+                                        <a href="{{ route('course.show', ['course' => $course->hashid()]) }}" style="text-decoration: none; color: inherit;">
+                                            <i class="far fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -83,6 +95,7 @@
                                 <th>{{ __('course type') }}</th>
                                 <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                             </tfoot>
