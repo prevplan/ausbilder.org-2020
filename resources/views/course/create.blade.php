@@ -39,8 +39,8 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ __('add course') }}</h3>
                         </div>
-                    @include('layouts.error')
-                    <!-- /.card-header -->
+                        @include('layouts.error')
+                        <!-- /.card-header -->
                         <!-- form start -->
                         <form role="form" action="{{ route('course.store') }}" method="post">
                             @csrf

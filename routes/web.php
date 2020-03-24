@@ -86,4 +86,9 @@ Route::group(
         Route::get('course', 'CourseController@index')->name('course.overview');
         Route::get('course/old', 'CourseController@old')->name('course.old');
         Route::get('course/{course}/show', 'CourseController@show')->name('course.show');
+
+        Route::get('courseday/{course}/start', 'CourseDayController@start')->name('courseday.start');
+        Route::post('courseday/start', 'CourseDayController@store_start')->name('courseday.store_start');
+        Route::get('courseday/{course}/end', 'CourseDayController@end')->name('courseday.end');
+        Route::post('courseday/end', 'CourseDayController@store_end')->name('courseday.store_end');
     });

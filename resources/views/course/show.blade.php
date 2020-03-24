@@ -39,7 +39,9 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ __('course details') }}</h3>
                         </div>
-                    <!-- /.card-header -->
+
+                        @include('layouts.error')
+                        <!-- /.card-header -->
 
                         <div class="card-body">
                             <div class="row">
@@ -47,7 +49,15 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <label for="inputCourseType">{{ __('course type') }}</label>
-                                            <div>{{ __($course->course_types[0]->name) }}</div>
+                                            <div>
+                                                {{ __($course->course_types[0]->name) }}
+                                                &nbsp;
+                                                @if( $course->running )
+                                                    <i class="fas fa-toggle-on"></i>
+                                                @else
+                                                    <i class="fas fa-toggle-off"></i>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +130,44 @@
                                     <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label>
                                     <div>{{ ($course->registration_number ? $course->registration_number : __('not specified') ) }}</div>
                                 </div>
+                                @if(
+                                    \Carbon\Carbon::now()->addHour() >= $course->start
+                                    && \Carbon\Carbon::now() < $course->end
+                                    && !$course->running
+                                    && \Laratrust::can('course.perform-electronically', session('company_id'))
+                                    && $user_in
+                                )
+                                    <div class="form-group col-lg">
+                                        <label for="course_day">{{ __('course day') }}</label>
+                                        <div><a href="{{ route('courseday.start', $course->hashid()) }}">{{ __('start course day') }}</a></div>
+                                    </div>
+                                @elseif(
+                                    $course->running
+                                    && \Laratrust::can('course.perform-electronically', session('company_id'))
+                                    && $user_in
+                                )
+                                    <div class="form-group col-lg">
+                                        <label for="course_day">{{ __('course day') }}</label>
+                                        <div><a href="{{ route('courseday.end', $course->hashid()) }}">{{ __('end course day') }}</a></div>
+                                    </div>
+                                @endif
                             </div>
+                            @if($course->running)
+                                <div class="row">
+                                    <div class="form-group col-lg">
+                                        <label for="inputInternalNumber">{{ __('internal number') }}</label>
+                                        <div>{{ $course->internal_number }}</div>
+                                    </div>
+                                    <div class="form-group col-lg">
+                                        <label for="inputZipcode">{{ __('Code') }}</label>
+                                        <div>{{ \Vinkla\Hashids\Facades\Hashids::encode($course->running) }}</div>
+                                    </div>
+                                    <div class="form-group col-lg">
+                                        <label for="inputLocation">{{ __('start participant registration') }}</label>
+                                        <div>REGISTRATION LINK</div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <!-- /.card-body -->
 

@@ -26,6 +26,7 @@ class CreateCoursesTable extends Migration
             $table->text('location');
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->unsignedBigInteger('running')->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
