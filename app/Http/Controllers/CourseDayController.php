@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\CourseDay;
 use Carbon\Carbon;
-use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Vinkla\Hashids\Facades\Hashids;
 
 class CourseDayController extends Controller
 {
@@ -49,7 +49,7 @@ class CourseDayController extends Controller
     }
 
     /**
-     * Start the course day
+     * Start the course day.
      *
      * @param  Course  $course
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
@@ -66,8 +66,7 @@ class CourseDayController extends Controller
         abort_unless(
             Auth::user()->can('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
-            && $user_in
-            , 403
+            && $user_in, 403
         );
 
         if ($course->running) {
@@ -76,7 +75,7 @@ class CourseDayController extends Controller
                     'message' => __('course day is already started'),
                 ]
             );
-        } elseif ( Carbon::now() > $course->end ) {
+        } elseif (Carbon::now() > $course->end) {
             return back()->withErrors(
                 [
                     'message' => __('course has already finished'),
@@ -90,7 +89,7 @@ class CourseDayController extends Controller
     }
 
     /**
-     * Store the course day start
+     * Store the course day start.
      *
      * @param  Request  $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|string
@@ -112,8 +111,7 @@ class CourseDayController extends Controller
             && $course->company_id == session('company_id')
             && $user_in
             && $course->running == 0
-            && Carbon::now() < $course->end
-            , 403
+            && Carbon::now() < $course->end, 403
         );
 
         $this->validate($request, [
@@ -131,14 +129,14 @@ class CourseDayController extends Controller
         ]);
 
         $course->running = $courseDay->id;
-    //    $course->code = random_int(1000,9999);
+        //    $course->code = random_int(1000,9999);
         $course->save();
 
         return redirect(route('course.show', $request->course_id));
     }
 
     /**
-     * end the course day
+     * end the course day.
      *
      * @param  Course  $course
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
@@ -155,11 +153,10 @@ class CourseDayController extends Controller
         abort_unless(
             Auth::user()->can('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
-            && $user_in
-            , 403
+            && $user_in, 403
         );
 
-        if (!$course->running) {
+        if (! $course->running) {
             return back()->withErrors(
                 [
                     'message' => __('course day is not running'),
@@ -184,7 +181,7 @@ class CourseDayController extends Controller
             $duration = $duration - 45;
         }
 
-        $lessons = floor($duration/45);
+        $lessons = floor($duration / 45);
 
         // but max. 10 lessons / day
         if ($lessons > 10) {
@@ -195,7 +192,7 @@ class CourseDayController extends Controller
     }
 
     /**
-     * Store the course day end
+     * Store the course day end.
      *
      * @param  Request  $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|string
@@ -216,8 +213,7 @@ class CourseDayController extends Controller
             Auth::user()->can('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
             && $user_in
-            && $course->running
-            , 403
+            && $course->running, 403
         );
 
         $this->validate($request, [
@@ -286,13 +282,14 @@ class CourseDayController extends Controller
         //
     }
 
-    function roundToQuarterHour($round = '') {
+    public function roundToQuarterHour($round = '')
+    {
         if ($round == 'down') {
-            $t = floor(strtotime(Carbon::now())/900)*900;
-        } elseif ( $round == 'up') {
-            $t = ceil(strtotime(Carbon::now())/900)*900;
+            $t = floor(strtotime(Carbon::now()) / 900) * 900;
+        } elseif ($round == 'up') {
+            $t = ceil(strtotime(Carbon::now()) / 900) * 900;
         } else {
-            $t = round(strtotime(Carbon::now())/900)*900;
+            $t = round(strtotime(Carbon::now()) / 900) * 900;
         }
 
         return date('Y-m-d H:i:s', $t);

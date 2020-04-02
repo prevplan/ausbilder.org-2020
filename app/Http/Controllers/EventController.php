@@ -34,7 +34,7 @@ class EventController extends Controller
                 'event.login',
                 [
                     'number' => $request->number,
-                    'code' => $request->code
+                    'code' => $request->code,
                 ]
             )
         );
@@ -49,10 +49,10 @@ class EventController extends Controller
     {
         $code = Hashids::decode($code);
 
-        if (!$code) { // if no code
-            return redirect( route('event.index') )->withErrors( // code is wrong
+        if (! $code) { // if no code
+            return redirect(route('event.index'))->withErrors( // code is wrong
                 [
-                    'message' => __('code wrong')
+                    'message' => __('code wrong'),
                 ]
             )
                 ->withInput();
@@ -66,10 +66,10 @@ class EventController extends Controller
         ])
             ->first();
 
-        if (!$course) { // course not found
+        if (! $course) { // course not found
             return back()->withErrors(
                 [
-                    'message' => __('course not found')
+                    'message' => __('course not found'),
                 ]
             )
                 ->withInput();
@@ -84,7 +84,7 @@ class EventController extends Controller
         session([
             'course_id' => $course->id,
             'internal_number' => $course->internal_number,
-            'courseDay_id' => $code
+            'courseDay_id' => $code,
         ]);
 
         return redirect(route('event.name'));
@@ -102,8 +102,8 @@ class EventController extends Controller
 
     public function name()
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         return view('event.name');
@@ -111,8 +111,8 @@ class EventController extends Controller
 
     public function processName(Request $request)
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         $this->validate($request, [
@@ -149,13 +149,13 @@ class EventController extends Controller
             ]);
         }
 
-        return redirect( route('event.payee') );
+        return redirect(route('event.payee'));
     }
 
     public function selectPayee()
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         return view('event.select_payee');
@@ -163,8 +163,8 @@ class EventController extends Controller
 
     public function showPayee(Request $request)
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         if ($request->payee_type == 'private') {
@@ -173,7 +173,7 @@ class EventController extends Controller
             session()->forget('location');
             session()->forget('payee');
 
-            return redirect( route('event.email') );
+            return redirect(route('event.email'));
         }
 
         return view('event.show_payee_company');
@@ -181,8 +181,8 @@ class EventController extends Controller
 
     public function company(Request $request)
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         $this->validate($request, [
@@ -198,13 +198,13 @@ class EventController extends Controller
             'payee' => $request->payee,
         ]);
 
-        return redirect( route('event.email') ) ;
+        return redirect(route('event.email'));
     }
 
     public function email()
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         return view('event.email');
@@ -212,11 +212,11 @@ class EventController extends Controller
 
     public function check()
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
-        if ( session('company') ) {
+        if (session('company')) {
             return view('event.check_company');
         } else {
             return view('event.check_private');
@@ -225,8 +225,8 @@ class EventController extends Controller
 
     public function validating(Request $request)
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         $this->validate($request, [
@@ -257,13 +257,13 @@ class EventController extends Controller
             ]);
         }
 
-        return redirect( route('event.sign') );
+        return redirect(route('event.sign'));
     }
 
     public function signature()
     {
-        if ( !session()->has('course_id') || !session()->has('courseDay_id') ) {
-            return redirect( route('event.index') );
+        if (! session()->has('course_id') || ! session()->has('courseDay_id')) {
+            return redirect(route('event.index'));
         }
 
         return view('event.signature');
@@ -304,17 +304,17 @@ class EventController extends Controller
                 'courseDay_id' => session('courseDay_id'),
             ],
             [
-                'sign' => $sign[1]
+                'sign' => $sign[1],
             ]
         );
 
         $number = session('internal_number');
-        $code = Hashids::encode( session('courseDay_id') );
+        $code = Hashids::encode(session('courseDay_id'));
 
         session()->invalidate();
         session()->regenerateToken();
 
-        return view('event.finish', compact('number', 'code') );
+        return view('event.finish', compact('number', 'code'));
     }
 
     /**
