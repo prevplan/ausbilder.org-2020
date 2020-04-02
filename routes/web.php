@@ -92,7 +92,7 @@ Route::group(
         Route::get('courseday/{course}/end', 'CourseDayController@end')->name('courseday.end');
         Route::post('courseday/end', 'CourseDayController@store_end')->name('courseday.store_end');
 
-        Route::group(['middleware' => 'revalidate'], function() {
+        Route::group(['middleware' => 'revalidate'], function () {
             Route::get('event', 'EventController@index')->name('event.index');
             Route::post('event', 'EventController@search')->name('event.search');
             Route::get('event/{number}/{code}', 'EventController@login')->name('event.login');
@@ -108,5 +108,4 @@ Route::group(
             Route::get('event/sign', 'EventController@signature')->name('event.sign');
             Route::post('event/finish', 'EventController@finish')->name('event.finish');
         });
-
     });
