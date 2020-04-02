@@ -42,6 +42,7 @@ const paths = {
     datatables: vendors + 'datatables.net/',
     datatablesbs4: vendors + 'datatables.net-bs4/',
     bootstrap_switch: vendors + 'bootstrap-switch/dist/',
+    jSignature: vendors + 'jsignature/'
 };
 
 // icheck_bootstrap
@@ -76,6 +77,14 @@ mix.combine(
     destVendors + 'bootstrap-switch/js/switch.js'
 );
 
+// jSignature
+mix.combine(
+    [
+        paths.jSignature + 'libs/jSignature.min.noconflict.js',
+        srcJs + 'sign.js',
+    ],
+    destVendors + 'jsignature/jsign.js'
+);
 
 //Copy fonts straight to public
 mix.copy(paths.fontawesome + 'webfonts', destFonts);
@@ -96,7 +105,7 @@ mix.combine(
 // all global js files into app.js
 mix.combine(
     [
-        paths.jquery + 'jquery.min.js',
+        paths.jquery + 'jquery.js',
         paths.bootstrap + 'js/bootstrap.bundle.min.js',
         paths.adminlte + 'js/adminlte.min.js',
     ],

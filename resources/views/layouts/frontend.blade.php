@@ -44,6 +44,16 @@
     <title>@yield('title', 'ausbilder.org')</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
+
+    {{-- prevent page reloading --}}
+    <script>
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+    </script>
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -149,7 +159,9 @@
 </div>
 <!-- ./wrapper -->
 
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
+@yield('js')
 
 </body>
 </html>

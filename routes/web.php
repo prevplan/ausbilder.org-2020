@@ -91,4 +91,22 @@ Route::group(
         Route::post('courseday/start', 'CourseDayController@store_start')->name('courseday.store_start');
         Route::get('courseday/{course}/end', 'CourseDayController@end')->name('courseday.end');
         Route::post('courseday/end', 'CourseDayController@store_end')->name('courseday.store_end');
+
+        Route::group(['middleware' => 'revalidate'], function() {
+            Route::get('event', 'EventController@index')->name('event.index');
+            Route::post('event', 'EventController@search')->name('event.search');
+            Route::get('event/{number}/{code}', 'EventController@login')->name('event.login');
+            Route::get('event/name', 'EventController@name')->name('event.name');
+            Route::post('event/name', 'EventController@processName')->name('event.name');
+            Route::get('event/payee', 'EventController@selectPayee')->name('event.payee');
+            Route::post('event/payee', 'EventController@showPayee')->name('event.payee');
+            Route::post('event/company', 'EventController@company')->name('event.company');
+            Route::get('event/email', 'EventController@email')->name('event.email');
+            Route::post('event/check', 'EventController@check')->name('event.check');
+            Route::get('event/check', 'EventController@check')->name('event.check');
+            Route::post('event/validate', 'EventController@validating')->name('event.validate');
+            Route::get('event/sign', 'EventController@signature')->name('event.sign');
+            Route::post('event/finish', 'EventController@finish')->name('event.finish');
+        });
+
     });
