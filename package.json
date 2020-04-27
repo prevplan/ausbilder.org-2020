@@ -24,7 +24,7 @@
         "bootstrap-switch": "^3.4.0",
         "jsignature": "^2.1.3",
         "kind-of": "^6.0.3",
-        "snyk": "^1.309.0",
+        "snyk": "^1.311.0",
         "tempusdominus-core": "^5.0.3",
         "minimist": ">=1.2.3"
     }
