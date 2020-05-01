@@ -2210,16 +2210,16 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "5.2.8",
+            "version": "5.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "c709f44509cf1371b777a01b6eca210bc34a06f8"
+                "reference": "454a338500ea5ab2807da5ee0a799c9c3d01cc05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/c709f44509cf1371b777a01b6eca210bc34a06f8",
-                "reference": "c709f44509cf1371b777a01b6eca210bc34a06f8",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/454a338500ea5ab2807da5ee0a799c9c3d01cc05",
+                "reference": "454a338500ea5ab2807da5ee0a799c9c3d01cc05",
                 "shasum": ""
             },
             "require": {
@@ -2229,7 +2229,7 @@
             },
             "require-dev": {
                 "mockery/mockery": ">=0.9.9",
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|~3.9.0",
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|~3.9.0|4.*|5.*",
                 "phpunit/phpunit": ">=4.1"
             },
             "type": "library",
@@ -2271,7 +2271,7 @@
                 "rbac",
                 "roles"
             ],
-            "time": "2020-03-09T08:19:36+00:00"
+            "time": "2020-04-29T23:28:02+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
