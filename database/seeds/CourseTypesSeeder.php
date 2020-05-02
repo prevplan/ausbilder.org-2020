@@ -91,5 +91,14 @@ class CourseTypesSeeder extends Seeder
             'lessons_per_day' => 9,
             'seats' => 20,
         ]);
+
+        CourseType::create([
+            'name' => 'first-aid-course-fev',
+            'slug' => 'fa-fev',
+            'group' => 'first-aid-courses',
+            'lessons' => 9,
+            'lessons_per_day' => 9,
+            'seats' => 20,
+        ]);
     }
 }
