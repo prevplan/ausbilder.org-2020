@@ -42,9 +42,9 @@ Route::group(
             return view('welcome');
         });
 
-    Route::middleware(ProtectAgainstSpam::class)->group(function() {
-        Auth::routes(['verify' => true]);
-    });
+        Route::middleware(ProtectAgainstSpam::class)->group(function () {
+            Auth::routes(['verify' => true]);
+        });
 
         Route::get('/home', 'HomeController@index')->name('home');
 
