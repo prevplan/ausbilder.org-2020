@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31fc69d8236117cb661f262bb1a69af1",
+    "content-hash": "9059acb1a1f8943fc30d924db826428b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2273,6 +2273,66 @@
                 "roles"
             ],
             "time": "2020-04-29T23:28:02+00:00"
+        },
+        {
+            "name": "spatie/laravel-honeypot",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-honeypot.git",
+                "reference": "5259bfbc5f26e9e92b356245230cec0326bdcd63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/5259bfbc5f26e9e92b356245230cec0326bdcd63",
+                "reference": "5259bfbc5f26e9e92b356245230cec0326bdcd63",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0",
+                "illuminate/encryption": "^7.0",
+                "illuminate/http": "^7.0",
+                "illuminate/support": "^7.0",
+                "illuminate/validation": "^7.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0",
+                "spatie/phpunit-snapshot-assertions": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Honeypot\\HoneypotServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Honeypot\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Preventing spam submitted through forms",
+            "homepage": "https://github.com/spatie/laravel-honeypot",
+            "keywords": [
+                "laravel-honeypot",
+                "spatie"
+            ],
+            "time": "2020-04-14T14:35:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -57,6 +57,7 @@
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
+                @honeypot
                 <div class="input-group mb-3">
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ __('Name') }}" required autocomplete="name" autofocus>
                     <div class="input-group-append">
