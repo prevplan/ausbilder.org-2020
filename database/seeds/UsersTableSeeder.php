@@ -12,6 +12,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        // for development use only
+        /*
         User::create([
             'name' => 'John Doe',
             'email' => 'test@test.fail',
@@ -25,5 +27,6 @@ class UsersTableSeeder extends Seeder
                 'user_active' => 1,
             ]
         );
+        */
     }
 }
