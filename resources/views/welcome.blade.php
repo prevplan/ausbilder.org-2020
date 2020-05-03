@@ -60,6 +60,17 @@
                         </p>
                     </div>
                 </div><!-- /.card -->
+
+                <div class="card card-danger card-outline">
+                    <div class="card-body">
+                        <p class="card-text" align="center">
+                            {!! html_entity_decode( __('Under :url is a demo area available.', ['url' => '<a href="https://dev.ausbilder.org">https://dev.ausbilder.org</a>']) ) !!}
+                        </p>
+                        <p class="card-text" align="center">
+                            {{ __('Please use the demo area instead of this site for testing purposes.') }}
+                        </p>
+                    </div>
+                </div><!-- /.card -->
             </div>
         </div>
         <!-- /.row -->
