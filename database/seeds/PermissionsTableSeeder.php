@@ -68,6 +68,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         // attach all permissions to user one
-        User::find(1)->attachPermissions(Permission::all(), 1);
+        // for development use only
+        // User::find(1)->attachPermissions(Permission::all(), 1);
     }
 }
