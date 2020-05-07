@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a888466d993f2420907ecd35f03f164",
+    "content-hash": "6ab034338d6a1e58a0ce60dd6a0e0c7e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2352,26 +2352,26 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "5.2.9",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "454a338500ea5ab2807da5ee0a799c9c3d01cc05"
+                "reference": "20ae3433cd83b13eb48818a08b295cecd15b1619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/454a338500ea5ab2807da5ee0a799c9c3d01cc05",
-                "reference": "454a338500ea5ab2807da5ee0a799c9c3d01cc05",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/20ae3433cd83b13eb48818a08b295cecd15b1619",
+                "reference": "20ae3433cd83b13eb48818a08b295cecd15b1619",
                 "shasum": ""
             },
             "require": {
                 "kkszymanowski/traitor": "^0.2.0",
-                "laravel/framework": "~5.6.0|~5.7.0|~5.8.0|~6.0|~7.0",
-                "php": "^7.1"
+                "laravel/framework": "~6.0|~7.0",
+                "php": "^7.2"
             },
             "require-dev": {
                 "mockery/mockery": ">=0.9.9",
-                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|~3.9.0|4.*|5.*",
+                "orchestra/testbench": "4.*|5.*",
                 "phpunit/phpunit": ">=4.1"
             },
             "type": "library",
@@ -2413,7 +2413,7 @@
                 "rbac",
                 "roles"
             ],
-            "time": "2020-04-29T23:28:02+00:00"
+            "time": "2020-05-06T22:42:05+00:00"
         },
         {
             "name": "spatie/laravel-honeypot",
