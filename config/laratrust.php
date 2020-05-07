@@ -167,13 +167,13 @@ return [
     */
     'middleware' => [
         /**
-         * Define if the laratrust middleware are registered automatically in the service provider
+         * Define if the laratrust middleware are registered automatically in the service provider.
          */
         'register' => true,
 
         /**
          * Method to be called in the middleware return case.
-         * Available: abort|redirect
+         * Available: abort|redirect.
          */
         'handling' => 'abort',
 
@@ -183,11 +183,11 @@ return [
          */
         'handlers' => [
             /**
-             * Aborts the execution with a 403 code and allows you to provide the response text
+             * Aborts the execution with a 403 code and allows you to provide the response text.
              */
             'abort' => [
                 'code' => 403,
-                'message' => 'User does not have any of the necessary access rights.'
+                'message' => 'User does not have any of the necessary access rights.',
             ],
             /**
              * Redirects the user to the given url.
@@ -199,10 +199,10 @@ return [
                 'url' => '/home',
                 'message' => [
                     'key' => 'error',
-                    'content' => ''
-                ]
-            ]
-        ]
+                    'content' => '',
+                ],
+            ],
+        ],
     ],
 
     'teams' => [
@@ -302,5 +302,5 @@ return [
         |
         */
         'assign_permisions_to_user' => true,
-    ]
+    ],
 ];
