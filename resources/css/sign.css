@@ -1,0 +1,12 @@
+#signatureparent {
+    color:black;
+    background-color:darkgrey;
+    /*max-width:600px;*/
+    padding:20px;
+}
+
+/*This is the div within which the signature canvas is fitted*/
+#signature {
+    border: 2px dotted black;
+    background-color:lightgrey;
+}

@@ -86,6 +86,8 @@ mix.combine(
     destVendors + 'jsignature/jsign.js'
 );
 
+mix.copy(srcCss + 'sign.css', destCss);
+
 //Copy fonts straight to public
 mix.copy(paths.fontawesome + 'webfonts', destFonts);
 mix.copy(resourcesAssets + 'fonts', dest + 'fonts');
