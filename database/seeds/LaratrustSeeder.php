@@ -1,9 +1,10 @@
 <?php
-use Illuminate\Support\Facades\Schema;
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class LaratrustSeeder extends Seeder
 {
@@ -26,48 +27,45 @@ class LaratrustSeeder extends Seeder
             $role = \App\Role::firstOrCreate([
                 'name' => $key,
                 'display_name' => ucwords(str_replace('_', ' ', $key)),
-                'description' => ucwords(str_replace('_', ' ', $key))
+                'description' => ucwords(str_replace('_', ' ', $key)),
             ]);
             $permissions = [];
 
-            $this->command->info('Creating Role '. strtoupper($key));
+            $this->command->info('Creating Role '.strtoupper($key));
 
             // Reading role permission modules
             foreach ($modules as $module => $value) {
-
                 foreach (explode(',', $value) as $p => $perm) {
-
                     $permissionValue = $mapPermission->get($perm);
 
                     $permissions[] = \App\Permission::firstOrCreate([
-                        'name' => $permissionValue . '-' . $module,
-                        'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
-                        'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
+                        'name' => $permissionValue.'-'.$module,
+                        'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
+                        'description' => ucfirst($permissionValue).' '.ucfirst($module),
                     ])->id;
 
-                    $this->command->info('Creating Permission to '.$permissionValue.' for '. $module);
+                    $this->command->info('Creating Permission to '.$permissionValue.' for '.$module);
                 }
             }
 
             // Attach all permissions to the role
             $role->permissions()->sync($permissions);
 
-            if(Config::get('laratrust_seeder.create_users')) {
+            if (Config::get('laratrust_seeder.create_users')) {
                 $this->command->info("Creating '{$key}' user");
                 // Create default user for each role
                 $user = \App\User::create([
                     'name' => ucwords(str_replace('_', ' ', $key)),
                     'email' => $key.'@app.com',
-                    'password' => bcrypt('password')
+                    'password' => bcrypt('password'),
                 ]);
                 $user->attachRole($role);
             }
-
         }
     }
 
     /**
-     * Truncates all the laratrust tables and the users table
+     * Truncates all the laratrust tables and the users table.
      *
      * @return    void
      */
@@ -77,11 +75,11 @@ class LaratrustSeeder extends Seeder
         DB::table('permission_role')->truncate();
         DB::table('permission_user')->truncate();
         DB::table('role_user')->truncate();
-        if(Config::get('laratrust_seeder.truncate_tables')) {
+        if (Config::get('laratrust_seeder.truncate_tables')) {
             \App\Role::truncate();
             \App\Permission::truncate();
         }
-        if(Config::get('laratrust_seeder.truncate_tables') && Config::get('laratrust_seeder.create_users')) {
+        if (Config::get('laratrust_seeder.truncate_tables') && Config::get('laratrust_seeder.create_users')) {
             \App\User::truncate();
         }
         Schema::enableForeignKeyConstraints();
