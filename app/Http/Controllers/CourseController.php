@@ -49,7 +49,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->can('course.view', session('company_id'))) {
+        if (Auth::user()->isAbleTo('course.view', session('company_id'))) {
             $courses = Course::where([
                 ['company_id', session('company_id')],
                 ['end', '>', Carbon::today()],
@@ -81,7 +81,7 @@ class CourseController extends Controller
      */
     public function old()
     {
-        if (Auth::user()->can('course.view', session('company_id'))) {
+        if (Auth::user()->isAbleTo('course.view', session('company_id'))) {
             $courses = Course::where([
                 ['company_id', '=', session('company_id')],
                 ['end', '<', Carbon::today()],
@@ -113,7 +113,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        abort_unless(Auth::user()->can('course.add', session('company_id')), 403);
+        abort_unless(Auth::user()->isAbleTo('course.add', session('company_id')), 403);
 
         $company = Company::where([
             ['id', session('company_id')],
@@ -139,7 +139,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        abort_unless(Auth::user()->can('course.add', session('company_id')), 403);
+        abort_unless(Auth::user()->isAbleTo('course.add', session('company_id')), 403);
 
         $this->validate($request, [
             'type' => 'required|integer',
@@ -180,7 +180,7 @@ class CourseController extends Controller
         $end = $request->end_date.' '.$request->end_time.':00';
 
         if ($request->auto_register) { // want to register the course at the QSEH
-            abort_unless(Auth::user()->can('course.register', session('company_id')), 403);
+            abort_unless(Auth::user()->isAbleTo('course.register', session('company_id')), 403);
 
             $company = Company::where([
                 ['id', session('company_id')],
@@ -293,7 +293,7 @@ class CourseController extends Controller
         }
 
         abort_unless(
-            Auth::user()->can('course.view', session('company_id'))
+            Auth::user()->isAbleTo('course.view', session('company_id'))
                 && $course->company_id == session('company_id')
             || $user_in
                 && $course->company_id == session('company_id'), 403

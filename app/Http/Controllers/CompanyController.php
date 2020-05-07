@@ -106,7 +106,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        abort_unless(Auth::user()->can('company.edit', session('company_id')), 403);
+        abort_unless(Auth::user()->isAbleTo('company.edit', session('company_id')), 403);
 
         $company = Company::findOrFail(session('company_id'));
 
@@ -122,7 +122,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        abort_unless(Auth::user()->can('company.edit', $company), 403);
+        abort_unless(Auth::user()->isAbleTo('company.edit', $company), 403);
 
         if ($request->qseh_password == 'password-saved') { // if the password is saved in the DB
             $request->request->add(['qseh_password' => $company->qseh_password]); // set it to the request

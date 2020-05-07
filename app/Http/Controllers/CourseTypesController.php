@@ -40,7 +40,7 @@ class CourseTypesController extends Controller
      */
     public function index()
     {
-        abort_unless(Auth::user()->can('course-types.edit', session('company_id')), 403);
+        abort_unless(Auth::user()->isAbleTo('course-types.edit', session('company_id')), 403);
 
         $types = CourseType::where(
             'company_id', null
@@ -113,7 +113,7 @@ class CourseTypesController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        abort_unless(Auth::user()->can('course-types.edit', $company), 403);
+        abort_unless(Auth::user()->isAbleTo('course-types.edit', $company), 403);
 
         $company->course_types()->sync($request->types);
 

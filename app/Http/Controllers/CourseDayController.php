@@ -64,7 +64,7 @@ class CourseDayController extends Controller
         }
 
         abort_unless(
-            Auth::user()->can('course.perform-electronically', session('company_id'))
+            Auth::user()->isAbleTo('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
             && $user_in, 403
         );
@@ -107,7 +107,7 @@ class CourseDayController extends Controller
         }
 
         abort_unless(
-            Auth::user()->can('course.perform-electronically', session('company_id'))
+            Auth::user()->isAbleTo('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
             && $user_in
             && $course->running == 0
@@ -151,7 +151,7 @@ class CourseDayController extends Controller
         }
 
         abort_unless(
-            Auth::user()->can('course.perform-electronically', session('company_id'))
+            Auth::user()->isAbleTo('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
             && $user_in, 403
         );
@@ -210,7 +210,7 @@ class CourseDayController extends Controller
         }
 
         abort_unless(
-            Auth::user()->can('course.perform-electronically', session('company_id'))
+            Auth::user()->isAbleTo('course.perform-electronically', session('company_id'))
             && $course->company_id == session('company_id')
             && $user_in
             && $course->running, 403

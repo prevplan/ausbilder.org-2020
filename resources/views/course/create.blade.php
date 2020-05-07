@@ -161,7 +161,7 @@
                                     </div>
                                     <div class="form-group col-lg">
                                         <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label>
-                                            @if( Auth::user()->can('course.register', session('company_id')) && $company->qseh_password)
+                                            @if( Auth::user()->isAbleTo('course.register', session('company_id')) && $company->qseh_password)
                                                 {{ __('- automatically register at QSEH?') }} &nbsp;
                                                 <input
                                                     type="checkbox"

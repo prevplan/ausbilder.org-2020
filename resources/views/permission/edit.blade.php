@@ -56,7 +56,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-trainer.add"
                                                 value="trainer.add"
-                                                @if ($user->can('trainer.add', session('company_id')))
+                                                @if ($user->isAbleTo('trainer.add', session('company_id')))
                                                     checked
                                                 @endif
                                             >
@@ -74,7 +74,7 @@
                                                     name="permissions[]"
                                                     id="checkbox-permissions.edit"
                                                     value="permissions.edit"
-                                                    @if ($user->can('permissions.edit', session('company_id')))
+                                                    @if ($user->isAbleTo('permissions.edit', session('company_id')))
                                                         checked
                                                     @endif
                                                 >
@@ -94,7 +94,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-course-types.edit"
                                                 value="course-types.edit"
-                                                @if ($user->can('course-types.edit', session('company_id')))
+                                                @if ($user->isAbleTo('course-types.edit', session('company_id')))
                                                     checked
                                                 @endif
                                             >
@@ -108,7 +108,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-company.edit"
                                                 value="company.edit"
-                                                @if ($user->can('company.edit', session('company_id')))
+                                                @if ($user->isAbleTo('company.edit', session('company_id')))
                                                     checked
                                                 @endif
                                             >
@@ -122,7 +122,7 @@
                                                     name="permissions[]"
                                                     id="checkbox-templates.edit"
                                                     value="templates.edit"
-                                                    @if ($user->can('templates.edit', session('company_id')))
+                                                    @if ($user->isAbleTo('templates.edit', session('company_id')))
                                                         checked
                                                     @endif
                                             >
@@ -141,7 +141,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-course.add"
                                                 value="course.add"
-                                                @if ($user->can('course.add', session('company_id')))
+                                                @if ($user->isAbleTo('course.add', session('company_id')))
                                                     checked
                                                 @endif
                                             >
@@ -155,7 +155,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-course.register"
                                                 value="course.register"
-                                                @if ($user->can('course.register', session('company_id')))
+                                                @if ($user->isAbleTo('course.register', session('company_id')))
                                                     checked
                                                 @endif
                                             >
@@ -169,7 +169,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-course.view"
                                                 value="course.view"
-                                                @if ($user->can('course.view', session('company_id')))
+                                                @if ($user->isAbleTo('course.view', session('company_id')))
                                                     checked
                                                 @endif
                                             >
@@ -183,7 +183,7 @@
                                                 name="permissions[]"
                                                 id="checkbox-course.perform-electronically"
                                                 value="course.perform-electronically"
-                                                @if ($user->can('course.perform-electronically', session('company_id')))
+                                                @if ($user->isAbleTo('course.perform-electronically', session('company_id')))
                                                     checked
                                                 @endif
                                             >

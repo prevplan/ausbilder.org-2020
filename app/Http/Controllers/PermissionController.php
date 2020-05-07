@@ -83,7 +83,7 @@ class PermissionController extends Controller
      */
     public function edit(User $user)
     {
-        abort_unless(Auth::user()->can('permissions.edit', session('company_id')), 403);
+        abort_unless(Auth::user()->isAbleTo('permissions.edit', session('company_id')), 403);
         abort_unless(in_array(session('company_id'), $user->companies->pluck('id')->toArray()), 403); // no trainer of actual company
 
         return view('permission.edit', compact('user'));
@@ -98,7 +98,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        abort_unless(Auth::user()->can('permissions.edit', session('company_id')), 403);
+        abort_unless(Auth::user()->isAbleTo('permissions.edit', session('company_id')), 403);
         abort_unless(in_array(session('company_id'), $user->companies->pluck('id')->toArray()), 403); // no trainer of actual company
 
         if ($request->permissions) {
