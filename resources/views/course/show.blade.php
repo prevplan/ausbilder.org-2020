@@ -134,7 +134,7 @@
                                     \Carbon\Carbon::now()->addHour() >= $course->start
                                     && \Carbon\Carbon::now() < $course->end
                                     && !$course->running
-                                    && \Laratrust::can('course.perform-electronically', session('company_id'))
+                                    && \Laratrust::isAbleTo('course.perform-electronically', session('company_id'))
                                     && $user_in
                                 )
                                     <div class="form-group col-lg">
@@ -143,7 +143,7 @@
                                     </div>
                                 @elseif(
                                     $course->running
-                                    && \Laratrust::can('course.perform-electronically', session('company_id'))
+                                    && \Laratrust::isAbleTo('course.perform-electronically', session('company_id'))
                                     && $user_in
                                 )
                                     <div class="form-group col-lg">
