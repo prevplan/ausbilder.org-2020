@@ -20,12 +20,6 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'permissions.edit',
-            'display_name' => 'edit permissions',
-            'description' => 'can edit permissions',
-        ]);
-
-        Permission::create([
             'name' => 'course-types.edit',
             'display_name' => 'edit course types',
             'description' => 'can edit course types',
@@ -38,9 +32,21 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
+            'name' => 'permissions.edit',
+            'display_name' => 'edit permissions',
+            'description' => 'can edit permissions',
+        ]);
+
+        Permission::create([
             'name' => 'trainer.add',
             'display_name' => 'add new trainer',
             'description' => 'can add new trainer',
+        ]);
+
+        Permission::create([
+            'name' => 'trainer.details',
+            'display_name' => 'show trainer details',
+            'description' => 'can show trainer details',
         ]);
 
         Permission::create([

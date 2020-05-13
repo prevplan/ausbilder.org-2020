@@ -219,20 +219,22 @@
                                     </li>
                                 </ul>
                             @endpermission
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('trainer.show') }}" class="nav-link
-                                    {{
-                                        (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer')
-                                        || Request::is(LaravelLocalization::getCurrentLocale() . '/permission*')
-                                        ? 'active' : '')
-                                    }}
-                                    ">
-                                        <i class="fas fa-users"></i>
-                                        <p>{{ __('trainer') }}</p>
-                                    </a>
-                                </li>
-                            </ul>
+                            @permission(['trainer.details', 'permissions.edit'], session('company_id'))
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('trainer.show') }}" class="nav-link
+                                        {{
+                                            (Request::is(LaravelLocalization::getCurrentLocale() . '/trainer')
+                                            || Request::is(LaravelLocalization::getCurrentLocale() . '/permission*')
+                                            ? 'active' : '')
+                                        }}
+                                        ">
+                                            <i class="fas fa-users"></i>
+                                            <p>{{ __('trainer') }}</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endpermission
                         </li>
                     @endif
                     <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company*') || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*') ? 'menu-open' : '') }}">

@@ -42,6 +42,8 @@ class TrainerController extends Controller
      */
     public function index()
     {
+        abort_unless(Auth::user()->isAbleTo(['trainer.details', 'permissions.edit'], session('company_id')), 403);
+
         $users = Company::find(session('company_id'))->users;
 
         return view('trainer.index', compact('users'));
