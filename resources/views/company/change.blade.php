@@ -18,8 +18,8 @@
 
 @extends('layouts.backend')
 
-@section('title', __('change Company'))
-@section('site_title', __('change Company'))
+@section('title', __('change company'))
+@section('site_title', __('change company'))
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('home') }}">ausbilder.org</a></li>

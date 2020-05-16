@@ -119,7 +119,7 @@
                     <img src="{{ asset('img/logo_128.png') }}" class="img-circle elevation-2" alt="Company Image">
                 </div>
                 <div class="info">
-                    <a href="{{ route('company-change') }}" class="d-block">{{ session('company') ?? __('no Company selected') }}</a>
+                    <a href="{{ route('company-change') }}" class="d-block">{{ session('company') ?? __('no company selected') }}</a>
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Home
-                                <span class="right badge badge-danger">New</span>
+                                {{-- <span class="right badge badge-danger">New</span> --}}
                             </p>
                         </a>
                     </li>
@@ -249,7 +249,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('company-change') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company/change') ? 'active' : '') }}">
                                     <i class="fas fa-exchange-alt"></i>
-                                    <p>{{ __('change Company') }}</p>
+                                    <p>{{ __('change company') }}</p>
                                 </a>
                             </li>
                         </ul>

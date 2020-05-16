@@ -6,6 +6,7 @@
 
 ### Added
 - Permission *view trainer details* added
+- *change company* on start page
 
 ### Bugfix
 - corrected FeV paragraph

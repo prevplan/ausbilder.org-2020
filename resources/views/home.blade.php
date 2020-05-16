@@ -39,7 +39,7 @@
                             {{ __('ausbilder.org the free course management and planning software, is still in development.') }}
                         </p>
 
-                        <a href="https://ausbilder-forum.org" class="card-link">{{ __('More information in the forum') }}</a>
+                        <a href="https://ausbilder-forum.org/c/ausbilder-org/5" class="card-link">{{ __('More information in the forum') }}</a>
                     </div>
                 </div>
 
@@ -58,17 +58,31 @@
             </div>
             <!-- /.col-md-6 -->
             <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="m-0">{{ __('upcoming own courses') }}</h5>
+                @if(session('company'))
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="m-0">{{ __('upcoming own courses') }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" align="center">
+                                {{ __('work in progress') }}
+                            </p>
+                            <a href="{{ route('course.overview') }}" class="card-link">{{ __('show all courses') }}</a>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text" align="center">
-                            {{ __('work in progress') }}
-                        </p>
-                        <a href="{{ route('course.overview') }}" class="card-link">{{ __('show all courses') }}</a>
+                @else
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="m-0" align="center">{{ __('no company selected') }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" align="center">
+                                {{ __('No company was selected.') }}
+                            </p>
+                            <a href="{{ route('company-change') }}" class="card-link">{{ __('change company') }}</a>
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 {{-- <div class="card card-primary card-outline">
                     <div class="card-header">
