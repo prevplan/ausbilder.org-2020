@@ -97,7 +97,7 @@ Route::group(
 
         Route::group(['middleware' => 'revalidate'], function () {
             Route::get('event', 'EventController@index')->name('event.index');
-            Route::post('event', 'EventController@search')->name('event.search');
+            Route::post('event', 'EventController@search')->name('event.search')->middleware(ProtectAgainstSpam::class);
             Route::get('event/{number}/{code}', 'EventController@login')->name('event.login');
             Route::get('event/name', 'EventController@name')->name('event.name');
             Route::post('event/name', 'EventController@processName')->name('event.name');

@@ -5,6 +5,9 @@
 - replaces */* with *-* in the internal number
 - *Registration Link* linked
 
+### Added
+- Honeypot for event search added
+
 [0.1.1]
 ### Changed
 - Permission *view course* to *view all courses* changed

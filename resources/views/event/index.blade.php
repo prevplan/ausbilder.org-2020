@@ -43,6 +43,7 @@
 
                 <form method="post" action="{{ route('event.search') }}">
                     @csrf
+                    @honeypot
                     <div class="card card-primary card-outline">
                         <div class="card-body">
                             <p align="center">
