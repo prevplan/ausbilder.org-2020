@@ -163,8 +163,15 @@
                                         <div>{{ \Vinkla\Hashids\Facades\Hashids::encode($course->running) }}</div>
                                     </div>
                                     <div class="form-group col-lg">
-                                        <label for="inputLocation">{{ __('start participant registration') }}</label>
-                                        <div>REGISTRATION LINK</div>
+                                        <label for="inputLocation">{{ __('participant registration') }}</label>
+                                        <div><a href="{{ route
+                                            (
+                                                'event.login',
+                                                [
+                                                    'number' => $course->internal_number,
+                                                    'code' => \Vinkla\Hashids\Facades\Hashids::encode($course->running)
+                                                ]
+                                            ) }}">{{ __('start registration') }}</a></div>
                                     </div>
                                 </div>
                             @endif

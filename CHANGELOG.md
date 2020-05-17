@@ -3,6 +3,7 @@
 [Unreleased]
 ### Bugfix
 - replaces */* with *-* in the internal number
+- *Registration Link* linked
 
 [0.1.1]
 ### Changed
