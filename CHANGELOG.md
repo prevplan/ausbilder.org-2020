@@ -1,6 +1,8 @@
 # Changelog
 
 [Unreleased]
+### Bugfix
+- replaces */* with *-* in the internal number
 
 [0.1.1]
 ### Changed

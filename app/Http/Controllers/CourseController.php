@@ -253,6 +253,8 @@ class CourseController extends Controller
             $request->internal_number = $registration_number;
         }
 
+        $request->internal_number = str_replace('/', '-', $request->internal_number);
+
         $course = Course::create([
             'company_id' => session('company_id'),
             'type' => $request->type,
