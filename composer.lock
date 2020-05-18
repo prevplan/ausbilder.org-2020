@@ -3919,16 +3919,16 @@
         },
         {
             "name": "vemcogroup/laravel-translation",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vemcogroup/laravel-translation.git",
-                "reference": "9b69e0a29803b39f9103bfb6983fb5a79e4f4519"
+                "reference": "4ebec51755fe8e6b01a62746549a77e80cab1d32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/9b69e0a29803b39f9103bfb6983fb5a79e4f4519",
-                "reference": "9b69e0a29803b39f9103bfb6983fb5a79e4f4519",
+                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/4ebec51755fe8e6b01a62746549a77e80cab1d32",
+                "reference": "4ebec51755fe8e6b01a62746549a77e80cab1d32",
                 "shasum": ""
             },
             "require": {
@@ -3971,7 +3971,7 @@
                 "laravel",
                 "translations"
             ],
-            "time": "2020-04-08T13:24:12+00:00"
+            "time": "2020-05-14T11:50:01+00:00"
         },
         {
             "name": "vinkla/hashids",
