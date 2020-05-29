@@ -2366,16 +2366,16 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "6.0.2",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "2a6a49bcd340df87c7d7d5feb12a415a4abfbaca"
+                "reference": "234d82597a6c20f49e30e28e3b6c860c0e3d3fce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/2a6a49bcd340df87c7d7d5feb12a415a4abfbaca",
-                "reference": "2a6a49bcd340df87c7d7d5feb12a415a4abfbaca",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/234d82597a6c20f49e30e28e3b6c860c0e3d3fce",
+                "reference": "234d82597a6c20f49e30e28e3b6c860c0e3d3fce",
                 "shasum": ""
             },
             "require": {
@@ -2427,7 +2427,7 @@
                 "rbac",
                 "roles"
             ],
-            "time": "2020-05-11T15:48:00+00:00"
+            "time": "2020-05-29T23:04:08+00:00"
         },
         {
             "name": "spatie/laravel-honeypot",
