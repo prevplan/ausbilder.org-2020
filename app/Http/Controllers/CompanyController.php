@@ -76,6 +76,9 @@ class CompanyController extends Controller
         $user->companies()->attach($company, ['company_active' => 1, 'user_active' => 1]); // Assign the user to the company
         $user->attachPermissions(Permission::all(), $company); // and attach all permissions
 
+        $user->last_company = $company->id;
+        $user->save();
+
         session([
             'company_id' => $company->id,
             'company' => $request['name'],

@@ -5,6 +5,7 @@
 - replaces */* with *-* in the internal number
 - *Registration Link* linked
 - change company -> check activation
+- last company - save after creation
 
 ### Added
 - Honeypot for event search added
