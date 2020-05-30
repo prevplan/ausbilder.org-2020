@@ -87,6 +87,7 @@ class CompanyChangeController extends Controller
         $user = Auth::user();
 
         $active = $company->users()
+            ->wherePivot('user_id', $user->id)
             ->wherePivot('company_active', 1)
             ->wherePivot('user_active', 1)
             ->first();

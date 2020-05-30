@@ -4,6 +4,7 @@
 ### Bugfix
 - replaces */* with *-* in the internal number
 - *Registration Link* linked
+- change company -> check activation
 
 ### Added
 - Honeypot for event search added
