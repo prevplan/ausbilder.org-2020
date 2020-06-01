@@ -53,6 +53,7 @@
                                 <th>{{ __('course type') }}</th>
                                 <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
+                                <th>{{ __('responsible') }}</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -71,6 +72,7 @@
                                             {{ $trainer->name }}{!! !$loop->last ? ',<br />' : '' !!}
                                         @endforeach
                                     </td>
+                                    <td>{{ $course->responsibility->name }}</td>
                                     <td align="center">
                                         @if( $course->running )
                                             <i class="fas fa-toggle-on"></i>

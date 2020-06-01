@@ -11,7 +11,7 @@ class Course extends Model
     use HasHashid, HashidRouting;
 
     protected $fillable = [
-        'company_id', 'type', 'internal_number', 'registration_number', 'registered', 'seminar_location', 'street', 'zipcode', 'location', 'start', 'end',
+        'company_id', 'type', 'internal_number', 'registration_number', 'registered', 'seminar_location', 'street', 'zipcode', 'location', 'start', 'end', 'responsible'
     ];
 
     public function users()
@@ -27,5 +27,10 @@ class Course extends Model
     public function course_types()
     {
         return $this->hasMany(CourseType::class, 'id', 'type');
+    }
+
+    public function responsibility()
+    {
+        return $this->belongsTo('App\User', 'responsible');
     }
 }

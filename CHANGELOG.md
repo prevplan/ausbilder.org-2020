@@ -9,6 +9,7 @@
 
 ### Added
 - Honeypot for event search added
+- responsibility for courses
 
 [0.1.1]
 ### Changed

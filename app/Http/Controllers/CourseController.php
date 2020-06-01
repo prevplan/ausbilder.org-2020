@@ -66,7 +66,13 @@ class CourseController extends Controller
             $courses = Course::whereIn('id', $course->pluck('course_id'))
                 ->where('company_id', session('company_id'))
                 ->where('end', '>', Carbon::today())
+                ->orWhere(function ($query) {
+                    $query->where('responsible', Auth::user()->id)
+                        ->where('company_id', session('company_id'))
+                        ->where('end', '>', Carbon::today());
+                })
                 ->with('course_types')
+                ->with('responsibility')
                 ->orderBy('start', 'desc')
                 ->get();
         }
@@ -98,6 +104,11 @@ class CourseController extends Controller
             $courses = Course::whereIn('id', $course->pluck('course_id'))
                 ->where('company_id', session('company_id'))
                 ->where('end', '<', Carbon::today())
+                ->orWhere(function ($query) {
+                    $query->where('responsible', Auth::user()->id)
+                        ->where('company_id', session('company_id'))
+                        ->where('end', '<', Carbon::today());
+                })
                 ->with('course_types')
                 ->orderBy('start', 'asc')
                 ->get();
@@ -267,6 +278,7 @@ class CourseController extends Controller
             'location' => $request->location,
             'start' => $start,
             'end' => $end,
+            'responsible' => Auth::user()->id,
         ]);
 
         $i = 0;
@@ -298,7 +310,10 @@ class CourseController extends Controller
             Auth::user()->isAbleTo('course.view', session('company_id'))
                 && $course->company_id == session('company_id')
             || $user_in
-                && $course->company_id == session('company_id'), 403
+                && $course->company_id == session('company_id')
+            || $course->responsible == Auth::user()->id
+                && $course->company_id == session('company_id')
+            , 403
         );
 
         $positions = Position::where(

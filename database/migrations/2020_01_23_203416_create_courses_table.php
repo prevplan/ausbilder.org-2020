@@ -26,11 +26,13 @@ class CreateCoursesTable extends Migration
             $table->text('location');
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->unsignedBigInteger('responsible');
             $table->unsignedBigInteger('running')->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('type')->references('id')->on('course_types')->onDelete('cascade');
+            $table->foreign('responsible')->references('id')->on('users');
         });
     }
 
