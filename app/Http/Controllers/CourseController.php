@@ -312,8 +312,7 @@ class CourseController extends Controller
             || $user_in
                 && $course->company_id == session('company_id')
             || $course->responsible == Auth::user()->id
-                && $course->company_id == session('company_id')
-            , 403
+                && $course->company_id == session('company_id'), 403
         );
 
         $positions = Position::where(
