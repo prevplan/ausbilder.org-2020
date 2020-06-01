@@ -11,7 +11,7 @@ class Course extends Model
     use HasHashid, HashidRouting;
 
     protected $fillable = [
-        'company_id', 'type', 'internal_number', 'registration_number', 'registered', 'seminar_location', 'street', 'zipcode', 'location', 'start', 'end', 'responsible'
+        'company_id', 'type', 'internal_number', 'registration_number', 'registered', 'seminar_location', 'street', 'zipcode', 'location', 'start', 'end', 'responsible',
     ];
 
     public function users()
