@@ -95,6 +95,12 @@ Route::group(
         Route::get('courseday/{course}/end', 'CourseDayController@end')->name('courseday.end');
         Route::post('courseday/end', 'CourseDayController@store_end')->name('courseday.store_end');
 
+        Route::get('profile', 'ProfileController@index')->name('profile');
+
+        Route::get('cal/{parameter}/cal.ics', 'CalendarController@index');
+
+        Route::get('api/regenerate', 'ApiController@regenerate')->name('api.regenerate');
+
         Route::group(['middleware' => 'revalidate'], function () {
             Route::get('event', 'EventController@index')->name('event.index');
             Route::post('event', 'EventController@search')->name('event.search')->middleware(ProtectAgainstSpam::class);
