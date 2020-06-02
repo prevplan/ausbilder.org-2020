@@ -10,6 +10,7 @@
 ### Added
 - Honeypot for event search added
 - responsibility for courses
+- spatie/icalendar-generator to generate a ics course calendar feed
 
 [0.1.1]
 ### Changed
