@@ -53,6 +53,7 @@
                                 <th>{{ __('course type') }}</th>
                                 <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
+                                <th>{{ __('responsible') }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -83,6 +84,7 @@
                                 <th>{{ __('course type') }}</th>
                                 <th>{{ __('internal number') }}</th>
                                 <th>{{ __('trainer') }}</th>
+                                <th>{{ __('responsible') }}</th>
                                 <th></th>
                             </tr>
                             </tfoot>
