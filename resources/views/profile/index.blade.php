@@ -340,7 +340,7 @@
                                                 <label for="inputCalendarUrlAll" class="col-sm-2 col-form-label">iCal URL {{ __('all courses') }}</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="inputCalendarUrlAll"
-                                                           value="{{ env('APP_URL') }}/cal/{{ \Vinkla\Hashids\Facades\Hashids::encode(Auth::user()->id) }}{{ \Vinkla\Hashids\Facades\Hashids::encode(session('company_id')) }}-{{ Auth::user()->api_code }}/cal.ics"
+                                                           value="{{ env('APP_URL') }}/{{ LaravelLocalization::getCurrentLocale() }}/cal/{{ \Vinkla\Hashids\Facades\Hashids::encode(Auth::user()->id) }}{{ \Vinkla\Hashids\Facades\Hashids::encode(session('company_id')) }}-{{ Auth::user()->api_code }}/cal.ics"
                                                            placeholder="Name"
                                                     >
                                                 </div>
@@ -349,7 +349,7 @@
                                                 <label for="inputCalendarUrlOwn" class="col-sm-2 col-form-label">iCal URL {{ __('own courses') }}</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="inputCalendarUrlOwn"
-                                                           value="{{ env('APP_URL') }}/cal/{{ \Vinkla\Hashids\Facades\Hashids::encode(Auth::user()->id) }}{{ \Vinkla\Hashids\Facades\Hashids::encode(session('company_id')) }}-{{ Auth::user()->api_code }}-own/cal.ics"
+                                                           value="{{ env('APP_URL') }}/{{ LaravelLocalization::getCurrentLocale() }}/cal/{{ \Vinkla\Hashids\Facades\Hashids::encode(Auth::user()->id) }}{{ \Vinkla\Hashids\Facades\Hashids::encode(session('company_id')) }}-{{ Auth::user()->api_code }}-own/cal.ics"
                                                            placeholder="Name"
                                                     >
                                                 </div>
