@@ -34,7 +34,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Regenerate the API Code for the logged in User
+     * Regenerate the API Code for the logged in User.
      *
      * @return \Illuminate\Http\Response
      */
