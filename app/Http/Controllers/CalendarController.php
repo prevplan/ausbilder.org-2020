@@ -86,7 +86,6 @@ class CalendarController extends Controller
         } elseif ($user->isAbleTo('course.view', $company_id)) {
             $courses = Course::where([
                 ['company_id', $company_id],
-                //   ['end', '>', Carbon::today()],
             ])
                 ->with('course_types')
                 ->with('user')
