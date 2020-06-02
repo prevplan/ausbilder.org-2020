@@ -40,7 +40,6 @@ class CalendarController extends Controller
      */
     public function index($parameter)
     {
-
         $parameter = explode('-', $parameter);
 
         // Split first param in hashed user & company ID
@@ -57,7 +56,7 @@ class CalendarController extends Controller
         $user = $user[0];
 
         // check the api code
-        abort_unless($user['api_code'] == $parameter[1], 403 );
+        abort_unless($user['api_code'] == $parameter[1], 403);
 
         $active = $company->users()
             ->wherePivot('user_id', $user->id)
@@ -67,7 +66,6 @@ class CalendarController extends Controller
 
         // check that user is a active company member
         abort_unless($active, 403);
-
 
         // TODO don't reuse code from CompanyController
         if (count($parameter) == 3) {
@@ -88,7 +86,7 @@ class CalendarController extends Controller
         } elseif ($user->isAbleTo('course.view', $company_id)) {
             $courses = Course::where([
                 ['company_id', $company_id],
-             //   ['end', '>', Carbon::today()],
+                //   ['end', '>', Carbon::today()],
             ])
                 ->with('course_types')
                 ->with('user')
@@ -111,23 +109,21 @@ class CalendarController extends Controller
                 ->get();
         }
 
-        $event = array();
+        $event = [];
 
         foreach ($courses as $course) {
-
             $event[] = Event::create()
                 ->name(__($course['course_types'][0]['name']))
-                ->address( $course->street . ', ' . $course->zipcode . ' ' . $course->location)
+                ->address($course->street.', '.$course->zipcode.' '.$course->location)
                 ->addressName($course->seminar_location)
                 ->description(route('course.show', ['course' => $course]))
                 ->uniqueIdentifier($course->internal_number)
                 ->createdAt($course->created_at)
                 ->startsAt(Carbon::CreateFromDate($course->start))
                 ->endsAt(Carbon::CreateFromDate($course->end));
-
         }
 
-        $calendar = Calendar::create($company->name . ' ' . __('courses'))
+        $calendar = Calendar::create($company->name.' '.__('courses'))
             ->description(__('course calendar by ausbilder.org'))
             ->refreshInterval(5)
             ->withTimezone()
