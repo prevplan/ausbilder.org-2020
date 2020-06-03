@@ -134,14 +134,16 @@ class CourseController extends Controller
 
         $types = $company->course_types->groupBy('group');
 
-        if (!count($types)) { // No course types available
+        if (! count($types)) { // No course types available
             if (Auth::user()->isAbleTo('course-types.edit', session('company_id'))) {
                 session()->flash('warning', true);
                 session()->flash('status', __('Select offered course types first!'));
+
                 return redirect()->route('course-types.show');
             } else {
                 session()->flash('warning', true);
                 session()->flash('status', __('No course types available. Ask your manager!'));
+
                 return redirect()->route('home');
             }
         }
