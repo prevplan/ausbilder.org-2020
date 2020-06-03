@@ -1,5 +1,9 @@
 # Changelog
 
+[Unreleased]
+### Fixed
+- Message / redirect if no course type is available
+
 [0.2.1]
 ### Bugfix
 - added responsibility to old course overview
@@ -27,6 +31,7 @@
 ### Bugfix
 - corrected FeV paragraph
 
+[Unreleased]: https://github.com/prevplan/ausbilder.org/compare/v0.2.1...master
 [0.2.1]: https://github.com/prevplan/ausbilder.org/compare/v0.2...v0.2.1
 [0.2]: https://github.com/prevplan/ausbilder.org/compare/v0.1.1...v0.2
 [0.1.1]: https://github.com/prevplan/ausbilder.org/compare/v0.1...v0.1.1
