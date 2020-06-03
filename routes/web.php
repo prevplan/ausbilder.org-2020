@@ -101,6 +101,9 @@ Route::group(
 
         Route::get('api/regenerate', 'ApiController@regenerate')->name('api.regenerate');
 
+        Route::get('price/create', 'PriceController@create')->name('price.create');
+        Route::get('price', 'PriceController@index')->name('price.overview');
+
         Route::group(['middleware' => 'revalidate'], function () {
             Route::get('event', 'EventController@index')->name('event.index');
             Route::post('event', 'EventController@search')->name('event.search')->middleware(ProtectAgainstSpam::class);
