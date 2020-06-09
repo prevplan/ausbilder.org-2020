@@ -144,6 +144,20 @@
                                                 {{ __('edit templates') }}
                                             </label>
                                         </div><br />
+                                        <div class="icheck-warning d-inline">
+                                            <input
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-price.edit"
+                                                value="price.edit"
+                                                @if ($user->isAbleTo('price.edit', session('company_id')))
+                                                    checked
+                                                @endif
+                                            >
+                                            <label for="checkbox-price.edit">
+                                                {{ __('edit prices') }}
+                                            </label>
+                                        </div><br />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4 m-t-35">
@@ -151,13 +165,13 @@
                                     <div class="form-group clearfix">
                                         <div class="icheck-success d-inline">
                                             <input
-                                                    type="checkbox"
-                                                    name="permissions[]"
-                                                    id="checkbox-course.view"
-                                                    value="course.view"
-                                                    @if ($user->isAbleTo('course.view', session('company_id')))
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="checkbox-course.view"
+                                                value="course.view"
+                                                @if ($user->isAbleTo('course.view', session('company_id')))
                                                     checked
-                                                    @endif
+                                                @endif
                                             >
                                             <label for="checkbox-course.view">
                                                 {{ __('view all courses') }}
@@ -203,6 +217,53 @@
                                             >
                                             <label for="checkbox-course.perform-electronically">
                                                 {{ __('perform course electronically') }}
+                                            </label>
+                                        </div><br />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 m-t-35">
+                                    <h5 class="checkbox_header_bottom">{{ __('participants') }}</h5>
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-primary d-inline">
+                                            <input
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="participant.view"
+                                                value="participant.view"
+                                                @if ($user->isAbleTo('participant.view', session('company_id')))
+                                                    checked
+                                                @endif
+                                            >
+                                            <label for="participant.view">
+                                                {{ __('view participants') }}
+                                            </label>
+                                        </div><br />
+                                        <div class="icheck-primary d-inline">
+                                            <input
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="participant.add"
+                                                value="participant.add"
+                                                @if ($user->isAbleTo('participant.add', session('company_id')))
+                                                    checked
+                                                @endif
+                                            >
+                                            <label for="participant.add">
+                                                {{ __('add participants') }}
+                                            </label>
+                                        </div><br />
+                                        <div class="icheck-primary d-inline">
+                                            <input
+                                                type="checkbox"
+                                                name="permissions[]"
+                                                id="participant.edit"
+                                                value="participant.edit"
+                                                @if ($user->isAbleTo('participant.edit', session('company_id')))
+                                                    checked
+                                                @endif
+                                            >
+                                            <label for="participant.edit">
+                                                {{ __('edit participants') }}
                                             </label>
                                         </div><br />
                                     </div>

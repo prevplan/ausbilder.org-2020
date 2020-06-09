@@ -243,8 +243,15 @@
                             @endpermission
                         </li>
                     @endif
-                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company*') || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*') ? 'menu-open' : '') }}">
-                        <a href="#" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company*') || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*') ? 'active' : '') }}">
+                    <li class="nav-item has-treeview {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company*')
+                        || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*')
+                        || Request::is(LaravelLocalization::getCurrentLocale() . '/price*') ? 'menu-open' : '') }}"
+                    >
+                        <a href="#" class="nav-link {{
+                            (Request::is(LaravelLocalization::getCurrentLocale() . '/company*')
+                            || Request::is(LaravelLocalization::getCurrentLocale() . '/course-types*')
+                            || Request::is(LaravelLocalization::getCurrentLocale() . '/price*') ? 'active' : '')
+                        }}">
                             <i class="nav-icon far fa-building"></i>
                             <p>
                                 {{ __('Company') }}
@@ -253,7 +260,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('company-change') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company/change') ? 'active' : '') }}">
+                                <a href="{{ route('company-change') }}" class="nav-link {{
+                                    (Request::is(LaravelLocalization::getCurrentLocale() . '/company/change') ? 'active' : '')
+                                }}">
                                     <i class="fas fa-exchange-alt"></i>
                                     <p>{{ __('change company') }}</p>
                                 </a>
@@ -262,7 +271,9 @@
                         @if(session('company'))
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('company.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/company') ? 'active' : '') }}">
+                                    <a href="{{ route('company.show') }}" class="nav-link {{
+                                        (Request::is(LaravelLocalization::getCurrentLocale() . '/company') ? 'active' : '')
+                                    }}">
                                         <i class="fas fa-pen"></i>
                                         <p>{{ __('company details') }}</p>
                                     </a>
@@ -272,9 +283,23 @@
                         @permission('course-types.edit', session('company_id'))
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('course-types.show') }}" class="nav-link {{ (Request::is(LaravelLocalization::getCurrentLocale() . '/course-types') ? 'active' : '') }}">
+                                    <a href="{{ route('course-types.show') }}" class="nav-link {{
+                                        (Request::is(LaravelLocalization::getCurrentLocale() . '/course-types') ? 'active' : '')
+                                    }}">
                                         <i class="fas fa-graduation-cap"></i>
                                         <p>{{ __('course types') }}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endpermission
+                        @permission('price.edit', session('company_id'))
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('price.overview') }}" class="nav-link {{
+                                        (Request::is(LaravelLocalization::getCurrentLocale() . '/price*') ? 'active' : '')
+                                    }}">
+                                        <i class="fas fa-coins"></i>
+                                        <p>{{ __('prices') }} <span class="right badge badge-danger">New</span></p>
                                     </a>
                                 </li>
                             </ul>

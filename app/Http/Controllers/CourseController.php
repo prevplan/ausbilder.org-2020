@@ -24,6 +24,7 @@ use App\Company;
 use App\Course;
 use App\CourseType;
 use App\Position;
+use App\Price;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -56,6 +57,7 @@ class CourseController extends Controller
             ])
                 ->with('course_types')
                 ->with('user')
+                ->with('participants')
                 ->orderBy('start', 'desc')
                 ->get();
         } else { // show only own courses
@@ -72,6 +74,7 @@ class CourseController extends Controller
                         ->where('end', '>', Carbon::today());
                 })
                 ->with('course_types')
+                ->with('participants')
                 ->with('responsibility')
                 ->orderBy('start', 'desc')
                 ->get();
@@ -148,11 +151,17 @@ class CourseController extends Controller
             }
         }
 
+        $prices = Price::where([
+            ['company_id', session('company_id')],
+            ['active', 1],
+        ])
+        ->get();
+
         $positions = Position::where('company_id', 0)
             ->orWhere('company_id', session('company_id'))
             ->get();
 
-        return view('course.create', compact(['company', 'types', 'positions']));
+        return view('course.create', compact(['company', 'types', 'positions', 'prices']));
     }
 
     /**
@@ -178,6 +187,7 @@ class CourseController extends Controller
             'location' => 'required|min:3',
             'internal_number' => 'required_without_all:registration_number,auto_register|nullable|min:3|alpha_dash',
             'registration_number' => 'required_without_all:internal_number,auto_register|nullable|min:6',
+            'price' => 'required|array',
         ]);
 
         if (strtotime($request->start_date) >= strtotime($request->end_date)) { // if end is equal or before end
@@ -196,6 +206,17 @@ class CourseController extends Controller
             return back()->withErrors(
                 [
                     'message' => __('a trainer can have only one position per course'),
+                ]
+            )
+                ->withInput($request->all);
+        }
+
+        $type = CourseType::findOrFail($request->type);
+
+        if ($request->max_seats > $type->seats) { // seats are bigger than max
+            return back()->withErrors(
+                [
+                    'message' => __('A maximum of :max seats are permitted.', ['max' => $type->seats]),
                 ]
             )
                 ->withInput($request->all);
@@ -280,6 +301,12 @@ class CourseController extends Controller
 
         $request->internal_number = str_replace('/', '-', $request->internal_number);
 
+        if ($request->bookable) {
+            $bookable = 1;
+        } else {
+            $bookable = 0;
+        }
+
         $course = Course::create([
             'company_id' => session('company_id'),
             'type' => $request->type,
@@ -293,6 +320,8 @@ class CourseController extends Controller
             'start' => $start,
             'end' => $end,
             'responsible' => Auth::user()->id,
+            'seats' => $request->max_seats,
+            'bookable' => $bookable,
         ]);
 
         $i = 0;
@@ -301,6 +330,8 @@ class CourseController extends Controller
             $course->users()->attach([$trainer => ['position_id' => $request->position[$i]]]);
             $i++;
         }
+
+        $course->prices()->sync($request->price);
 
         return redirect()->route('course.show', ['course' => $course]);
     }

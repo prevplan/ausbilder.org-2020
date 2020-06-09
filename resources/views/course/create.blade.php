@@ -190,6 +190,61 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-2">
+                                        <label for="inputMaxSeats">{{ __('maximum seats') }}</label>
+                                        <input type="text" class="form-control" id="inputMaxSeats" name="max_seats" value="{{ old('max_seats') ?? '20'}}" placeholder="{{ __('maximum seats') }}">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputBookable">{{ __('bookable') }}</label>
+                                        <div>
+                                            <input
+                                                type="checkbox"
+                                                name="bookable"
+                                                data-bootstrap-switch
+                                                data-on-text="{{ __('Yes') }}"
+                                                data-off-text="{{ __('No') }}"
+                                                data-off-color="danger"
+                                                data-on-color="success"
+                                                checked
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group" id="price_table">
+                                            <label class="col-6">{{ __('price') }}</label>
+
+                                            @if( null !== old('price') )
+                                                @foreach( old('price')  as $price)
+                                                    <div>
+                                                        <select class="custom-select col-6" name="price[]" required>
+                                                            <option selected disabled>{{ __('select price') }}</option>
+                                                            @foreach ($prices as $price)
+                                                                <option {{ (old('price')[$loop->parent->index] == $price->id ? 'selected' : '') }} value="{{ $price->id }}">{{ __($price->title) }} - {{ $price->price }} {{ $price->currency }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if( $loop->first )
+                                                            <button type="button" name="add-price" class="btn btn-success btn-sm add-price"><i class="fas fa-plus"></i></button>
+                                                        @else
+                                                            <button type="button" name="remove" class="btn btn-danger btn-sm remove"><i class="fas fa-minus"></i></button>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <select class="custom-select col-6" name="price[]" required>
+                                                    <option selected disabled>{{ __('select price') }}</option>
+                                                    @foreach ($prices as $price)
+                                                        <option value="{{ $price->id }}">{{ __($price->title) }} - {{ $price->price }} {{ $price->currency }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                <button type="button" name="add-price" class="btn btn-success btn-sm add-price"><i class="fas fa-plus"></i></button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg">
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 
@@ -241,6 +296,33 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function(){
+
+            $(document).on('click', '.add-price', function(){
+                var html = '';
+
+                html += '<div>';
+                html += '<select class="custom-select col-6" name="price[]" required>';
+                html += '<option selected disabled>{{ __('select price') }}</option>';
+                @foreach ($prices as $price)
+                    html += '<option value="{{ $price->id }}">{{ __($price->title) }} - {{ $price->price }} {{ $price->currency }}</option>';
+                @endforeach
+                html += '</select>';
+                html += ' <button type="button" name="remove" class="btn btn-danger btn-sm remove"><i class="fas fa-minus"></i></button>';
+                html += '</div>';
+
+                $('#price_table').append(html);
+
+            });
+
+            $(document).on('click', '.remove', function(){
+                $(this).closest('div').remove();
+            });
+
+        });
+    </script>
+
     <!-- Bootstrap Switch -->
     <script src="{{ asset('vendors/bootstrap-switch/js/switch.js') }}"></script>
 
@@ -251,6 +333,8 @@
             });
 
         })
+
+        $("[name='bookable']").bootstrapSwitch('state',true)();
     </script>
 
     <script>

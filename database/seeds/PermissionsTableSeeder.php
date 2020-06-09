@@ -73,6 +73,30 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'can perform courses electronically',
         ]);
 
+        Permission::create([
+            'name' => 'price.edit',
+            'display_name' => 'edit prices',
+            'description' => 'can edit prices'
+        ]);
+
+        Permission::create([
+            'name' => 'participant.add',
+            'display_name' => 'add participants',
+            'description' => 'can add participants'
+        ]);
+
+        Permission::create([
+            'name' => 'participant.view',
+            'display_name' => 'view participants',
+            'description' => 'can see participants'
+        ]);
+
+        Permission::create([
+            'name' => 'participant.edit',
+            'display_name' => 'edit participants',
+            'description' => 'can edit participants'
+        ]);
+
         // attach all permissions to user one
         // for development use only
         // User::find(1)->attachPermissions(Permission::all(), 1);

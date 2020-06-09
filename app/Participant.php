@@ -12,6 +12,6 @@ class Participant extends Model
 
     protected $fillable = [
         'course_id', 'lastname', 'firstname', 'date_of_birth', 'company', 'street', 'zipcode', 'location',
-        'email', 'email_reminder', 'payee', 'participated', 'payed',
+        'email', 'email_reminder', 'payee', 'participated', 'price', 'price_id', 'payed',
     ];
 }

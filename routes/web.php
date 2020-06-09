@@ -103,6 +103,10 @@ Route::group(
 
         Route::get('price/create', 'PriceController@create')->name('price.create');
         Route::get('price', 'PriceController@index')->name('price.overview');
+        Route::post('price', 'PriceController@store')->name('price.store');
+
+        Route::get('participant/{course}/create', 'ParticipantController@create')->name('participant.create');
+        Route::post('participant/{course}', 'ParticipantController@store')->name('participant.store');
 
         Route::group(['middleware' => 'revalidate'], function () {
             Route::get('event', 'EventController@index')->name('event.index');

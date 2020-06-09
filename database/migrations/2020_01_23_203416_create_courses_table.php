@@ -27,6 +27,8 @@ class CreateCoursesTable extends Migration
             $table->dateTime('start');
             $table->dateTime('end');
             $table->unsignedBigInteger('responsible');
+            $table->string('seats', 10);
+            $table->boolean('bookable');
             $table->unsignedBigInteger('running')->nullable();
             $table->timestamps();
 

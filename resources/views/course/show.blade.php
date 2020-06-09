@@ -41,6 +41,7 @@
                         </div>
 
                         @include('layouts.error')
+                        @include('layouts.status')
                         <!-- /.card-header -->
 
                         <div class="card-body">
@@ -130,6 +131,10 @@
                                     <label for="inputRegistrationNumber">{{ __('QSEH registration number') }}</label>
                                     <div>{{ ($course->registration_number ? $course->registration_number : __('not specified') ) }}</div>
                                 </div>
+                                <div class="form-group col-md">
+                                    <label>{{ __('seats') }}</label>
+                                    <div>{{ count($course->participants) }} / {{ $course->seats }}</div>
+                                </div>
                                 @if(
                                     \Carbon\Carbon::now()->addHour() >= $course->start
                                     && \Carbon\Carbon::now() < $course->end
@@ -152,6 +157,18 @@
                                     </div>
                                 @endif
                             </div>
+                            @if(\Carbon\Carbon::now() < $course->end && count($course->participants) < $course->seats)
+                                <div class="row">
+                                    <div class="form-group col-md">
+                                        <label>{{ __('free seats') }}</label>
+                                        <div>{{ $course->seats - count($course->participants) }}</div>
+                                    </div>
+                                    <div class="form-group col-lg">
+                                        <label>{{ __('participant') }}</label>
+                                        <div><a href="{{ route('participant.create', ['course' => $course]) }}">{{ __('add participant') }}</a></div>
+                                    </div>
+                                </div>
+                            @endif
                             @if($course->running)
                                 <div class="row">
                                     <div class="form-group col-lg">

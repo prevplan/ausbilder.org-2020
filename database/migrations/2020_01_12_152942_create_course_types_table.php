@@ -20,9 +20,9 @@ class CreateCourseTypesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('group');
-            $table->string('lessons')->nullable();
-            $table->string('lessons_per_day')->nullable();
-            $table->string('seats')->nullable();
+            $table->string('lessons', 10)->nullable();
+            $table->string('lessons_per_day', 10)->nullable();
+            $table->string('seats', 10)->nullable();
             $table->timestamps();
         });
     }

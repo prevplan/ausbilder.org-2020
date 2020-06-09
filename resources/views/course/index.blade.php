@@ -52,6 +52,7 @@
                                 <th>{{ __('start date') }}</th>
                                 <th>{{ __('course type') }}</th>
                                 <th>{{ __('internal number') }}</th>
+                                <th>{{ __('seats') }}</th>
                                 <th>{{ __('trainer') }}</th>
                                 <th>{{ __('responsible') }}</th>
                                 <th></th>
@@ -67,6 +68,7 @@
                                     <td>{{ \Carbon\Carbon::parse($course->start)->format('d.m.Y H:i') }} Uhr</td>
                                     <td>{{ __($course->course_types[0]->name) }}</td>
                                     <td>{{ $course->internal_number }}</td>
+                                    <td>{{ count($course->participants) }} / {{ $course->seats  }}</td>
                                     <td>
                                         @foreach($course->user as $trainer)
                                             {{ $trainer->name }}{!! !$loop->last ? ',<br />' : '' !!}
@@ -96,6 +98,7 @@
                                 <th>{{ __('start date') }}</th>
                                 <th>{{ __('course type') }}</th>
                                 <th>{{ __('internal number') }}</th>
+                                <th>{{ __('seats') }}</th>
                                 <th>{{ __('trainer') }}</th>
                                 <th>{{ __('responsible') }}</th>
                                 <th></th>

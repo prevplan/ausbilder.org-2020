@@ -27,10 +27,13 @@ class CreateParticipantsTable extends Migration
             $table->dateTime('email_reminder')->nullable();
             $table->string('payee')->nullable();
             $table->boolean('participated')->default(0);
+            $table->decimal('price', 8,2)->default(0);
+            $table->unsignedBigInteger('price_id');
             $table->boolean('payed')->default(0);
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('price_id')->references('id')->on('prices');
         });
     }
 
