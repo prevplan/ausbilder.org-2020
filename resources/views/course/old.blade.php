@@ -63,7 +63,7 @@
                                     <td>{{ $course->seminar_location }}</td>
                                     <td>{{ $course->street }}</td>
                                     <td>{{ $course->zipcode }} {{ $course->location }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($course->start)->format('d.m.Y H:i') }} Uhr</td>
+                                    <td data-sort="{{ Carbon\Carbon::parse($course->start) }}">{{ \Carbon\Carbon::parse($course->start)->format('d.m.Y H:i') }} Uhr</td>
                                     <td>{{ __($course->course_types[0]->name) }}</td>
                                     <td>{{ $course->internal_number }}</td>
                                     <td>
