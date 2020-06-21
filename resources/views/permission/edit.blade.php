@@ -42,7 +42,9 @@
                         <h3 class="card-title">{{ __('permissions for :user', ['user' => $user->name]) }}</h3>
                     </div>
                     @include('layouts.status')
-                    <form role="form" action="{{ route('permission.update', ['user' => $user->hashid()]) }}" method="post">
+                    <form action="{{ route('permission.update', ['user' => $user->hashid()]) }}" method="post"
+                          onsubmit="submit.disabled = true; submit.innerText='{{ __('saving') }}…'; return true;"
+                          role="form">
                         @csrf
                         @method('patch')
                         <div class="card-body">
@@ -212,7 +214,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">{{ __('update') }}</button>
+                            <button class="btn btn-primary" name="submit" type="submit">{{ __('update') }}</button>
                         </div>
                     </form>
                 </div>

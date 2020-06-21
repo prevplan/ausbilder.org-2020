@@ -42,18 +42,21 @@
                         @include('layouts.error')
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ route('trainer.store') }}" method="post">
+                        <form action="{{ route('trainer.store') }}" method="post"
+                              onsubmit="submit.disabled = true; submit.innerText='{{ __('saving') }}…'; return true;"
+                              role="form">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputTrainerEmail">{{ __('trainer email') }}</label>
-                                    <input type="email" class="form-control" id="inputTrainerEmail" name="email" value="{{ old('email') }}" placeholder="{{ __('trainer email') }}" required>
+                                    <input class="form-control" id="inputTrainerEmail" name="email" placeholder="{{ __('trainer email') }}"
+                                           required type="email" value="{{ old('email') }}">
                                 </div>
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('add') }}</button>
+                                <button class="btn btn-primary" name="submit" type="submit">{{ __('add') }}</button>
                             </div>
                         </form>
                     </div>

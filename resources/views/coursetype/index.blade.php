@@ -44,7 +44,10 @@
                             <h3 class="card-title">{{ __('edit offered course types for :company', ['company' => session('company')]) }}</h3>
                         </div>
                         @include('layouts.status')
-                        <form role="form" action="{{ route('course-types.update', ['company' => \Vinkla\Hashids\Facades\Hashids::encode(session('company_id'))]) }}" method="post">
+                        <form action="{{ route('course-types.update', ['company' => \Vinkla\Hashids\Facades\Hashids::encode(session('company_id'))]) }}"
+                              method="post"
+                              onsubmit="submit.disabled = true; submit.innerText='{{ __('saving') }}…'; return true;"
+                              role="form">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -99,7 +102,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('update') }}</button>
+                                <button class="btn btn-primary" name="submit" type="submit">{{ __('update') }}</button>
                             </div>
                         </form>
                     </div>

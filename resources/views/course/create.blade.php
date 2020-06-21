@@ -42,7 +42,9 @@
                         @include('layouts.error')
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ route('course.store') }}" method="post">
+                        <form action="{{ route('course.store') }}" method="post"
+                              onsubmit="submit.disabled = true; submit.innerText='{{ __('saving') }}…'; return true;"
+                              role="form">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -105,7 +107,10 @@
                                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                             @endforeach
                                                         </select>
-                                                        <button type="button" name="add" class="btn btn-success btn-sm add"><i class="fas fa-user-plus"></i></button>
+                                                        <button class="btn btn-success btn-sm add" name="add"
+                                                                type="button">
+                                                            <i class="fas fa-user-plus"></i>
+                                                        </button>
                                                     @endif
                                                 </div>
                                             </div>
@@ -194,7 +199,8 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('add') }}</button>
+                                <button class="btn btn-primary" name="submit" type="submit">{{ __('add') }}
+                                </button>
                             </div>
                         </form>
                     </div>
