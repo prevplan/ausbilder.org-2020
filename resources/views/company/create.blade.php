@@ -42,35 +42,49 @@
                         @include('layouts.error')
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ route('company-store') }}" method="post">
+                        <form action="{{ route('company-store') }}" method="post"
+                              onsubmit="submit.disabled = true; submit.innerText='{{ __('saving') }}…'; return true;"
+                              role="form">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputCompanyName">{{ __('Company name') }}</label>
-                                    <input type="text" class="form-control" id="inputCompanyName" name="name" value="{{ old('name') }}" placeholder="{{ __('Company name') }}" required>
+                                    <input class="form-control" id="inputCompanyName" name="name"
+                                           placeholder="{{ __('Company name') }}"
+                                           required type="text" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputCompanyNameSuffix">{{ __('Company name suffix') }}</label>
-                                    <input type="text" class="form-control" id="inputCompanyNameSuffix" name="name_suffix" value="{{ old('name_suffix') }}" placeholder="{{ __('Company name suffix') }}">
+                                    <input class="form-control" id="inputCompanyNameSuffix" name="name_suffix"
+                                           placeholder="{{ __('Company name suffix') }}" type="text"
+                                           value="{{ old('name_suffix') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStreet">{{ __('street') }}</label>
-                                    <input type="text" class="form-control" id="inputStreet" name="street" value="{{ old('street') }}" placeholder="{{ __('street') }}" required>
+                                    <input class="form-control" id="inputStreet" name="street"
+                                           placeholder="{{ __('street') }}"
+                                           required type="text" value="{{ old('street') }}">
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-3">
                                         <label for="inputZipcode">{{ __('zipcode') }}</label>
-                                        <input type="text" class="form-control" id="inputZipcode" name="zipcode" value="{{ old('zipcode') }}" placeholder="{{ __('zipcode') }}" required>
+                                        <input class="form-control" id="inputZipcode" name="zipcode"
+                                               placeholder="{{ __('zipcode') }}"
+                                               required type="text" value="{{ old('zipcode') }}">
                                     </div>
                                     <div class="form-group col-9">
                                         <label for="inputLocation">{{ __('location') }}</label>
-                                        <input type="text" class="form-control" id="inputLocation" name="location" value="{{ old('location') }}" placeholder="{{ __('location') }}" required>
+                                        <input class="form-control" id="inputLocation" name="location"
+                                               placeholder="{{ __('location') }}"
+                                               required type="text" value="{{ old('location') }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label for="inputDoctor">{{ __('responsible doctor') }}</label>
-                                        <input type="text" class="form-control" id="inputDoctor" name="doctor" value="{{ old('doctor') }}" placeholder="{{ __('responsible doctor') }}">
+                                        <input class="form-control" id="inputDoctor" name="doctor"
+                                               placeholder="{{ __('responsible doctor') }}"
+                                               type="text" value="{{ old('doctor') }}">
                                     </div>
                                     <div class="form-group col-6">
                                     </div>
@@ -78,18 +92,23 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label for="inputReference">{{ __('qseh reference (optional)') }}</label>
-                                        <input type="text" class="form-control" id="inputReference" name="reference" value="{{ old('reference') }}" placeholder="{{ __('qseh reference (optional)') }}">
+                                        <input class="form-control" id="inputReference" name="reference"
+                                               placeholder="{{ __('qseh reference (optional)') }}"
+                                               type="text"
+                                               value="{{ old('reference') }}">
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="inputQsehPassword">{{ __('qseh password (optional)') }}</label>
-                                        <input type="password" class="form-control" id="inputQsehPassword" name="qseh_password" value="{{ old('qseh_password') }}" placeholder="{{ __('qseh password (optional)') }}">
+                                        <input class="form-control" id="inputQsehPassword" name="qseh_password"
+                                               placeholder="{{ __('qseh password (optional)') }}" type="password"
+                                               value="{{ old('qseh_password') }}">
                                     </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
+                                <button class="btn btn-primary" name="submit" type="submit">{{ __('Register') }}</button>
                             </div>
                         </form>
                     </div>

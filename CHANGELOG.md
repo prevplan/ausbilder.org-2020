@@ -4,6 +4,7 @@
 ### Fixed
 - Message / redirect if no course type is available
 - course date sort was wrong
+- preventing double submit a form
 
 [0.2.1]
 ### Bugfix
