@@ -18,7 +18,7 @@ class CreatePricesTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->string('title');
             $table->string('description')->nullable();
-            $table->decimal('price', 8,2)->default(0);
+            $table->decimal('price', 8, 2)->default(0);
             $table->string('currency', 10);
             $table->boolean('active')->default(1);
             $table->timestamps();

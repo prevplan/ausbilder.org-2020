@@ -12,7 +12,7 @@ class Course extends Model
 
     protected $fillable = [
         'company_id', 'type', 'internal_number', 'registration_number', 'registered', 'seminar_location',
-        'street', 'zipcode', 'location', 'start', 'end', 'responsible', 'seats', 'bookable'
+        'street', 'zipcode', 'location', 'start', 'end', 'responsible', 'seats', 'bookable',
     ];
 
     public function users()

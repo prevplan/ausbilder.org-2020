@@ -11,7 +11,7 @@ class CourseConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public  $company;
+    public $company;
     public $course;
     public $request;
 
