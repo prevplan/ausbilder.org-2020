@@ -11,6 +11,6 @@ class Price extends Model
     use HasHashid, HashidRouting;
 
     protected $fillable = [
-        'company_id', 'title', 'description', 'price', 'currency'
+        'company_id', 'title', 'description', 'price', 'currency',
     ];
 }

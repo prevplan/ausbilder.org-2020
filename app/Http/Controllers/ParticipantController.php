@@ -70,7 +70,6 @@ class ParticipantController extends Controller
 
         $price = $price->price;
 
-
         Participant::create([
             'course_id' => $course->id,
             'lastname' => $request->lastname,
@@ -86,7 +85,7 @@ class ParticipantController extends Controller
 
         session()->flash('status', __('participant added'));
 
-        return redirect()->route('course.show', ['course' => $course] );
+        return redirect()->route('course.show', ['course' => $course]);
     }
 
     /**

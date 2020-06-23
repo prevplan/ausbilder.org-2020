@@ -67,7 +67,7 @@ class BookingController extends Controller
             ->orderBy('start')
             ->get();
 
-        return view('booking.location', compact('company','courses', 'location'));
+        return view('booking.location', compact('company', 'courses', 'location'));
     }
 
     /**
@@ -91,7 +91,7 @@ class BookingController extends Controller
             ->orderBy('start')
             ->get();
 
-        return view('booking.location', compact('company','courses', 'location'));
+        return view('booking.location', compact('company', 'courses', 'location'));
     }
 
     /**
@@ -114,13 +114,13 @@ class BookingController extends Controller
             ->with('course_types')
             ->first();
 
-        if (!$course) {
+        if (! $course) {
             return back()->withErrors(
                 [
                     'message' => __('The course has already started.'),
                 ]
             );
-        } elseif( ($course->seats - count($course->participants)) <= 0 ) {
+        } elseif (($course->seats - count($course->participants)) <= 0) {
             if (isset($course->location)) {
                 $location = $course->location;
             } elseif (isset($course->seminar_location)) {
@@ -138,7 +138,7 @@ class BookingController extends Controller
             );
         }
 
-        return view('booking.create', compact('company','course'));
+        return view('booking.create', compact('company', 'course'));
     }
 
     /**
@@ -162,14 +162,14 @@ class BookingController extends Controller
             ->with('course_types')
             ->first();
 
-        if (!$course) {
+        if (! $course) {
             return redirect()->route('booking.location', ['company' => $course->location])
                 ->withErrors(
                 [
                     'message' => __('The course has already started.'),
                 ]
             );
-        } elseif( ($course->seats - count($course->participants)) <= 0 ) {
+        } elseif (($course->seats - count($course->participants)) <= 0) {
             return redirect()->route('booking.location', ['company' => $course->location])
                 ->withErrors(
                 [
@@ -261,7 +261,8 @@ class BookingController extends Controller
         //
     }
 
-    private function validate_course($course) {
+    private function validate_course($course)
+    {
         $course = (new \Vinkla\Hashids\Facades\Hashids)::decode($course);
 
         // abort if course id is in invalid format

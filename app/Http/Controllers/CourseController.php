@@ -221,7 +221,7 @@ class CourseController extends Controller
                 ]
             )
                 ->withInput($request->all);
-        } elseif (!$request->bookable) {
+        } elseif (! $request->bookable) {
             $request->max_seats = 0;
         }
 
