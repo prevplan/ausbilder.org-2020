@@ -115,14 +115,22 @@ class BookingController extends Controller
             ->first();
 
         if (!$course) {
-            return redirect()->route('booking.location', ['company' => $company, $course->location])
-                ->withErrors(
+            return back()->withErrors(
                 [
                     'message' => __('The course has already started.'),
                 ]
             );
         } elseif( ($course->seats - count($course->participants)) <= 0 ) {
-            return redirect()->route('booking.location', ['company' => $company, $course->location])
+            if (isset($course->location)) {
+                $location = $course->location;
+            } elseif (isset($course->seminar_location)) {
+                $location = $course->seminar_location;
+            } else {
+                abort(403);
+            }
+
+            /** @var TYPE_NAME $location */
+            return redirect()->route('booking.location', ['company' => $company, $location])
                 ->withErrors(
                 [
                     'message' => __('The course is already full.'),
