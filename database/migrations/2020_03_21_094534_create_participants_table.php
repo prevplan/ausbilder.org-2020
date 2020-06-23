@@ -23,6 +23,7 @@ class CreateParticipantsTable extends Migration
             $table->string('street')->nullable();
             $table->string('zipcode', 5)->nullable();
             $table->string('location')->nullable();
+            $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->dateTime('email_reminder')->nullable();
             $table->string('payee')->nullable();

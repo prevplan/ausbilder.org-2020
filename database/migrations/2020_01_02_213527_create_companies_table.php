@@ -24,6 +24,9 @@ class CreateCompaniesTable extends Migration
             $table->text('qseh_password')->nullable();
             $table->string('doctor')->nullable();
             $table->text('sign')->nullable();
+            $table->string('email')->nullable();
+            $table->string('terms')->nullable();
+            $table->string('cpolicy')->nullable();
             $table->date('bg_eh_auth')->nullable();
             $table->date('bg_bs_auth')->nullable();
             $table->date('bg_lk_auth')->nullable();

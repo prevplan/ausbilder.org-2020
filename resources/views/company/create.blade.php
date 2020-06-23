@@ -80,6 +80,31 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="form-group col-4">
+                                        <label for="inputEMail">{{ __('contact e-mail') }}</label>
+                                        <input class="form-control" id="inputEMail" name="email" placeholder="{{ __('contact e-mail') }}"
+                                               type="email"
+                                               value="{{ old('email') }}">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <label for="inputTerms">{{ __('terms of business (optional)') }}</label>
+                                        <input class="form-control" id="inputTerms" name="terms" placeholder="{{ __('terms of business (optional)') }}"
+                                               type="url"
+                                               value="{{ old('terms') }}">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label for="inputCpolicy">{{ __('cancellation policy (optional)') }}</label>
+                                        <input class="form-control" id="inputCpolicy" name="cpolicy"
+                                               placeholder="{{ __('cancellation policy (optional)') }}"
+                                               type="url"
+                                               value="{{ old('cpolicy') }}">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
                                     <div class="form-group col-6">
                                         <label for="inputDoctor">{{ __('responsible doctor') }}</label>
                                         <input class="form-control" id="inputDoctor" name="doctor"
@@ -91,9 +116,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label for="inputReference">{{ __('qseh reference (optional)') }}</label>
+                                        <label for="inputReference">{{ __('QSEH reference (optional)') }}</label>
                                         <input class="form-control" id="inputReference" name="reference"
-                                               placeholder="{{ __('qseh reference (optional)') }}"
+                                               placeholder="{{ __('QSEH reference (optional)') }}"
                                                type="text"
                                                value="{{ old('reference') }}">
                                     </div>

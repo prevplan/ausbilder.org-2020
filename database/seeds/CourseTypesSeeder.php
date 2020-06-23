@@ -14,9 +14,9 @@ class CourseTypesSeeder extends Seeder
     {
         CourseType::create([
             'wsdl_id' => 1,
-            'name' => 'first-aid-basic-course_ta',
+            'name' => 'first aid basic course (TA)',
             'slug' => 'bg-gk',
-            'group' => 'first-aid-courses',
+            'group' => 'first aid courses',
             'lessons' => 9,
             'lessons_per_day' => 9,
             'seats' => 20,
@@ -24,9 +24,9 @@ class CourseTypesSeeder extends Seeder
 
         CourseType::create([
             'wsdl_id' => 2,
-            'name' => 'first-aid-training_ta',
+            'name' => 'first aid training (TA)',
             'slug' => 'bg-fb',
-            'group' => 'first-aid-courses',
+            'group' => 'first aid courses',
             'lessons' => 9,
             'lessons_per_day' => 9,
             'seats' => 20,
@@ -34,9 +34,9 @@ class CourseTypesSeeder extends Seeder
 
         CourseType::create([
             'wsdl_id' => 8,
-            'name' => 'first_aid_training_in_educational_and_care_facilities_for_children_ta',
+            'name' => 'first aid training in educational and care facilities for children (TA)',
             'slug' => 'bg-bbek',
-            'group' => 'first-aid-courses',
+            'group' => 'first aid courses',
             'lessons' => 9,
             'lessons_per_day' => 9,
             'seats' => 20,
@@ -74,7 +74,7 @@ class CourseTypesSeeder extends Seeder
 
         CourseType::create([
             'wsdl_id' => 6,
-            'name' => 'first-aid-teacher-training_ta',
+            'name' => 'first aid teacher training (TA)',
             'slug' => 'eh-lka',
             'group' => 'teachers',
             'lessons' => 56,
@@ -84,7 +84,7 @@ class CourseTypesSeeder extends Seeder
 
         CourseType::create([
             'wsdl_id' => 7,
-            'name' => 'first-aid-teacher-advanced-training_ta',
+            'name' => 'first aid teacher advanced training (TA)',
             'slug' => 'eh-lkf',
             'group' => 'teachers',
             'lessons' => 16,
@@ -93,9 +93,9 @@ class CourseTypesSeeder extends Seeder
         ]);
 
         CourseType::create([
-            'name' => 'first-aid-course-fev',
+            'name' => 'first aid course (§ 19 FeV)',
             'slug' => 'fa-fev',
-            'group' => 'first-aid-courses',
+            'group' => 'first aid courses',
             'lessons' => 9,
             'lessons_per_day' => 9,
             'seats' => 20,

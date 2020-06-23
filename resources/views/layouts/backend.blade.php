@@ -295,11 +295,14 @@
                         @permission('price.edit', session('company_id'))
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('price.overview') }}" class="nav-link {{
+                                {{--    <a href="{{ route('price.overview') }}" class="nav-link {{
+                                        (Request::is(LaravelLocalization::getCurrentLocale() . '/price*') ? 'active' : '')
+                                    }}"> --}}
+                                    <a href="#" class="nav-link {{
                                         (Request::is(LaravelLocalization::getCurrentLocale() . '/price*') ? 'active' : '')
                                     }}">
                                         <i class="fas fa-coins"></i>
-                                        <p>{{ __('prices') }} <span class="right badge badge-danger">New</span></p>
+                                        <p>{{ __('prices') }} <span class="right badge badge-danger">coming soon</span></p>
                                     </a>
                                 </li>
                             </ul>

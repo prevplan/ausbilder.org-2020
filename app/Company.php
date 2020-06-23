@@ -28,7 +28,8 @@ class Company extends LaratrustTeam
 {
     use HasHashid, HashidRouting;
 
-    protected $fillable = ['name', 'name_suffix', 'street', 'zipcode', 'location', 'doctor', 'reference', 'qseh_password'];
+    protected $fillable = ['name', 'name_suffix', 'street', 'zipcode', 'location', 'doctor', 'reference', 'qseh_password',
+        'terms', 'cpolicy', 'dataprotection', 'email'];
 
     public function users()
     {

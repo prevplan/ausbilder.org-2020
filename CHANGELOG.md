@@ -1,6 +1,9 @@
 # Changelog
 
 [Unreleased]
+### Added
+- Function to add participants and book courses
+
 ### Fixed
 - Message / redirect if no course type is available
 - course date sort was wrong

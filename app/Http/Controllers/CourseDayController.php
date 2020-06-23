@@ -78,7 +78,7 @@ class CourseDayController extends Controller
         } elseif (Carbon::now() > $course->end) {
             return back()->withErrors(
                 [
-                    'message' => __('course has already finished'),
+                    'message' => __('the course has already finished'),
                 ]
             );
         }

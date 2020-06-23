@@ -53,19 +53,18 @@
                                     <label for="inputCompanyName">{{ __('Company name') }}</label>
                                     <input class="form-control" id="inputCompanyName" name="name"
                                            placeholder="{{ __('Company name') }}"
-                                           required type="text" value="{{ $company->name }}">
+                                           required type="text" value="{{ old('name') ?? $company->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputCompanyNameSuffix">{{ __('Company name suffix') }}</label>
                                     <input class="form-control" id="inputCompanyNameSuffix" name="name_suffix"
                                            placeholder="{{ __('Company name suffix') }}" type="text"
-                                           value="{{ $company->name_suffix }}">
+                                           value="{{ old('name_suffix') ?? $company->name_suffix }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStreet">{{ __('street') }}</label>
-                                    <input class="form-control" id="inputStreet" name="street"
-                                           placeholder="{{ __('street') }}"
-                                           required type="text" value="{{ $company->street }}">
+                                    <input class="form-control" id="inputStreet" name="street" placeholder="{{ __('street') }}"
+                                           required type="text" value="{{ old('street') ?? $company->street }}">
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-3">
@@ -73,34 +72,58 @@
                                         <input class="form-control" id="inputZipcode" name="zipcode"
                                                placeholder="{{ __('zipcode') }}"
                                                required type="text"
-                                               value="{{ $company->zipcode }}">
+                                               value="{{ old('zipcode') ?? $company->zipcode }}">
                                     </div>
                                     <div class="form-group col-9">
                                         <label for="inputLocation">{{ __('location') }}</label>
-                                        <input class="form-control" id="inputLocation" name="location"
-                                               placeholder="{{ __('location') }}"
+                                        <input class="form-control" id="inputLocation" name="location" placeholder="{{ __('location') }}"
                                                required type="text"
-                                               value="{{ $company->location }}">
+                                               value="{{ old('location') ?? $company->location }}">
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <label for="inputEMail">{{ __('contact e-mail') }}</label>
+                                        <input class="form-control" id="inputEMail" name="email" placeholder="{{ __('contact e-mail') }}"
+                                               type="email"
+                                               value="{{ old('email') ?? $company->email }}">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <label for="inputTerms">{{ __('terms of business (optional)') }}</label>
+                                        <input class="form-control" id="inputTerms" name="terms" placeholder="{{ __('terms of business (optional)') }}"
+                                               type="url"
+                                               value="{{ old('terms') ?? $company->terms }}">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label for="inputCpolicy">{{ __('cancellation policy (optional)') }}</label>
+                                        <input class="form-control" id="inputCpolicy" name="cpolicy"
+                                               placeholder="{{ __('cancellation policy (optional)') }}"
+                                               type="url"
+                                               value="{{ old('cpolicy') ?? $company->cpolicy }}">
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label for="inputDoctor">{{ __('responsible doctor') }}</label>
                                         <input class="form-control" id="inputDoctor" name="doctor"
                                                placeholder="{{ __('responsible doctor') }}"
                                                type="text"
-                                               value="{{ $company->doctor }}">
+                                               value="{{ old('doctor') ?? $company->doctor }}">
                                     </div>
                                     <div class="form-group col-6">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label for="inputReference">{{ __('qseh reference (optional)') }}</label>
+                                        <label for="inputReference">{{ __('QSEH reference (optional)') }}</label>
                                         <input class="form-control" id="inputReference" name="reference"
-                                               placeholder="{{ __('qseh reference (optional)') }}"
+                                               placeholder="{{ __('QSEH reference (optional)') }}"
                                                type="text"
-                                               value="{{ $company->reference }}">
+                                               value="{{ old('reference') ?? $company->reference }}">
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="inputQsehPassword">{{ __('qseh password (optional)') }}</label>

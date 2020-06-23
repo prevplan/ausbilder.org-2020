@@ -187,7 +187,8 @@ class CourseController extends Controller
             'location' => 'required|min:3',
             'internal_number' => 'required_without_all:registration_number,auto_register|nullable|min:3|alpha_dash',
             'registration_number' => 'required_without_all:internal_number,auto_register|nullable|min:6',
-            'price' => 'required|array',
+            'price' => 'required_with:bookable|array',
+            'max_seats' => 'required_with:bookable|integer|min:1',
         ]);
 
         if (strtotime($request->start_date) >= strtotime($request->end_date)) { // if end is equal or before end
@@ -213,13 +214,15 @@ class CourseController extends Controller
 
         $type = CourseType::findOrFail($request->type);
 
-        if ($request->max_seats > $type->seats) { // seats are bigger than max
+        if ($request->max_seats > $type->seats && $request->bookable) { // seats are bigger than max
             return back()->withErrors(
                 [
                     'message' => __('A maximum of :max seats are permitted.', ['max' => $type->seats]),
                 ]
             )
                 ->withInput($request->all);
+        } elseif (!$request->bookable) {
+            $request->max_seats = 0;
         }
 
         $start = $request->start_date.' '.$request->start_time.':00';
@@ -331,7 +334,9 @@ class CourseController extends Controller
             $i++;
         }
 
-        $course->prices()->sync($request->price);
+        if ($request->bookable) {
+            $course->prices()->sync($request->price);
+        }
 
         return redirect()->route('course.show', ['course' => $course]);
     }

@@ -50,8 +50,8 @@
                                 <label for="inputStreet">{{ __('internal number') }}</label>
                                 <input type="text" class="form-control" id="inputNumber" name="number" value="{{ old('number') }}" placeholder="{{ __('internal number') }}" required>
                                 <br />
-                                <label for="inputStreet">{{ __('Code') }}</label>
-                                <input type="text" class="form-control" id="inputCode" name="code" placeholder="{{ __('Code') }}" required>
+                                <label for="inputStreet">{{ __('code') }}</label>
+                                <input type="text" class="form-control" id="inputCode" name="code" placeholder="{{ __('code') }}" required>
                             </p>
                             <br />
                             <button type="submit" class="btn btn-primary">{{ __('next') }}</button>

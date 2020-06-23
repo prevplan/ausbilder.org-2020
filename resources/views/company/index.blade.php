@@ -46,7 +46,7 @@
                 <strong>{{ __('street') }}</strong> {{ $company->street }}<br />
                 <strong>{{ __('zipcode') }} {{ __('location') }}</strong> {{ $company->zipcode }} {{ $company->location }}<br />
                 <strong>{{ __('responsible doctor') }}</strong> {{ $company->doctor }}<br />
-                <strong>{{ __('qseh reference') }}</strong> {{ $company->reference }} &nbsp; <i class="{{ ($company->qseh_password ? 'fas fa-lock' : 'fas fa-lock-open') }}"></i><br />
+                <strong>{{ __('QSEH reference') }}</strong> {{ $company->reference }} &nbsp; <i class="{{ ($company->qseh_password ? 'fas fa-lock' : 'fas fa-lock-open') }}"></i><br />
             </div>
         </div>
     </section>

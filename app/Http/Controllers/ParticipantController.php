@@ -33,7 +33,7 @@ class ParticipantController extends Controller
             && $course->company_id == session('company_id'), 403);
         if (Carbon::now() > $course->end) {
             return back()->withErrors([
-                'message' => __('The course is finished already.'),
+                'message' => __('The course has already ended.'),
             ]);
         } elseif (count($course->participants) >= $course->seats) {
             return back()->withErrors([
@@ -58,7 +58,7 @@ class ParticipantController extends Controller
 
         if (Carbon::now() > $course->end) {
             return back()->withErrors([
-                'message' => __('The course is finished already.'),
+                'message' => __('The course has already ended.'),
             ]);
         } elseif (count($course->participants) >= $course->seats) {
             return back()->withErrors([

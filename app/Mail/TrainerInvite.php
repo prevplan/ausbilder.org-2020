@@ -35,7 +35,8 @@ class TrainerInvite extends Mailable
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $company
+     * @param $code
      */
     public function __construct($company, $code)
     {
