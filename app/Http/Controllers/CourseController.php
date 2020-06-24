@@ -298,10 +298,10 @@ class CourseController extends Controller
             $registered = false;
         }
 
-        if ($request->internal_number && !$request->generate_number) { // check for double entry
+        if ($request->internal_number && ! $request->generate_number) { // check for double entry
             $search = Course::where([
                 ['internal_number', $request->internal_number],
-                ['company_id', session('company_id')]
+                ['company_id', session('company_id')],
             ])->count();
 
             if ($search) {
@@ -311,26 +311,27 @@ class CourseController extends Controller
             }
         }
 
-        if($request->generate_number) {
+        if ($request->generate_number) {
             $course_count = Course::where([
                 ['start', '>', Carbon::parse($request->start_date)->startofday()->format('Y-m-d H:i:s')],
                 ['start', '<', Carbon::parse($request->start_date)->endOfDay()->format('Y-m-d H:i:s')],
-                ['company_id', session('company_id')]
+                ['company_id', session('company_id')],
             ])->count();
 
             $ident = Carbon::parse($request->start_date)->format('Y-dm');
 
-
-            while( true ) {
+            while (true) {
                 $course_count = $course_count + 1;
-                $request->internal_number = $ident . str_pad($course_count, 2, "0", STR_PAD_LEFT);
+                $request->internal_number = $ident.str_pad($course_count, 2, '0', STR_PAD_LEFT);
 
                 $search = Course::where([
                     ['internal_number', $request->internal_number],
-                    ['company_id', session('company_id')]
+                    ['company_id', session('company_id')],
                 ])->count();
 
-                if (!$search) break;
+                if (! $search) {
+                    break;
+                }
             }
         } elseif (! $request->internal_number) {
             $request->internal_number = $registration_number;
