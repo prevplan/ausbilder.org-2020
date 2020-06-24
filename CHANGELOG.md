@@ -1,6 +1,8 @@
 # Changelog
 
 [Unreleased]
+### Added
+- Added *generate internal number*
 
 [0.3]
 ### Added

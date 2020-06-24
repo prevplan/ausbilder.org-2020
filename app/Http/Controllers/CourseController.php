@@ -185,8 +185,8 @@ class CourseController extends Controller
             'street' => 'required|min:3',
             'zipcode' => 'required',
             'location' => 'required|min:3',
-            'internal_number' => 'required_without_all:registration_number,auto_register|nullable|min:3|alpha_dash',
-            'registration_number' => 'required_without_all:internal_number,auto_register|nullable|min:6',
+            'internal_number' => 'required_without_all:generate_number,registration_number,auto_register|nullable|min:3|alpha_dash',
+            'registration_number' => 'required_without_all:generate_number,internal_number,auto_register|nullable|min:6',
             'price' => 'required_with:bookable|array',
             'max_seats' => 'required_with:bookable|integer|min:1',
         ]);
@@ -298,7 +298,41 @@ class CourseController extends Controller
             $registered = false;
         }
 
-        if (! $request->internal_number) {
+        if ($request->internal_number && !$request->generate_number) { // check for double entry
+            $search = Course::where([
+                ['internal_number', $request->internal_number],
+                ['company_id', session('company_id')]
+            ])->count();
+
+            if ($search) {
+                return back()
+                    ->withErrors(['message' => __('internal number has already been assigned')])
+                    ->withInput($request->all);
+            }
+        }
+
+        if($request->generate_number) {
+            $course_count = Course::where([
+                ['start', '>', Carbon::parse($request->start_date)->startofday()->format('Y-m-d H:i:s')],
+                ['start', '<', Carbon::parse($request->start_date)->endOfDay()->format('Y-m-d H:i:s')],
+                ['company_id', session('company_id')]
+            ])->count();
+
+            $ident = Carbon::parse($request->start_date)->format('Y-dm');
+
+
+            while( true ) {
+                $course_count = $course_count + 1;
+                $request->internal_number = $ident . str_pad($course_count, 2, "0", STR_PAD_LEFT);
+
+                $search = Course::where([
+                    ['internal_number', $request->internal_number],
+                    ['company_id', session('company_id')]
+                ])->count();
+
+                if (!$search) break;
+            }
+        } elseif (! $request->internal_number) {
             $request->internal_number = $registration_number;
         }
 

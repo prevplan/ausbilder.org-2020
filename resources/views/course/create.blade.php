@@ -158,8 +158,27 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg">
-                                        <label for="inputIntenNumber">{{ __('internal number') }}</label>
-                                        <input type="text" class="form-control" id="inputInternNumber" name="internal_number" value="{{ old('internal_number') }}" placeholder="{{ __('internal number') }}">
+                                        <label for="inputInternNumber">{{ __('internal number') }}</label>
+                                        {{ __('- generate an internal number?') }} &nbsp;
+                                        <input
+                                                data-bootstrap-switch
+                                                data-off-color="danger"
+                                                data-off-text="{{ __('No') }}"
+                                                data-on-color="success"
+                                                data-on-text="{{ __('Yes') }}"
+                                                id="generate_number_hide"
+                                                name="generate_number"
+                                                onchange="hideNumber()"
+                                                type="checkbox"
+                                        >
+                                        <div id="generate_number_hint" style="{{ $errors->any() && !old('generate_number') ? 'display:none' : 'display:block' }}">
+                                            {{ __('The internal number is generated automatically.') }}
+                                        </div>
+                                        <div id="generate_number_field" style="{{ $errors->any() && !old('generate_number') ? 'display:block' : 'display:none' }}">
+                                            <input class="form-control" id="inputInternNumber" name="internal_number"
+                                                   placeholder="{{ __('internal number') }}" type="text"
+                                                   value="{{ old('internal_number') }}">
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-1" align="center">
                                         {{ __('and / or') }}
@@ -183,7 +202,7 @@
                                                     {{ __('The course will be automatically registered at the QSEH.') }}
                                                 </div>
                                             @endif
-                                        <div id="reg_nr_field" style="{{ old('auto_register') ? 'display:none' : 'display:block' }}">
+                                        <div id="reg_nr_field" style="{{ old('auto_register') && $company->qseh_password ? 'display:none' : 'display:block' }}">
                                             <input
                                                 type="text"
                                                 class="form-control"
@@ -377,15 +396,54 @@
     </script>
 
     <script>
-        function hideReg() {
-            var checkBox = document.getElementById("reg_nr_hide");
-            var text = document.getElementById("reg_nr_field");
+        $(function () {
+            $("input[data-bootstrap-switch]").each(function(){
+                $(this).bootstrapSwitch('state', $(this).prop('unchecked'));
+            });
+
+        })
+
+        @if($errors->any() && !old('generate_number'))
+            $("[name='generate_number']").bootstrapSwitch('state',false)();
+        @else
+            $("[name='generate_number']").bootstrapSwitch('state',true)();
+        @endif
+    </script>
+
+
+
+    <script>
+        function hideNumber() {
+            var checkBox = document.getElementById("generate_number_hide");
+            var text = document.getElementById("generate_number_field");
+
             if (checkBox.checked === true){
                 text.style.display = "none";
             } else {
                 text.style.display = "block";
             }
+
+            var text = document.getElementById("generate_number_hint");
+
+            if (checkBox.checked === true){
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+
+        function hideReg() {
+            var checkBox = document.getElementById("reg_nr_hide");
+            var text = document.getElementById("reg_nr_field");
+
+            if (checkBox.checked === true){
+                text.style.display = "none";
+            } else {
+                text.style.display = "block";
+            }
+
             var text = document.getElementById("reg_nr_hint");
+
             if (checkBox.checked === true){
                 text.style.display = "block";
             } else {
@@ -396,6 +454,7 @@
         function hidePrice() {
             var checkBox = document.getElementById("price_hide");
             var text = document.getElementById("prices");
+
             if (checkBox.checked === true){
                 text.style.display = "block";
             } else {
@@ -403,6 +462,7 @@
             }
 
             var text = document.getElementById("seats");
+
             if (checkBox.checked === true){
                 text.style.display = "block";
             } else {

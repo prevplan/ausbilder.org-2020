@@ -1,6 +1,7 @@
 {
     "(optional)": "(optional)",
     "- automatically register at QSEH?": "- automatisch bei der QSEH registrieren?",
+    "- generate an internal number?": "- eine interne Nummer generieren?",
     "100% open source \/ 100% free": "100% open source \/ 100% frei",
     "A fresh verification link has been sent to your email address.": "Ein neuer Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet.",
     "A maximum of :max seats are permitted.": "Maximal :max Sitzplätze sind zulässig.",
@@ -60,6 +61,7 @@
     "The course has already started.": "Der Kurs hat bereits begonnen.",
     "The course is already full.": "Der Kurs ist bereits voll.",
     "The course will be automatically registered at the QSEH.": "Der Kurs wird automatisch bei der QSEH registriert.",
+    "The internal number is generated automatically.": "Die interne Nummer wird automatisch generiert.",
     "The personal data is processed on the basis of Art. 6 Para. 1 lit. c and e GDPR, Section 199 (1) No. 5 in conjunction with § 23 SGV VII processed.": "Die personenbezogenen Daten werden aufgrund des Art. 6 Abs. 1 lit. c und e DSGVO, § 199 Abs. 1 Nr. 5 i.V.m. § 23 SGV VII verarbeitet.",
     "Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).": "Deshalb sind wir :name. Die erste und einzige freie Kursverwaltungs- und Planungssoftware weltweit (soweit wir wissen).",
     "Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!": "Keine Lust mehr mit Excel, Word und Papier zu arbeiten? Verärgert über teure Software, die nicht wirklich passt? Wir auch!",
@@ -155,6 +157,7 @@
     "free seats": "freie Plätze",
     "if you haven't an ausbilder.org account yet, register on for free.": "Wenn Du noch keinen Account auf ausbilder.org hast, registriere Dich jetzt kostenlos.",
     "internal number": "interne Nummer",
+    "internal number has already been assigned": "Interne Nummer wurde bereits vergeben",
     "invitation": "Einladung",
     "invitation not found": "Einladung nicht gefunden",
     "invoice recipient": "Rechnungsempfänger",

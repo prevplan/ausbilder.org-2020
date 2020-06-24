@@ -1,6 +1,7 @@
 {
     "(optional)": "(optional)",
     "- automatically register at QSEH?": "- automatically register at QSEH?",
+    "- generate an internal number?": "- generate an internal number?",
     "100% open source \/ 100% free": "100% open source \/ 100% free",
     "A fresh verification link has been sent to your email address.": "A fresh verification link has been sent to your email address.",
     "A maximum of :max seats are permitted.": "A maximum of :max seats are permitted.",
@@ -60,6 +61,7 @@
     "The course has already started.": "The course has already started.",
     "The course is already full.": "The course is already full.",
     "The course will be automatically registered at the QSEH.": "The course will be automatically registered at the QSEH.",
+    "The internal number is generated automatically.": "The internal number is generated automatically.",
     "The personal data is processed on the basis of Art. 6 Para. 1 lit. c and e GDPR, Section 199 (1) No. 5 in conjunction with § 23 SGV VII processed.": "The personal data is processed on the basis of Art. 6 Para. 1 lit. c and e GDPR, Section 199 (1) No. 5 in conjunction with § 23 SGV VII processed.",
     "Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).": "Therefore we are :name. The first and only free course management and planning software in the world (as far as we know).",
     "Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!": "Tired of using Excel, Word and Paper? Annoyed by expensive software, that doesn't really fit? We too!",
@@ -155,6 +157,7 @@
     "free seats": "free seats",
     "if you haven't an ausbilder.org account yet, register on for free.": "if you haven't an ausbilder.org account yet, register on for free.",
     "internal number": "internal number",
+    "internal number has already been assigned": "internal number has already been assigned",
     "invitation": "invitation",
     "invitation not found": "invitation not found",
     "invoice recipient": "invoice recipient",
