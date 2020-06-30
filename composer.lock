@@ -2565,16 +2565,16 @@
         },
         {
             "name": "spatie/enum",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/enum.git",
-                "reference": "b5509f8cb66cbde2725ba89d59ee56a6e145dc3f"
+                "reference": "b0b5686edfe36a7145081237168dfa7c4446d913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/enum/zipball/b5509f8cb66cbde2725ba89d59ee56a6e145dc3f",
-                "reference": "b5509f8cb66cbde2725ba89d59ee56a6e145dc3f",
+                "url": "https://api.github.com/repos/spatie/enum/zipball/b0b5686edfe36a7145081237168dfa7c4446d913",
+                "reference": "b0b5686edfe36a7145081237168dfa7c4446d913",
                 "shasum": ""
             },
             "require": {
@@ -2615,7 +2615,17 @@
                 "enumerable",
                 "spatie"
             ],
-            "time": "2020-03-11T10:18:34+00:00"
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-30T07:32:43+00:00"
         },
         {
             "name": "spatie/icalendar-generator",
