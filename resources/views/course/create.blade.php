@@ -84,7 +84,9 @@
                                                                 <select class="custom-select col-5" name="trainer[]" required>
                                                                     <option selected disabled>{{ __('select trainer') }}</option>
                                                                     @foreach ($company->users as $user)
-                                                                        <option {{ (old('trainer')[$loop->parent->index] == $user->id ? 'selected' : '') }} value="{{ $user->id }}">{{ $user->name }}</option>
+                                                                        @if($user->pivot->user_active && $user->pivot->company_active)
+                                                                            <option {{ (old('trainer')[$loop->parent->index] == $user->id ? 'selected' : '') }} value="{{ $user->id }}">{{ $user->name }}</option>
+                                                                        @endif
                                                                     @endforeach
                                                                 </select>
                                                                 @if( $loop->first )
@@ -104,7 +106,9 @@
                                                         <select class="custom-select col-5" name="trainer[]" required>
                                                             <option selected disabled>{{ __('select trainer') }}</option>
                                                             @foreach ($company->users as $user)
-                                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                                @if($user->pivot->user_active && $user->pivot->company_active)
+                                                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                                @endif
                                                             @endforeach
                                                         </select>
                                                         <button class="btn btn-success btn-sm add" name="add"

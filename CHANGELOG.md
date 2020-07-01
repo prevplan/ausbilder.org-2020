@@ -1,6 +1,8 @@
 # Changelog
 
 [Unreleased]
+### Bugfix
+- don't show inactive trainer
 
 [0.3.1]
 ### Added
