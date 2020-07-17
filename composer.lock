@@ -2616,16 +2616,16 @@
         },
         {
             "name": "spatie/enum",
-            "version": "2.3.7",
+            "version": "2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/enum.git",
-                "reference": "b0b5686edfe36a7145081237168dfa7c4446d913"
+                "reference": "49bd478efff2552df50ef42b9d70c32178b953bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/enum/zipball/b0b5686edfe36a7145081237168dfa7c4446d913",
-                "reference": "b0b5686edfe36a7145081237168dfa7c4446d913",
+                "url": "https://api.github.com/repos/spatie/enum/zipball/49bd478efff2552df50ef42b9d70c32178b953bd",
+                "reference": "49bd478efff2552df50ef42b9d70c32178b953bd",
                 "shasum": ""
             },
             "require": {
@@ -2654,7 +2654,7 @@
                 },
                 {
                     "name": "Tom Witkowski",
-                    "email": "dev.gummibeer@gmail.com",
+                    "email": "dev@gummibeer.de",
                     "homepage": "https://gummibeer.de",
                     "role": "Developer"
                 }
@@ -2676,7 +2676,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-06-30T07:32:43+00:00"
+            "time": "2020-07-17T20:06:15+00:00"
         },
         {
             "name": "spatie/icalendar-generator",
