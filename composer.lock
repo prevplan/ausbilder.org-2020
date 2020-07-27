@@ -1005,16 +1005,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.21.0",
+            "version": "v7.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3ccdb116524de408fdc00715b6f06a1031ddace9"
+                "reference": "668642a353ec5b32888565f04f1a163798ef4f6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/3ccdb116524de408fdc00715b6f06a1031ddace9",
-                "reference": "3ccdb116524de408fdc00715b6f06a1031ddace9",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/668642a353ec5b32888565f04f1a163798ef4f6a",
+                "reference": "668642a353ec5b32888565f04f1a163798ef4f6a",
                 "shasum": ""
             },
             "require": {
@@ -1158,7 +1158,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-07-21T14:26:42+00:00"
+            "time": "2020-07-27T15:49:44+00:00"
         },
         {
             "name": "laravel/tinker",
