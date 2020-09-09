@@ -5101,23 +5101,23 @@
         },
         {
             "name": "vemcogroup/laravel-translation",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vemcogroup/laravel-translation.git",
-                "reference": "3b82c7c279cbb506ec8fcaedcb95656c60c637ff"
+                "reference": "65f77ec8b5876233ebb9c6b3cbabe65031c3f618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/3b82c7c279cbb506ec8fcaedcb95656c60c637ff",
-                "reference": "3b82c7c279cbb506ec8fcaedcb95656c60c637ff",
+                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/65f77ec8b5876233ebb9c6b3cbabe65031c3f618",
+                "reference": "65f77ec8b5876233ebb9c6b3cbabe65031c3f618",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/guzzle": "^6.3",
+                "guzzlehttp/guzzle": "^6.3|^7.0",
                 "laravel/framework": "^6.0|^7.0|^8.0",
-                "php": "^7.2",
+                "php": "^7.3",
                 "symfony/finder": "^4.3|^5.0"
             },
             "type": "library",
@@ -5153,7 +5153,7 @@
                 "laravel",
                 "translations"
             ],
-            "time": "2020-09-09T07:22:42+00:00"
+            "time": "2020-09-09T11:34:19+00:00"
         },
         {
             "name": "vinkla/hashids",
