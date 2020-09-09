@@ -2785,29 +2785,29 @@
         },
         {
             "name": "spatie/laravel-honeypot",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-honeypot.git",
-                "reference": "5259bfbc5f26e9e92b356245230cec0326bdcd63"
+                "reference": "ed71dd03af7b393b60eb089d97e0af4f698e68d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/5259bfbc5f26e9e92b356245230cec0326bdcd63",
-                "reference": "5259bfbc5f26e9e92b356245230cec0326bdcd63",
+                "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/ed71dd03af7b393b60eb089d97e0af4f698e68d0",
+                "reference": "ed71dd03af7b393b60eb089d97e0af4f698e68d0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "^7.0",
-                "illuminate/encryption": "^7.0",
-                "illuminate/http": "^7.0",
-                "illuminate/support": "^7.0",
-                "illuminate/validation": "^7.0",
+                "illuminate/contracts": "^7.0|^8.0",
+                "illuminate/encryption": "^7.0|^8.0",
+                "illuminate/http": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
+                "illuminate/validation": "^7.0|^8.0",
                 "nesbot/carbon": "^2.0",
-                "php": "^7.2"
+                "php": "^7.2|^7.3"
             },
             "require-dev": {
-                "orchestra/testbench": "^5.0",
+                "orchestra/testbench": "^5.0|^6.0",
                 "spatie/phpunit-snapshot-assertions": "^3.0"
             },
             "type": "library",
@@ -2847,7 +2847,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-04-14T14:35:23+00:00"
+            "time": "2020-09-09T08:26:04+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
