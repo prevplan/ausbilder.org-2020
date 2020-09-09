@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02b6aea80891f020b31f6e7f1a0da7ec",
+    "content-hash": "803deec992f37018b952df3aa91edcac",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5101,22 +5101,22 @@
         },
         {
             "name": "vemcogroup/laravel-translation",
-            "version": "2.1.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vemcogroup/laravel-translation.git",
-                "reference": "95dfc76f7dd13ae0ecb876c7a083c4b131d446bc"
+                "reference": "3b82c7c279cbb506ec8fcaedcb95656c60c637ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/95dfc76f7dd13ae0ecb876c7a083c4b131d446bc",
-                "reference": "95dfc76f7dd13ae0ecb876c7a083c4b131d446bc",
+                "url": "https://api.github.com/repos/vemcogroup/laravel-translation/zipball/3b82c7c279cbb506ec8fcaedcb95656c60c637ff",
+                "reference": "3b82c7c279cbb506ec8fcaedcb95656c60c637ff",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.3",
-                "laravel/framework": "~5.8.0|^6.0|^7.0",
+                "laravel/framework": "^6.0|^7.0|^8.0",
                 "php": "^7.2",
                 "symfony/finder": "^4.3|^5.0"
             },
@@ -5153,7 +5153,7 @@
                 "laravel",
                 "translations"
             ],
-            "time": "2020-06-18T07:23:21+00:00"
+            "time": "2020-09-09T07:22:42+00:00"
         },
         {
             "name": "vinkla/hashids",
