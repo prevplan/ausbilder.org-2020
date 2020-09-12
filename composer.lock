@@ -2661,16 +2661,16 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "6.2.0",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "0eaa0df4f4cf3242fdcaac04a1db089b7043f45d"
+                "reference": "ed1ee854c08931c1d749afea7d1515b8c780daa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/0eaa0df4f4cf3242fdcaac04a1db089b7043f45d",
-                "reference": "0eaa0df4f4cf3242fdcaac04a1db089b7043f45d",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/ed1ee854c08931c1d749afea7d1515b8c780daa4",
+                "reference": "ed1ee854c08931c1d749afea7d1515b8c780daa4",
                 "shasum": ""
             },
             "require": {
@@ -2728,7 +2728,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-08T13:45:15+00:00"
+            "time": "2020-09-11T17:45:20+00:00"
         },
         {
             "name": "spatie/enum",
