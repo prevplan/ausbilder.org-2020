@@ -107,6 +107,12 @@
                                            placeholder="{{ __('street') }}"
                                            required type="text" value="{{ old('street') }}">
                                 </div>
+                                <div class="form-group col-md-1">
+                                    <label for="inputNumber">{{ __('house number') }}</label>
+                                    <input class="form-control" id="inputNumber" name="number"
+                                           placeholder="{{ __('house number') }}"
+                                           required type="text" value="{{ old('house number') }}">
+                                </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputZipcode">{{ __('zipcode') }}</label>
                                     <input class="form-control" id="inputZipcode" name="zipcode"
