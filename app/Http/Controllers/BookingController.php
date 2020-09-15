@@ -202,7 +202,7 @@ class BookingController extends Controller
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
             'date_of_birth' => $request->date_of_birth,
-            'street' => $request->street . ' ' . $request->number,
+            'street' => $request->street.' '.$request->number,
             'zipcode' => $request->zipcode,
             'location' => $request->location,
             'phone' => $request->phone,
