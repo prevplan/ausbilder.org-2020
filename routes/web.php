@@ -109,8 +109,10 @@ Route::group(
         Route::post('participant/{course}', 'ParticipantController@store')->name('participant.store');
 
         Route::get('booking/{company}/loc/{location}', 'BookingController@location')->name('booking.location');
+        Route::get('booking/sec/{company}/loc/{location}', 'BookingController@secLocation')->name('booking.secLocation');
         Route::get('booking/{company}/sloc/{location}', 'BookingController@seminarLocation')->name('booking.seminarLocation');
         Route::get('booking/{company}/{course}', 'BookingController@create')->name('booking.create');
+        Route::get('booking/sec/{company}/{course}', 'BookingController@secCreate')->name('booking.secCreate');
         Route::post('booking/{company}/{course}', 'BookingController@store')->name('booking.store')->middleware(ProtectAgainstSpam::class);
 
         Route::group(['middleware' => 'revalidate'], function () {

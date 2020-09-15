@@ -77,6 +77,30 @@ class BookingController extends Controller
      * @param $location
      * @return Application|Factory|View
      */
+    public function secLocation(Company $company, $location)
+    {
+        $courses = Course::where([
+            ['company_id', $company->id],
+            ['location', $location],
+            ['start', '>', Carbon::now()],
+            ['bookable', 1],
+        ])
+            ->with('course_types')
+            ->with('prices')
+            ->with('participants')
+            ->orderBy('start')
+            ->get();
+
+        return view('booking.secLocation', compact('company', 'courses', 'location'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  Company  $company
+     * @param $location
+     * @return Application|Factory|View
+     */
     public function seminarLocation(Company $company, $location)
     {
         $courses = Course::where([
@@ -139,6 +163,53 @@ class BookingController extends Controller
         }
 
         return view('booking.create', compact('company', 'course'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  Company  $company
+     * @param  Course  $course
+     * @return Application|Factory|RedirectResponse|View
+     */
+    public function secCreate(Company $company, $course)
+    {
+        $course = Course::where([
+            ['id', $this->validate_course($course)],
+            ['company_id', $company->id],
+            ['start', '>', Carbon::now()],
+            ['bookable', 1],
+        ])
+            ->with('prices')
+            ->with('participants')
+            ->with('course_types')
+            ->first();
+
+        if (! $course) {
+            return back()->withErrors(
+                [
+                    'message' => __('The course has already started.'),
+                ]
+            );
+        } elseif (($course->seats - count($course->participants)) <= 0) {
+            if (isset($course->location)) {
+                $location = $course->location;
+            } elseif (isset($course->seminar_location)) {
+                $location = $course->seminar_location;
+            } else {
+                abort(403);
+            }
+
+            /** @var TYPE_NAME $location */
+            return redirect()->route('booking.location', ['company' => $company, $location])
+                ->withErrors(
+                    [
+                        'message' => __('The course is already full.'),
+                    ]
+                );
+        }
+
+        return view('booking.secCreate', compact('company', 'course'));
     }
 
     /**
