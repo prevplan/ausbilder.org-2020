@@ -290,7 +290,7 @@ class BookingController extends Controller
     }
 
     /**
-     * send a link to an overview via sms
+     * send a link to an overview via sms.
      *
      * @param Request $request
      * @param Company $company
@@ -309,7 +309,7 @@ class BookingController extends Controller
     }
 
     /**
-     * send a link to a course via sms
+     * send a link to a course via sms.
      *
      * @param Request $request
      * @param Company $company
