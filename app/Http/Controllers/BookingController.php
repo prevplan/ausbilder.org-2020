@@ -32,6 +32,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use Vinkla\Hashids\Facades\Hashids;
 
 class BookingController extends Controller
 {
@@ -289,14 +290,41 @@ class BookingController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * send a link to an overview via sms
      *
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @param Company $company
+     * @param $location
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function sendOverview(Request $request, Company $company, $location)
     {
-        //
+        $url = env('APP_URL').'/booking/'.Hashids::encode($company->id).'/loc/'.$location;
+
+        $text = str_replace(':url', $url, __('Hello, you find our course overview under :url'));
+
+        SmsController::send($request->number, $text);
+
+        return view('booking.smsConfirmation');
+    }
+
+    /**
+     * send a link to a course via sms
+     *
+     * @param Request $request
+     * @param Company $company
+     * @param Course $course
+     * @return Application|Factory|View
+     */
+    public function sendLink(Request $request, Company $company, Course $course)
+    {
+        $url = env('APP_URL').'/booking/'.Hashids::encode($company->id).'/'.Hashids::encode($course->id);
+
+        $text = str_replace(':url', $url, __('Hello, you can book your requested course under :url'));
+
+        SmsController::send($request->number, $text);
+
+        return view('booking.smsConfirmation');
     }
 
     /**

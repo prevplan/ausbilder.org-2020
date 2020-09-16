@@ -29,7 +29,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">{{ $company->name }} {{ __('courses') }} - {{ $location }}</h3>
+                        <h3 class="card-title">{{ $company->name }} {{ __('courses') }} - {{ $location }}</h3><br />
+                        <form action="{{ route('booking.sendOverview', ['company' => $company, 'location' => $location]) }}"
+                              id="form"
+                              method="post"
+                              onsubmit="submit.disabled = true; submit.innerText='{{ __('sending') }}…'; return true;"
+                              role="form">
+                            @csrf
+                            @honeypot
+                            <strong>{{ __('send overview by sms') }}</strong><br />
+                            <input  id="inputNumber" name="number" placeholder="{{ __('mobile number') }}" required type="text"><button class="btn btn-primary" name="submit" type="submit">{{ __('send overview') }}</button>
+                        </form>
 
                         {{--
                         <div class="card-tools">

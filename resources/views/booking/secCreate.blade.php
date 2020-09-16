@@ -31,13 +31,6 @@
                 @include('layouts.error')
                 <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('booking.store', ['company' => $company, 'course' => $course]) }}"
-                          id="form"
-                          method="post"
-                          onsubmit="submit.disabled = true; submit.innerText='{{ __('booking') }}…'; return true;"
-                          role="form">
-                        @csrf
-                        @honeypot
                         <div class="card-body">
                             <div class="row">
                                 <div class="form-group col-md-2">
@@ -49,8 +42,27 @@
                                 <div class="form-group col-lg">
                                     <div><strong>{{ __('address') }}:</strong> {{ $course->seminar_location }}, {{ $course->street }}, {{ $course->zipcode }} {{ $course->location }}</div>
                                 </div>
+                                <form action="{{ route('booking.sendLink', ['company' => $company, 'course' => $course]) }}"
+                                      id="smsForm"
+                                      method="post"
+                                      onsubmit="submit.disabled = true; submit.innerText='{{ __('sending') }}…'; return true;"
+                                      role="form">
+                                    @csrf
+                                    @honeypot
+                                    <div class="form-group col-lg">
+                                        <strong>{{ __('send link by sms') }}</strong>
+                                        <input  id="inputNumber" name="number" placeholder="{{ __('mobile number') }}" required type="text"><button class="btn btn-primary" name="submit" type="submit">{{ __('send overview') }}</button>
+                                    </div>
+                                </form>
                             </div>
                             <hr>
+                            <form action="{{ route('booking.store', ['company' => $company, 'course' => $course]) }}"
+                                  id="form"
+                                  method="post"
+                                  onsubmit="submit.disabled = true; submit.innerText='{{ __('booking') }}…'; return true;"
+                                  role="form">
+                                @csrf
+                                @honeypot
                             <div class="row">
                                 <div class="form-group col-lg">
                                     @foreach($course->prices as $price)
