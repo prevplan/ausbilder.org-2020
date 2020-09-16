@@ -109,13 +109,25 @@ Route::group(
         Route::post('participant/{course}', 'ParticipantController@store')->name('participant.store');
 
         Route::get('booking/{company}/loc/{location}', 'BookingController@location')->name('booking.location');
+        Route::get('booking/sec/{company}/loc/{location}', 'BookingController@secLocation')->name('booking.secLocation');
         Route::get('booking/{company}/sloc/{location}', 'BookingController@seminarLocation')->name('booking.seminarLocation');
         Route::get('booking/{company}/{course}', 'BookingController@create')->name('booking.create');
-        Route::post('booking/{company}/{course}', 'BookingController@store')->name('booking.store')->middleware(ProtectAgainstSpam::class);
+        Route::get('booking/sec/{company}/{course}', 'BookingController@secCreate')->name('booking.secCreate');
+        Route::post('booking/sec/{company}/loc/{location}/send', 'BookingController@sendOverview')
+            ->name('booking.sendOverview')
+            ->middleware(ProtectAgainstSpam::class);
+        Route::post('booking/sec/{company}/{course}/send', 'BookingController@sendLink')
+            ->name('booking.sendLink')
+            ->middleware(ProtectAgainstSpam::class);
+        Route::post('booking/{company}/{course}', 'BookingController@store')
+            ->name('booking.store')
+            ->middleware(ProtectAgainstSpam::class);
 
         Route::group(['middleware' => 'revalidate'], function () {
             Route::get('event', 'EventController@index')->name('event.index');
-            Route::post('event', 'EventController@search')->name('event.search')->middleware(ProtectAgainstSpam::class);
+            Route::post('event', 'EventController@search')
+                ->name('event.search')
+                ->middleware(ProtectAgainstSpam::class);
             Route::get('event/{number}/{code}', 'EventController@login')->name('event.login');
             Route::get('event/name', 'EventController@name')->name('event.name');
             Route::post('event/name', 'EventController@processName')->name('event.name');

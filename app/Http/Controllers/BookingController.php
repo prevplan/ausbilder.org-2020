@@ -32,6 +32,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use Vinkla\Hashids\Facades\Hashids;
 
 class BookingController extends Controller
 {
@@ -68,6 +69,30 @@ class BookingController extends Controller
             ->get();
 
         return view('booking.location', compact('company', 'courses', 'location'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  Company  $company
+     * @param $location
+     * @return Application|Factory|View
+     */
+    public function secLocation(Company $company, $location)
+    {
+        $courses = Course::where([
+            ['company_id', $company->id],
+            ['location', $location],
+            ['start', '>', Carbon::now()],
+            ['bookable', 1],
+        ])
+            ->with('course_types')
+            ->with('prices')
+            ->with('participants')
+            ->orderBy('start')
+            ->get();
+
+        return view('booking.secLocation', compact('company', 'courses', 'location'));
     }
 
     /**
@@ -139,6 +164,53 @@ class BookingController extends Controller
         }
 
         return view('booking.create', compact('company', 'course'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  Company  $company
+     * @param  Course  $course
+     * @return Application|Factory|RedirectResponse|View
+     */
+    public function secCreate(Company $company, $course)
+    {
+        $course = Course::where([
+            ['id', $this->validate_course($course)],
+            ['company_id', $company->id],
+            ['start', '>', Carbon::now()],
+            ['bookable', 1],
+        ])
+            ->with('prices')
+            ->with('participants')
+            ->with('course_types')
+            ->first();
+
+        if (! $course) {
+            return back()->withErrors(
+                [
+                    'message' => __('The course has already started.'),
+                ]
+            );
+        } elseif (($course->seats - count($course->participants)) <= 0) {
+            if (isset($course->location)) {
+                $location = $course->location;
+            } elseif (isset($course->seminar_location)) {
+                $location = $course->seminar_location;
+            } else {
+                abort(403);
+            }
+
+            /** @var TYPE_NAME $location */
+            return redirect()->route('booking.location', ['company' => $company, $location])
+                ->withErrors(
+                    [
+                        'message' => __('The course is already full.'),
+                    ]
+                );
+        }
+
+        return view('booking.secCreate', compact('company', 'course'));
     }
 
     /**
@@ -218,14 +290,41 @@ class BookingController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * send a link to an overview via sms.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @param Company $company
+     * @param $location
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function sendOverview(Request $request, Company $company, $location)
     {
-        //
+        $url = env('APP_URL').'/booking/'.Hashids::encode($company->id).'/loc/'.$location;
+
+        $text = str_replace(':url', $url, __('Hello, you find our course overview under :url'));
+
+        SmsController::send($request->number, $text);
+
+        return view('booking.smsConfirmation');
+    }
+
+    /**
+     * send a link to a course via sms.
+     *
+     * @param Request $request
+     * @param Company $company
+     * @param Course $course
+     * @return Application|Factory|View
+     */
+    public function sendLink(Request $request, Company $company, Course $course)
+    {
+        $url = env('APP_URL').'/booking/'.Hashids::encode($company->id).'/'.Hashids::encode($course->id);
+
+        $text = str_replace(':url', $url, __('Hello, you can book your requested course under :url'));
+
+        SmsController::send($request->number, $text);
+
+        return view('booking.smsConfirmation');
     }
 
     /**

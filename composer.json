@@ -21,6 +21,7 @@
         "santigarcor/laratrust": "^6.0",
         "spatie/icalendar-generator": "^1.0",
         "spatie/laravel-honeypot": "^2.2",
+        "twilio/sdk": "^6.10",
         "vemcogroup/laravel-translation": "^3.0",
         "vyuldashev/xml-to-array": "^1.0"
     },
