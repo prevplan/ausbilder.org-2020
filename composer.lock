@@ -2813,16 +2813,16 @@
         },
         {
             "name": "spatie/icalendar-generator",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/icalendar-generator.git",
-                "reference": "0134f1b829c8a406b2e31d9696b17eaa5ff384fa"
+                "reference": "7f2e85f2601728c200c0eaae475958a5627f7133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/0134f1b829c8a406b2e31d9696b17eaa5ff384fa",
-                "reference": "0134f1b829c8a406b2e31d9696b17eaa5ff384fa",
+                "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/7f2e85f2601728c200c0eaae475958a5627f7133",
+                "reference": "7f2e85f2601728c200c0eaae475958a5627f7133",
                 "shasum": ""
             },
             "require": {
@@ -2861,7 +2861,7 @@
                 "ics",
                 "spatie"
             ],
-            "time": "2020-09-25T11:57:53+00:00"
+            "time": "2020-10-09T07:07:00+00:00"
         },
         {
             "name": "spatie/laravel-honeypot",
