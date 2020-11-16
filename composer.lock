@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.161.0",
+            "version": "3.161.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "93f237f55463035896dbe298c9100b2438a87193"
+                "reference": "4c1852e9efaef18e15f2a6c914d8dc41fda2a052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/93f237f55463035896dbe298c9100b2438a87193",
-                "reference": "93f237f55463035896dbe298c9100b2438a87193",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4c1852e9efaef18e15f2a6c914d8dc41fda2a052",
+                "reference": "4c1852e9efaef18e15f2a6c914d8dc41fda2a052",
                 "shasum": ""
             },
             "require": {
@@ -141,7 +141,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-11-12T19:25:24+00:00"
+            "time": "2020-11-13T19:17:55+00:00"
         },
         {
             "name": "brick/math",
