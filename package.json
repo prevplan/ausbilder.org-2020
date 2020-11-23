@@ -28,7 +28,7 @@
     "kind-of": "^6.0.3",
     "minimist": ">=1.2.3",
     "snyk": "^1.430.0",
-    "tempusdominus-core": "^5.0.3"
+    "tempusdominus-core": "^5.19.0"
   },
   "snyk": true
 }
